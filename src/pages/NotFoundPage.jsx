@@ -17,8 +17,7 @@ const NotFoundPage = () => {
             }}>
             <h1 
                 className='m-5'
-                style={{
-                    
+                style={{                    
                     position: 'absolute',
                     top: '10%',
                     left: '5%',
