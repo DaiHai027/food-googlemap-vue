@@ -8,6 +8,7 @@ import LoginPage from './pages/LoginPage'
 import LogoutPage from './pages/LogoutPage'
 import SignupPage from './pages/SignupPage'
 import NotFoundPage from './pages/NotFoundPage'
+import ForgotPasswordPage from './pages/ForgotPasswordPage'
 
 function App() {
 
@@ -18,10 +19,11 @@ function App() {
               {/* Guest routes */}
               <Route path="*" element={<NotFoundPage />} />
               <Route path="/" element={<HomePage />} />
-              {/* <Route path="/forgot-password" element={<ForgotPasswordPage />} /> */}
+              
               <Route path="/login" element={<LoginPage />} />
               <Route path="/logout" element={<LogoutPage />} />
               <Route path="/signup" element={<SignupPage />} />
+              <Route path="/forgotPassword" element={<ForgotPasswordPage />} />
 
               {/* Protected routes */}
               
