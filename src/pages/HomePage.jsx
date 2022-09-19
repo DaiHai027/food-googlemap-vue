@@ -1,14 +1,46 @@
-import { Container } from 'react-bootstrap'
 import { useJsApiLoader, GoogleMap, MarkerF} from '@react-google-maps/api'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
-const center = { lat: 55.6032746, lng: 13.0165715 }
+const defaultPosition = { lat: 55.6032746, lng: 13.0165715 }
+
+const places = [
+    {
+        lat: 55.58,
+        lng: 13.01
+    },
+    {
+        lat: 55.59,
+        lng: 13
+    },
+    {
+        lat: 55.57,
+        lng: 13.02
+    },
+    {
+        lat: 55.6,
+        lng: 13.03
+    },
+]
 
 const HomePage = () => {
 
     const { isLoaded } = useJsApiLoader({
         googleMapsApiKey: import.meta.env.VITE_MAPS_API_KEY
     })
+
+    const [map, setMap] = useState(/** @type google.maps.Map */ (null))
+    const [userPosition, setUserPosition] = useState(null)
+
+    useEffect(() => {
+        if ('geolocation' in navigator) {
+            console.log('geolocation possible')
+            navigator.geolocation.getCurrentPosition((position) => {
+                setUserPosition({lat: position.coords.latitude, lng: position.coords.longitude})
+              })
+          } else {
+            console.log('geolocation not possible :(')
+          }
+    }, [])
 
     return (
         <>
@@ -24,14 +56,19 @@ const HomePage = () => {
                 {
                     isLoaded && (
                         <GoogleMap
-                            center={center}
+                            center={userPosition ? userPosition : defaultPosition}
                             zoom={15}
                             mapContainerStyle={{width: '100%', height: '100%'}} options={{
                                 streetViewControl: false,
                                 mapTypeControl: false
                             }}
+                            onLoad={map => setMap(map)}
                         >
-                            <MarkerF position={center} onClick={() => {console.log('Hello from marker')}} />
+                            {
+                                places.map( (place, index) => (
+                                    <MarkerF key={index} position={place} onClick={() => {map.panTo(place)}} />
+                                ) )
+                            }
                         </GoogleMap>
                     )
                 }
