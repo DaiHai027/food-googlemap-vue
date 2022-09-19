@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 // context
 import { useAuthContext } from '../contexts/AuthContext'
-// import logo from '../assets/images/logo.png'
+
 // bootstrap
 import { Container, Row, Col, Form, Button, Card, Alert, Image } from 'react-bootstrap'
 
