@@ -31,8 +31,6 @@ const AuthContextProvider = ({ children }) => {
 		// create the user
 		await createUserWithEmailAndPassword(auth, email, password)
 
-		// auth.currentUser.uid = "3l97yFNSCcY77HmsjFO3aKPmkzC2"
-
 		// set name and photo
 		await setDisplayNameAndPhoto(name, photo)
 
@@ -40,7 +38,7 @@ const AuthContextProvider = ({ children }) => {
 		await reloadUser()
 
 		// create user document
-		const docRef = doc(db, 'users', auth.currentUser.uid)   // "users/3l97yFNSCcY77HmsjFO3aKPmkzC2"
+		const docRef = doc(db, 'users', auth.currentUser.uid)
 		await setDoc(docRef, {
 			name,
 			email,
