@@ -2,7 +2,7 @@ import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
-import { collection, addDoc, serverTimestamp, Timestamp } from 'firebase/firestore'
+import { collection, addDoc } from 'firebase/firestore'
 import { db } from '../firebase'
 import { useAuthContext } from '../contexts/AuthContext'
 
