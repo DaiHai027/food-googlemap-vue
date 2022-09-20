@@ -1,5 +1,6 @@
 import { useJsApiLoader, GoogleMap, MarkerF} from '@react-google-maps/api'
 import { useState, useEffect } from 'react'
+import SearchCityForm from '../components/SearchAddressForm'
 import MapsAPI from '../services/mapsAPI'
 
 const defaultPosition = { lat: 55.6032746, lng: 13.0165715 }
@@ -32,7 +33,18 @@ const HomePage = () => {
     const [map, setMap] = useState(/** @type google.maps.Map */ (null))
     const [userPosition, setUserPosition] = useState(null)
 
+    const handleOnSubmit = async (address) => {
+
+        if(!address) {
+            return
+        }
+
+        map.panTo(await MapsAPI.getLatAndLng(address))
+
+    }
+
     useEffect(() => {
+
         if ('geolocation' in navigator) {
             console.log('geolocation possible')
             navigator.geolocation.getCurrentPosition((position) => {
@@ -47,12 +59,13 @@ const HomePage = () => {
           }
           someFunction()
 
-
     }, [])
 
     return (
         <>
             <h1>This is homepage</h1>
+
+            <SearchCityForm onSubmit={handleOnSubmit} />
 
             <div className='maps-wrapper'>
                 {
@@ -66,9 +79,10 @@ const HomePage = () => {
                         <GoogleMap
                             center={userPosition ? userPosition : defaultPosition}
                             zoom={15}
-                            mapContainerStyle={{width: '100%', height: '100%'}} options={{
+                            mapContainerStyle={{width: '100%', height: '100%'}}
+                            options={{
                                 streetViewControl: false,
-                                mapTypeControl: false
+                                mapTypeControl: false,
                             }}
                             onLoad={map => setMap(map)}
                         >
