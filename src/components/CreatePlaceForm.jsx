@@ -14,16 +14,16 @@ const CreatePlaceForm = () => {
             // making a firestore doc
         await addDoc(collection(db, 'place'), {
             adress: data.adress,
-            cuisine: data.cuisine,
+            //cuisine: data.cuisine,
             description: data.description,
             email: data.email,
             facebook: data.facebook,
             instagram: data.instagram,
             name: data.name,
             phonenumber: data.phonenumber,
-            supply: data.supply,
+            //supply: data.supply,
             town: data.town,
-            type: data.type,
+            //type: data.type,
             website: data.website,
 
         })
@@ -68,7 +68,7 @@ const CreatePlaceForm = () => {
             </Form.Group>
 
                 {/* Form for Cuisine */}
-            <Form.Group>
+            {/* <Form.Group>
             <Form.Label>Cuisine</Form.Label>
                 <Form.Control
                 {...register("cuisine", {
@@ -81,6 +81,7 @@ const CreatePlaceForm = () => {
                 </Form.Group>
 
                 {/* Form for Supply */}
+{/*                 
                 <Form.Group>
             <Form.Label>Supply</Form.Label>
                 <Form.Control
@@ -91,7 +92,7 @@ const CreatePlaceForm = () => {
                 type="text"
                 />
                 {errors.supply && <div className="invalid">{errors.supply.message}</div>}
-            </Form.Group>
+            </Form.Group>  */}
                 
                 {/* Form for Phonenumber */}
             <Form.Group>
@@ -161,7 +162,7 @@ const CreatePlaceForm = () => {
             </Form.Group>
 
             {/* Form for type */}
-            <Form.Group>
+            {/* <Form.Group>
             <Form.Label>Type</Form.Label>
                 <Form.Control
                 {...register("Type", {
@@ -175,7 +176,7 @@ const CreatePlaceForm = () => {
                 type="text"
                 />
                 {errors.type && <div className="invalid">{errors.type.message}</div>}
-            </Form.Group>
+            </Form.Group> */}
 
             {/* Form for Description */}
             <Form.Group>
