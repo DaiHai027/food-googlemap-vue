@@ -1,5 +1,6 @@
 import { useJsApiLoader, GoogleMap, MarkerF} from '@react-google-maps/api'
 import { useState, useEffect } from 'react'
+import MapsAPI from '../services/mapsAPI'
 
 const defaultPosition = { lat: 55.6032746, lng: 13.0165715 }
 
@@ -40,6 +41,13 @@ const HomePage = () => {
           } else {
             console.log('geolocation not possible :(')
           }
+
+          const someFunction = async () => {
+            console.log( await MapsAPI.getLatAndLng('malmö') )
+          }
+          someFunction()
+
+
     }, [])
 
     return (
