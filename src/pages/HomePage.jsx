@@ -83,6 +83,11 @@ const HomePage = () => {
                             options={{
                                 streetViewControl: false,
                                 mapTypeControl: false,
+                                styles: [{
+                                    elementType: "labels",
+                                    featureType: "poi",
+                                    stylers: [{ visibility: "off", }],
+                                }],
                             }}
                             onLoad={map => setMap(map)}
                         >
