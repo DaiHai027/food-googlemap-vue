@@ -25,7 +25,8 @@ const places = [
 const HomePage = () => {
 
     const { isLoaded } = useJsApiLoader({
-        googleMapsApiKey: import.meta.env.VITE_MAPS_API_KEY
+        googleMapsApiKey: import.meta.env.VITE_MAPS_API_KEY,
+        libraries: ['places']
     })
 
     const [map, setMap] = useState(/** @type google.maps.Map */ (null))
