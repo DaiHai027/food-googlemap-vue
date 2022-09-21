@@ -18,7 +18,7 @@ const SearchCityForm = ({onSubmit}) => {
     }
 
     return (
-        <Form onSubmit={handleFormSubmit}>
+        <Form onSubmit={handleFormSubmit} className='searchaddressform'>
             <Form.Group controlId='address'>
                 <Form.Label>Enter address or city to view nearby food places</Form.Label>
                 <Form.Control type='text' ref={addressRef} required />
