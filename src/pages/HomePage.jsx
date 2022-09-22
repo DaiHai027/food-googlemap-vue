@@ -51,8 +51,7 @@ const HomePage = () => {
     const [map, setMap] = useState(/** @type google.maps.Map */ (null))
     // State for users current position
     const [userPosition, setUserPosition] = useState({lat: 55.6032746, lng: 13.0165715})
-    // State for position for info box about food place
-    const [currentInfoBoxPlace, setCurrentInfoBoxPlace] = useState(null)
+    // State for food place currently selected
     const [currentSelectedFoodPlace, setCurrentSelectedFoodPlace] = useState(null)
 
     /**
@@ -90,13 +89,17 @@ const HomePage = () => {
      *
      */
     const handleInfoBoxClose = () => {
-        // Set position for info box to null so that it hides from map
-        setCurrentInfoBoxPlace(null)
+        // Set current selected food place to null so that elements displaying their info hides
         setCurrentSelectedFoodPlace(null)
     }
 
+    /**
+     *
+     * Function to handle what will happen when user clicks on a food place marker or a food place list item
+     *
+     */
     const handleFoodItemClick = (place) => {
-        setCurrentInfoBoxPlace(place)
+        // Update current selected food place so that elements displaying their info shows
         setCurrentSelectedFoodPlace(place)
         map.panTo(place.coords)
     }
@@ -171,9 +174,9 @@ const HomePage = () => {
 
                             {/* Info box component to show when user clicks food place marker on map */}
                             {
-                                currentInfoBoxPlace && (
+                                currentSelectedFoodPlace && (
                                     <InfoBox
-                                        position={currentInfoBoxPlace}
+                                        position={currentSelectedFoodPlace.coords}
                                         options={{
                                             closeBoxURL: '',
                                             enableEventPropagation: true

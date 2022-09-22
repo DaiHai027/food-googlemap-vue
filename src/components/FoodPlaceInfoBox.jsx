@@ -1,5 +1,10 @@
 import MapsAPI from '../services/mapsAPI'
 
+/**
+ *
+ * Component to show pop up window on map displaying info about a food place
+ *
+ */
 const FoodPlaceInfoBox = ({userPosition, foodPlace, onClose}) => {
 
     return (

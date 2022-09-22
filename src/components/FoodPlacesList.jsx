@@ -1,5 +1,10 @@
 import { ListGroup } from "react-bootstrap"
 
+/**
+ *
+ * Component that will list all foodplaces in a listgroup
+ *
+ */
 const FoodPlacesList = ({foodPlaces, onFoodItemClick}) => {
 
     return (
