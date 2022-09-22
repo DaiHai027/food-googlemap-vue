@@ -4,11 +4,9 @@ import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import { collection, addDoc } from 'firebase/firestore'
 import { db } from '../firebase'
-import { useAuthContext } from '../contexts/AuthContext'
 
 const CreatePlaceForm = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm()
-    const { currentUser } = useAuthContext()
 
     const onCreatePlace = async (data) => {
             // making a firestore doc
@@ -29,6 +27,7 @@ const CreatePlaceForm = () => {
         })
 
         toast.success("A new Place was created! Yey!")
+        reset()
     }
     return (
         <Form onSubmit={handleSubmit(onCreatePlace)} noValidate>
@@ -86,7 +85,7 @@ const CreatePlaceForm = () => {
             <Form.Label>Supply</Form.Label>
                 <Form.Select
                 {...register("supply", {
-                    required: "A supply is required",
+                    required: "You must choose a supply is required",
                 })}
                 placeholder="Supply"
                 type="text"
@@ -170,10 +169,6 @@ const CreatePlaceForm = () => {
                 <Form.Select
                 {...register("Type", {
                     required: "A Type is required",
-                    minLength: {
-                        value: 2,
-                        message: "Must atlest be 2 charatcers"
-                    }
                 })}
                 placeholder="Type"
                 type="text"
@@ -203,6 +198,7 @@ const CreatePlaceForm = () => {
                 {errors.description && <div className="invalid">{errors.description.message}</div>}
             </Form.Group>
             
+            <Button variant="success" type="submit">Create</Button>
         </Form>
     )
 }

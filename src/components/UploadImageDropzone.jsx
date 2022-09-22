@@ -9,7 +9,7 @@ const UploadImageDropzone = () => {
 	const uploadImage = useUploadImage()
 
 	const onDrop = useCallback((acceptedFiles) => {
-		console.log("Got me zum files 😋", acceptedFiles)
+		console.log("Got files", acceptedFiles)
 
 		if (!acceptedFiles.length) {
 			return
@@ -50,9 +50,9 @@ const UploadImageDropzone = () => {
 			{
 				isDragActive
 					? isDragAccept
-						? <p>Drop it like its hot 🔥!</p>
-						: <p>We don't want that file 😡!</p>
-					: <p>Give me some files 😋!</p>
+						? <p>Drop your file here!!</p>
+						: <p>I will not accept that!</p>
+					: <p>Files, please!</p>
 			}
 
 			{acceptedFiles.length > 0 && (
