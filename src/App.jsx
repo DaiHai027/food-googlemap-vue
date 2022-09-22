@@ -8,6 +8,7 @@ import LoginPage from './pages/LoginPage'
 import LogoutPage from './pages/LogoutPage'
 import SignupPage from './pages/SignupPage'
 import NotFoundPage from './pages/NotFoundPage'
+import AddPlacePage from './pages/AddPlacePage'
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
               <Route path="/login" element={<LoginPage />} />
               <Route path="/logout" element={<LogoutPage />} />
               <Route path="/signup" element={<SignupPage />} />
+              <Route path="/addPlace" element={<AddPlacePage />} />
 
               {/* Protected routes */}
               
