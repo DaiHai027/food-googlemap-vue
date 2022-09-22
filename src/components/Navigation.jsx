@@ -13,7 +13,7 @@ const Navigation = () => {
         <Container>
             <Navbar.Brand as={Link} to="/">
                 <img 
-                    src="/src/assets/icons/favicon.svg"
+                    src="/src/assets/icons/map.png"
                     width="30"
                     height="30"
                     className="d-inline-block align-top"
@@ -29,11 +29,7 @@ const Navigation = () => {
                         currentUser? (
                             <>
                                 {/* User is logged in */}
-                                <Nav.Link as={NavLink} end to="/addPlaces">Add a new Places</Nav.Link>
-
-                                <Nav.Link as={NavLink} end to="/giveTips">Give Tips</Nav.Link>
-
-                                <Nav.Link as={NavLink} end to="/tips">Tips</Nav.Link>
+                             
 
                                 <NavDropdown title={
                                     userPhotoUrl
@@ -56,6 +52,10 @@ const Navigation = () => {
                         ) : (
                             <>
                                 {/* No user is logged in */}
+                                <Nav.Link as={NavLink} end to="/addPlaces">Add a new Places</Nav.Link>
+                                <Nav.Link as={NavLink} end to="/giveTips">Give Tips</Nav.Link>
+                                <Nav.Link as={NavLink} end to="/tips">Tips</Nav.Link>
+                                
                                 <Nav.Link as={NavLink} to="/login">Login</Nav.Link>
                                 <Nav.Link as={NavLink} to="/signup">Signup</Nav.Link>
                             </>
