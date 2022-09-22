@@ -9,13 +9,17 @@ import LogoutPage from './pages/LogoutPage'
 import SignupPage from './pages/SignupPage'
 import NotFoundPage from './pages/NotFoundPage'
 import AddPlacePage from './pages/AddPlacePage'
+import AddTipPage from './pages/AddTipPage'
+import TipsPage from './pages/TipsPage'
+import Navigation from './components/Navigation'
 
 function App() {
 
   return (
     <div className="App">
+        <Navigation />
 
-      <Routes>
+        <Routes>
               {/* Guest routes */}
               <Route path="*" element={<NotFoundPage />} />
               <Route path="/" element={<HomePage />} />
@@ -24,10 +28,12 @@ function App() {
               <Route path="/logout" element={<LogoutPage />} />
               <Route path="/signup" element={<SignupPage />} />
               <Route path="/addPlace" element={<AddPlacePage />} />
+              <Route path="/giveTips" element={<AddTipPage />} />
+              <Route path="/tips" element={<TipsPage />} />
 
               {/* Protected routes */}
               
-      </Routes>
+        </Routes>
 
     </div>
   )

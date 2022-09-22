@@ -1,4 +1,4 @@
-import  Container  from "react-bootstrap/Container"
+import Container  from "react-bootstrap/Container"
 import Nav from "react-bootstrap/Nav"
 import Navbar from "react-bootstrap/Navbar"
 import { Link, NavLink } from "react-router-dom"
@@ -10,7 +10,7 @@ const Navigation = () => {
     
   return (
     <Navbar bg="dark" variant="dark" expand="md">
-        <Conatiner>
+        <Container>
             <Navbar.Brand as={Link} to="/">
                 <img 
                     src="/src/assets/icons/favicon.svg"
@@ -30,6 +30,10 @@ const Navigation = () => {
                             <>
                                 {/* User is logged in */}
                                 <Nav.Link as={NavLink} end to="/addPlaces">Add a new Places</Nav.Link>
+
+                                <Nav.Link as={NavLink} end to="/giveTips">Give Tips</Nav.Link>
+
+                                <Nav.Link as={NavLink} end to="/tips">Tips</Nav.Link>
 
                                 <NavDropdown title={
                                     userPhotoUrl
@@ -59,7 +63,7 @@ const Navigation = () => {
                     }
                 </Nav>
             </Navbar.Collapse>
-        </Conatiner>
+        </Container>
     </Navbar>
   )
 }
