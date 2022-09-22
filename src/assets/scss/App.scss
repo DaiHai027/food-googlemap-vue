@@ -2,4 +2,19 @@
 
 .maps-wrapper {
     height: 800px;
+    position: relative;
+}
+
+.searchaddressform {
+
+    position: absolute;
+    width: 400px;
+    top: 100px;
+    left: 150px;
+    z-index: 99;
+    background-color: aliceblue;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 3px;
+
 }
