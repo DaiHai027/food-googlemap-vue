@@ -26,6 +26,7 @@ const AuthContextProvider = ({ children }) => {
 	const [userEmail, setUserEmail] = useState(null)
 	const [userPhotoUrl, setUserPhotoUrl] = useState(null)
 	const [loading, setLoading] = useState(true)
+	const [isAdmin, setIsAdmin] = useState(null)
 	
 	const signup = async (email, password, name, photo, admin) => {
 		// create the user
@@ -46,6 +47,8 @@ const AuthContextProvider = ({ children }) => {
 			admin: false,
 		})
 	}
+	
+	
 
 	const login = (email, password) => {
 		return signInWithEmailAndPassword(auth, email, password)
@@ -106,6 +109,8 @@ const AuthContextProvider = ({ children }) => {
 			setUserEmail(user?.email)
 			setUserPhotoUrl(user?.photoURL)
 			setLoading(false)
+			setIsAdmin(user?.admin)
+			console.log('admin', user.admin)
 		})
 
 		return unsubscribe
@@ -125,6 +130,7 @@ const AuthContextProvider = ({ children }) => {
 		userName,
 		userEmail,
 		userPhotoUrl,
+		isAdmin,
 	}
 
 	return (
