@@ -4,28 +4,34 @@ import SearchAddressForm from '../components/SearchAddressForm'
 import MapsAPI from '../services/mapsAPI'
 import userMarkerImg from '../assets/images/usermarker.png'
 import FoodPlaceInfoBox from '../components/FoodPlaceInfoBox'
+import FoodPlacesList from '../components/FoodPlacesList'
 
 // Array of library for maps api to include
 const libraries = ['places']
 
-// Hardcooded coordinates for food places, to be replaced by actual places from firebase
-const places = [
+const foodPlaces = [
     {
-        lat: 55.58,
-        lng: 13.01
+        name: 'My food place',
+        address: 'Östra promenaden 15',
+        town: 'Malmö',
+        description: 'This is great place to eat!',
+        phone: 123456789,
+        coords: {
+            lat: 55.606689,
+            lng: 13.0131379
+        }
     },
     {
-        lat: 55.59,
-        lng: 13
-    },
-    {
-        lat: 55.57,
-        lng: 13.02
-    },
-    {
-        lat: 55.6,
-        lng: 13.03
-    },
+        name: 'Super nice café',
+        address: 'Drottninggatan 20',
+        town: 'Malmö',
+        description: 'A lot of cookies and coffee',
+        phone: 123456789,
+        coords: {
+            lat: 55.6025315,
+            lng: 13.0072006
+        }
+    }
 ]
 
 /**
@@ -47,6 +53,7 @@ const HomePage = () => {
     const [userPosition, setUserPosition] = useState({lat: 55.6032746, lng: 13.0165715})
     // State for position for info box about food place
     const [currentInfoBoxPlace, setCurrentInfoBoxPlace] = useState(null)
+    const [currentSelectedFoodPlace, setCurrentSelectedFoodPlace] = useState(null)
 
     /**
      *
@@ -79,24 +86,19 @@ const HomePage = () => {
 
     /**
      *
-     * Function to handle what will happen when user clicks a food place marker on map
-     *
-     */
-    const handlePlaceMarkerClick = (place) => {
-        // Center map on food place position
-        map.panTo(place)
-        // Set position for info box so that it can be displayed
-        setCurrentInfoBoxPlace(place)
-    }
-
-    /**
-     *
      * Function to handle what will happen when user clicks close button on info box
      *
      */
     const handleInfoBoxClose = () => {
         // Set position for info box to null so that it hides from map
         setCurrentInfoBoxPlace(null)
+        setCurrentSelectedFoodPlace(null)
+    }
+
+    const handleFoodItemClick = (place) => {
+        setCurrentInfoBoxPlace(place)
+        setCurrentSelectedFoodPlace(place)
+        map.panTo(place.coords)
     }
 
     useEffect(() => {
@@ -128,6 +130,8 @@ const HomePage = () => {
                         {/* Form for centering map at different address */}
                         <SearchAddressForm onSubmit={handleOnSubmit} />
 
+                        <FoodPlacesList foodPlaces={foodPlaces} onFoodItemClick={handleFoodItemClick} />
+
                         {/* The map itself */}
                         <GoogleMap
                             center={userPosition}
@@ -154,12 +158,12 @@ const HomePage = () => {
 
                             {/* Marker for each food place */}
                             {
-                                places.map( (place, index) => (
+                                foodPlaces.map( (place, index) => (
                                     <MarkerF
                                         key={index}
-                                        position={place}
+                                        position={place.coords}
                                         onClick={() => {
-                                            handlePlaceMarkerClick(place)
+                                            handleFoodItemClick(place)
                                         }}
                                     />
                                 ) )
@@ -177,7 +181,7 @@ const HomePage = () => {
                                     >
                                         <FoodPlaceInfoBox
                                             userPosition={userPosition}
-                                            foodPlace={currentInfoBoxPlace}
+                                            foodPlace={currentSelectedFoodPlace}
                                             onClose={handleInfoBoxClose}
                                         />
                                     </InfoBox>

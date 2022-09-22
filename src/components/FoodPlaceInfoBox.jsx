@@ -4,8 +4,10 @@ const FoodPlaceInfoBox = ({userPosition, foodPlace, onClose}) => {
 
     return (
         <div className='place-info-box'>
-            <p>Hello world</p>
-            <a href={MapsAPI.getDirectionsLink(userPosition, foodPlace)} target='_blank'>Directions</a>
+            <p>Info about {foodPlace.name}</p>
+            <p>{foodPlace.address + ' ' + foodPlace.town}</p>
+            <p>{foodPlace.description}</p>
+            <a href={MapsAPI.getDirectionsLink(userPosition, foodPlace.coords)} target='_blank'>Directions</a>
             <button onClick={onClose}>X</button>
         </div>
     )
