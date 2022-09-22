@@ -65,9 +65,6 @@ const HomePage = () => {
         // Center map on the new coordinates
         map.panTo(newCoords)
 
-        // Set current user position to new coords
-        setUserPosition(newCoords)
-
     }
 
     /**
