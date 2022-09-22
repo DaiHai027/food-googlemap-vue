@@ -117,7 +117,10 @@ const HomePage = () => {
                             {/* Marker for each food place */}
                             {
                                 places.map( (place, index) => (
-                                    <MarkerF key={index} position={place} onClick={() => {map.panTo(place)}} />
+                                    <MarkerF key={index} position={place} onClick={() => {
+                                        map.panTo(place)
+                                        console.log(MapsAPI.getDirectionsLink(userPosition, place))
+                                    }} />
                                 ) )
                             }
                         </GoogleMap>
