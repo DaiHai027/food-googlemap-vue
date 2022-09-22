@@ -1,4 +1,4 @@
-import { useJsApiLoader, GoogleMap, MarkerF} from '@react-google-maps/api'
+import { useJsApiLoader, GoogleMap, MarkerF, InfoBox} from '@react-google-maps/api'
 import { useState, useEffect } from 'react'
 import SearchAddressForm from '../components/SearchAddressForm'
 import MapsAPI from '../services/mapsAPI'
@@ -44,6 +44,8 @@ const HomePage = () => {
     const [map, setMap] = useState(/** @type google.maps.Map */ (null))
     // State for users current position
     const [userPosition, setUserPosition] = useState({lat: 55.6032746, lng: 13.0165715})
+
+    const [currentInfoBoxPlace, setCurrentInfoBoxPlace] = useState(null)
 
     /**
      *
@@ -119,9 +121,24 @@ const HomePage = () => {
                                 places.map( (place, index) => (
                                     <MarkerF key={index} position={place} onClick={() => {
                                         map.panTo(place)
-                                        console.log(MapsAPI.getDirectionsLink(userPosition, place))
+                                        setCurrentInfoBoxPlace(place)
                                     }} />
                                 ) )
+                            }
+                            {
+                                currentInfoBoxPlace && (
+                                    <InfoBox position={currentInfoBoxPlace}
+                                    options={{closeBoxURL: '', enableEventPropagation: true}}
+                                    >
+                                        <div className='place-info-box'>
+                                            <p>Hello world</p>
+                                            <a href={MapsAPI.getDirectionsLink(userPosition, currentInfoBoxPlace)} target='_blank'>Directions</a>
+                                            <button onClick={()=>{
+                                                setCurrentInfoBoxPlace(null)
+                                            }}>X</button>
+                                        </div>
+                                    </InfoBox>
+                                )
                             }
                         </GoogleMap>
                         </>
