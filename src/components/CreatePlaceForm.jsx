@@ -6,7 +6,7 @@ import { collection, addDoc } from 'firebase/firestore'
 import { db } from '../firebase'
 
 const CreatePlaceForm = () => {
-    const { register, handleSubmit, formState: { errors }, reset } = useForm()
+    const { register, handleSubmit, errors, reset } = useForm()
 
     const onCreatePlace = async (data) => {
             // making a firestore doc

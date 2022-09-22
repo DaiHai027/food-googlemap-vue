@@ -6,7 +6,7 @@ import { collection, addDoc } from 'firebase/firestore'
 import { db } from '../firebase'
 
 const CreateTipForm = () => {
-    const { register, handleSubmit, formState: { errors }, reset } = useForm()
+    const { register, handleSubmit, errors, reset } = useForm()
 
     const onCreateTip = async (data) => {
             // making a firestore doc
@@ -26,7 +26,7 @@ const CreateTipForm = () => {
 
         })
 
-        toast.success("A new Tip was created! Waiting for admin to approve")
+        toast.success("A new Tip was created! Waiting for admin to approve!")
         reset()
     }
     return (
