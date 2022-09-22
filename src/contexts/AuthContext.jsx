@@ -26,8 +26,8 @@ const AuthContextProvider = ({ children }) => {
 	const [userEmail, setUserEmail] = useState(null)
 	const [userPhotoUrl, setUserPhotoUrl] = useState(null)
 	const [loading, setLoading] = useState(true)
-
-	const signup = async (email, password, name, photo) => {
+	
+	const signup = async (email, password, name, photo, admin) => {
 		// create the user
 		await createUserWithEmailAndPassword(auth, email, password)
 
@@ -43,6 +43,7 @@ const AuthContextProvider = ({ children }) => {
 			name,
 			email,
 			photoURL: auth.currentUser.photoURL,
+			admin: false,
 		})
 	}
 

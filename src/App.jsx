@@ -9,6 +9,7 @@ import LogoutPage from './pages/LogoutPage'
 import SignupPage from './pages/SignupPage'
 import NotFoundPage from './pages/NotFoundPage'
 import ForgotPasswordPage from './pages/ForgotPasswordPage'
+import UpdateProfilePage from './pages/UpdateProfilePage'
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
               <Route path="/forgotPassword" element={<ForgotPasswordPage />} />
 
               {/* Protected routes */}
+              <Route path="/update-profile" element={<UpdateProfilePage />} />
               
       </Routes>
 
