@@ -8,7 +8,7 @@ import { db } from '../firebase'
 const CreateTipForm = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm()
 
-    const onCreatePlace = async (data) => {
+    const onCreateTip = async (data) => {
             // making a firestore doc
         await addDoc(collection(db, 'tip'), {
             adress: data.adress,
@@ -26,11 +26,11 @@ const CreateTipForm = () => {
 
         })
 
-        toast.success("A new Place was created! Yey!")
+        toast.success("A new Tip was created! Waiting for admin to approve")
         reset()
     }
     return (
-        <Form onSubmit={handleSubmit(onCreatePlace)} noValidate>
+        <Form onSubmit={handleSubmit(onCreateTip)} noValidate>
 
             {/* Form for name */}
             <Form.Group>
