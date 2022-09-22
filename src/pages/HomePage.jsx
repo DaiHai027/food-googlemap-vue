@@ -44,7 +44,7 @@ const HomePage = () => {
     const [map, setMap] = useState(/** @type google.maps.Map */ (null))
     // State for users current position
     const [userPosition, setUserPosition] = useState({lat: 55.6032746, lng: 13.0165715})
-
+    // State for position for info box about food place
     const [currentInfoBoxPlace, setCurrentInfoBoxPlace] = useState(null)
 
     /**
@@ -67,6 +67,38 @@ const HomePage = () => {
         // Set current user position to new coords
         setUserPosition(newCoords)
 
+    }
+
+    /**
+     *
+     * Function to handle what will happen when user clicks user icon on map
+     *
+     */
+    const handleUserMarkerClick = () => {
+        // Center map on users current location
+        map.panTo(userPosition)
+    }
+
+    /**
+     *
+     * Function to handle what will happen when user clicks a food place marker on map
+     *
+     */
+    const handlePlaceMarkerClick = (place) => {
+        // Center map on food place position
+        map.panTo(place)
+        // Set position for info box so that it can be displayed
+        setCurrentInfoBoxPlace(place)
+    }
+
+    /**
+     *
+     * Function to handle what will happen when user clicks close button on info box
+     *
+     */
+    const handleInfoBoxClose = () => {
+        // Set position for info box to null so that it hides from map
+        setCurrentInfoBoxPlace(null)
     }
 
     useEffect(() => {
@@ -114,28 +146,41 @@ const HomePage = () => {
                             }}
                             onLoad={map => setMap(map)}
                         >
+
                             {/* Marker for current user position */}
-                            <MarkerF position={userPosition} icon={userMarkerImg} onClick={() => {map.panTo(userPosition)}} />
+                            <MarkerF
+                                position={userPosition}
+                                icon={userMarkerImg}
+                                onClick={handleUserMarkerClick}
+                            />
+
                             {/* Marker for each food place */}
                             {
                                 places.map( (place, index) => (
-                                    <MarkerF key={index} position={place} onClick={() => {
-                                        map.panTo(place)
-                                        setCurrentInfoBoxPlace(place)
-                                    }} />
+                                    <MarkerF
+                                        key={index}
+                                        position={place}
+                                        onClick={() => {
+                                            handlePlaceMarkerClick(place)
+                                        }}
+                                    />
                                 ) )
                             }
+
+                            {/* Info box component to show when user clicks food place marker on map */}
                             {
                                 currentInfoBoxPlace && (
-                                    <InfoBox position={currentInfoBoxPlace}
-                                    options={{closeBoxURL: '', enableEventPropagation: true}}
+                                    <InfoBox
+                                        position={currentInfoBoxPlace}
+                                        options={{
+                                            closeBoxURL: '',
+                                            enableEventPropagation: true
+                                        }}
                                     >
                                         <div className='place-info-box'>
                                             <p>Hello world</p>
                                             <a href={MapsAPI.getDirectionsLink(userPosition, currentInfoBoxPlace)} target='_blank'>Directions</a>
-                                            <button onClick={()=>{
-                                                setCurrentInfoBoxPlace(null)
-                                            }}>X</button>
+                                            <button onClick={handleInfoBoxClose}>X</button>
                                         </div>
                                     </InfoBox>
                                 )
