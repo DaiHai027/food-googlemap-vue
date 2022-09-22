@@ -29,7 +29,7 @@ const Navigation = () => {
                         currentUser? (
                             <>
                                 {/* User is logged in */}
-                                <Nav.Link as={NavLink} end to="/places">Places</Nav.Link>
+                                <Nav.Link as={NavLink} end to="/addPlaces">Add a new Places</Nav.Link>
 
                                 <NavDropdown title={
                                     userPhotoUrl
