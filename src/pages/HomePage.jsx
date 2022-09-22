@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import SearchAddressForm from '../components/SearchAddressForm'
 import MapsAPI from '../services/mapsAPI'
 import userMarkerImg from '../assets/images/usermarker.png'
+import FoodPlaceInfoBox from '../components/FoodPlaceInfoBox'
 
 // Array of library for maps api to include
 const libraries = ['places']
@@ -177,11 +178,11 @@ const HomePage = () => {
                                             enableEventPropagation: true
                                         }}
                                     >
-                                        <div className='place-info-box'>
-                                            <p>Hello world</p>
-                                            <a href={MapsAPI.getDirectionsLink(userPosition, currentInfoBoxPlace)} target='_blank'>Directions</a>
-                                            <button onClick={handleInfoBoxClose}>X</button>
-                                        </div>
+                                        <FoodPlaceInfoBox
+                                            userPosition={userPosition}
+                                            foodPlace={currentInfoBoxPlace}
+                                            onClose={handleInfoBoxClose}
+                                        />
                                     </InfoBox>
                                 )
                             }
