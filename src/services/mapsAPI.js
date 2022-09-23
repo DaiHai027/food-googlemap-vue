@@ -23,9 +23,25 @@ const getLatAndLng = async (address) => {
 
 }
 
+/**
+ *
+ * Function to get directions guide from google between two places
+ *
+ * @param {Coords Object} origin
+ * @param {Coords Object} destination
+ * @returns href - link as a string
+ */
+
+const getDirectionsLink = (origin, destination) => {
+
+    return `https://www.google.com/maps/dir/?api=1&origin=${origin.lat},${origin.lng}&destination=${destination.lat},${destination.lng}`
+
+}
+
 // Functions to export so they can be used by other components
 const exports = {
-    getLatAndLng
+    getLatAndLng,
+    getDirectionsLink,
 }
 
 export default exports

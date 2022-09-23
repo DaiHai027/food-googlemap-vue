@@ -1,8 +1,9 @@
-import { useJsApiLoader, GoogleMap, MarkerF} from '@react-google-maps/api'
+import { useJsApiLoader, GoogleMap, MarkerF, InfoBox} from '@react-google-maps/api'
 import { useState, useEffect } from 'react'
 import SearchAddressForm from '../components/SearchAddressForm'
 import MapsAPI from '../services/mapsAPI'
 import userMarkerImg from '../assets/images/usermarker.png'
+import FoodPlaceInfoBox from '../components/FoodPlaceInfoBox'
 
 // Array of library for maps api to include
 const libraries = ['places']
@@ -44,6 +45,8 @@ const HomePage = () => {
     const [map, setMap] = useState(/** @type google.maps.Map */ (null))
     // State for users current position
     const [userPosition, setUserPosition] = useState({lat: 55.6032746, lng: 13.0165715})
+    // State for position for info box about food place
+    const [currentInfoBoxPlace, setCurrentInfoBoxPlace] = useState(null)
 
     /**
      *
@@ -62,9 +65,38 @@ const HomePage = () => {
         // Center map on the new coordinates
         map.panTo(newCoords)
 
-        // Set current user position to new coords
-        setUserPosition(newCoords)
+    }
 
+    /**
+     *
+     * Function to handle what will happen when user clicks user icon on map
+     *
+     */
+    const handleUserMarkerClick = () => {
+        // Center map on users current location
+        map.panTo(userPosition)
+    }
+
+    /**
+     *
+     * Function to handle what will happen when user clicks a food place marker on map
+     *
+     */
+    const handlePlaceMarkerClick = (place) => {
+        // Center map on food place position
+        map.panTo(place)
+        // Set position for info box so that it can be displayed
+        setCurrentInfoBoxPlace(place)
+    }
+
+    /**
+     *
+     * Function to handle what will happen when user clicks close button on info box
+     *
+     */
+    const handleInfoBoxClose = () => {
+        // Set position for info box to null so that it hides from map
+        setCurrentInfoBoxPlace(null)
     }
 
     useEffect(() => {
@@ -112,13 +144,44 @@ const HomePage = () => {
                             }}
                             onLoad={map => setMap(map)}
                         >
+
                             {/* Marker for current user position */}
-                            <MarkerF position={userPosition} icon={userMarkerImg} onClick={() => {map.panTo(userPosition)}} />
+                            <MarkerF
+                                position={userPosition}
+                                icon={userMarkerImg}
+                                onClick={handleUserMarkerClick}
+                            />
+
                             {/* Marker for each food place */}
                             {
                                 places.map( (place, index) => (
-                                    <MarkerF key={index} position={place} onClick={() => {map.panTo(place)}} />
+                                    <MarkerF
+                                        key={index}
+                                        position={place}
+                                        onClick={() => {
+                                            handlePlaceMarkerClick(place)
+                                        }}
+                                    />
                                 ) )
+                            }
+
+                            {/* Info box component to show when user clicks food place marker on map */}
+                            {
+                                currentInfoBoxPlace && (
+                                    <InfoBox
+                                        position={currentInfoBoxPlace}
+                                        options={{
+                                            closeBoxURL: '',
+                                            enableEventPropagation: true
+                                        }}
+                                    >
+                                        <FoodPlaceInfoBox
+                                            userPosition={userPosition}
+                                            foodPlace={currentInfoBoxPlace}
+                                            onClose={handleInfoBoxClose}
+                                        />
+                                    </InfoBox>
+                                )
                             }
                         </GoogleMap>
                         </>
