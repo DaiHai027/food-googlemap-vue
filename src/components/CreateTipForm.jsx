@@ -6,7 +6,7 @@ import { collection, addDoc } from 'firebase/firestore'
 import { db } from '../firebase'
 
 const CreateTipForm = () => {
-    const { register, handleSubmit, errors, reset } = useForm()
+    const { register, handleSubmit, formState: { errors }, reset } = useForm()
 
     const onCreateTip = async (data) => {
             // making a firestore doc
@@ -66,6 +66,23 @@ const CreateTipForm = () => {
                 {errors.adress && <div className="invalid">{errors.adress.message}</div>}
             </Form.Group>
 
+                 {/* Form for Town */}
+                 <Form.Group>
+            <Form.Label>Town</Form.Label>
+                <Form.Control
+                {...register("town", {
+                    required: "A town is required",
+                    minLength: {
+                        value: 2,
+                        message: "Must atlest be 2 charatcers"
+                    }
+                })}
+                placeholder="Town"
+                type="text"
+                />
+                {errors.town && <div className="invalid">{errors.town.message}</div>}
+            </Form.Group>
+
                 {/* Form for Cuisine */}
              <Form.Group>
             <Form.Label>Cuisine</Form.Label>
@@ -83,16 +100,13 @@ const CreateTipForm = () => {
                 
                 <Form.Group>
             <Form.Label>Supply</Form.Label>
-                <Form.Select
+                <Form.Control
                 {...register("supply", {
                     required: "You must choose a supply is required",
                 })}
                 placeholder="Supply"
                 type="text"
                 />
-                <option value="lunch">Lunch</option>
-                <option value="afterWork">After Work</option>
-                <option value="aLaCarte">À la carte</option>
                 {errors.supply && <div className="invalid">{errors.supply.message}</div>}
             </Form.Group>  
                 
@@ -102,7 +116,7 @@ const CreateTipForm = () => {
                 <Form.Control
                 {...register("phonenumber",)}
                 placeholder="Phonenumber"
-                type="number"
+                type="text"
                 />
             </Form.Group>
 
@@ -126,22 +140,7 @@ const CreateTipForm = () => {
                 />
             </Form.Group>
 
-            {/* Form for Town */}
-            <Form.Group>
-            <Form.Label>Town</Form.Label>
-                <Form.Control
-                {...register("town", {
-                    required: "A town is required",
-                    minLength: {
-                        value: 2,
-                        message: "Must atlest be 2 charatcers"
-                    }
-                })}
-                placeholder="Town"
-                type="text"
-                />
-                {errors.town && <div className="invalid">{errors.town.message}</div>}
-            </Form.Group>
+       
 
             {/* Form for E-mail */}
             <Form.Group>
@@ -166,18 +165,13 @@ const CreateTipForm = () => {
             {/* Form for type */}
              <Form.Group>
             <Form.Label>Type</Form.Label>
-                <Form.Select
+                <Form.Control
                 {...register("Type", {
                     required: "A Type is required",
                 })}
                 placeholder="Type"
                 type="text"
                 />
-                <option value="cafe">Café</option>
-                <option value="restaurang">Restaurang</option>
-                <option value="fastFood">Fast Food</option>
-                <option value="kiosk">Kiosk</option>
-                <option value="foodtruck">Foodtruck</option>
                 {errors.type && <div className="invalid">{errors.type.message}</div>}
             </Form.Group> 
 
@@ -194,6 +188,8 @@ const CreateTipForm = () => {
                 })}
                 placeholder="Description"
                 type="text"
+                as="textarea"
+                rows={3}
                 />
                 {errors.description && <div className="invalid">{errors.description.message}</div>}
             </Form.Group>

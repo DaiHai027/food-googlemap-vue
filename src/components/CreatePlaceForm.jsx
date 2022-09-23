@@ -6,7 +6,7 @@ import { collection, addDoc } from 'firebase/firestore'
 import { db } from '../firebase'
 
 const CreatePlaceForm = () => {
-    const { register, handleSubmit, errors, reset } = useForm()
+    const { register, handleSubmit, formState: { errors }, reset } = useForm()
 
     const onCreatePlace = async (data) => {
             // making a firestore doc
@@ -46,7 +46,6 @@ const CreatePlaceForm = () => {
                 placeholder="Name"
                 type="text"
                 />
-                {errors.title && <div className="invalid">{errors.title.message}</div>}
             </Form.Group>
 
                 {/* Form for adress */}
@@ -63,7 +62,24 @@ const CreatePlaceForm = () => {
                 placeholder="Adress"
                 type="text"
                 />
-                {errors.adress && <div className="invalid">{errors.adress.message}</div>}
+              
+            </Form.Group>
+
+               {/* Form for Town */}
+               <Form.Group>
+            <Form.Label>Town</Form.Label>
+                <Form.Control
+                {...register("town", {
+                    required: "A town is required",
+                    minLength: {
+                        value: 2,
+                        message: "Must atlest be 2 charatcers"
+                    }
+                })}
+                placeholder="Town"
+                type="text"
+                />
+             
             </Form.Group>
 
                 {/* Form for Cuisine */}
@@ -76,24 +92,20 @@ const CreatePlaceForm = () => {
                 placeholder="Cusine"
                 type="text"
                 />
-                {errors.cuisine && <div className="invalid">{errors.cuisine.message}</div>}
+             
                 </Form.Group>
 
                 {/* Form for Supply */}
                 
                 <Form.Group>
             <Form.Label>Supply</Form.Label>
-                <Form.Select
+                <Form.Control
                 {...register("supply", {
-                    required: "You must choose a supply is required",
+                    required: "You must choose a supply",
                 })}
                 placeholder="Supply"
                 type="text"
                 />
-                <option value="lunch">Lunch</option>
-                <option value="afterWork">After Work</option>
-                <option value="aLaCarte">À la carte</option>
-                {errors.supply && <div className="invalid">{errors.supply.message}</div>}
             </Form.Group>  
                 
                 {/* Form for Phonenumber */}
@@ -102,7 +114,7 @@ const CreatePlaceForm = () => {
                 <Form.Control
                 {...register("phonenumber",)}
                 placeholder="Phonenumber"
-                type="number"
+                type="text"
                 />
             </Form.Group>
 
@@ -126,22 +138,6 @@ const CreatePlaceForm = () => {
                 />
             </Form.Group>
 
-            {/* Form for Town */}
-            <Form.Group>
-            <Form.Label>Town</Form.Label>
-                <Form.Control
-                {...register("town", {
-                    required: "A town is required",
-                    minLength: {
-                        value: 2,
-                        message: "Must atlest be 2 charatcers"
-                    }
-                })}
-                placeholder="Town"
-                type="text"
-                />
-                {errors.town && <div className="invalid">{errors.town.message}</div>}
-            </Form.Group>
 
             {/* Form for E-mail */}
             <Form.Group>
@@ -166,19 +162,14 @@ const CreatePlaceForm = () => {
             {/* Form for type */}
              <Form.Group>
             <Form.Label>Type</Form.Label>
-                <Form.Select
+                <Form.Control
                 {...register("Type", {
                     required: "A Type is required",
                 })}
                 placeholder="Type"
                 type="text"
                 />
-                <option value="cafe">Café</option>
-                <option value="restaurang">Restaurang</option>
-                <option value="fastFood">Fast Food</option>
-                <option value="kiosk">Kiosk</option>
-                <option value="foodtruck">Foodtruck</option>
-                {errors.type && <div className="invalid">{errors.type.message}</div>}
+              
             </Form.Group> 
 
             {/* Form for Description */}
@@ -194,8 +185,9 @@ const CreatePlaceForm = () => {
                 })}
                 placeholder="Description"
                 type="text"
+                as="textarea"
+                rows={3}
                 />
-                {errors.description && <div className="invalid">{errors.description.message}</div>}
             </Form.Group>
             
             <Button variant="success" type="submit">Create</Button>
