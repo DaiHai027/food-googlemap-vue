@@ -2,7 +2,6 @@ import { useState } from 'react'
 import  Offcanvas  from 'react-bootstrap/Offcanvas'
 import Button from 'react-bootstrap/Button'
 import  ListGroup  from 'react-bootstrap/ListGroup'
-//import PlaceList from './PlaceList'
 import { collection, orderBy, query, where } from 'firebase/firestore' 
 import { useFirestoreQueryData } from '@react-query-firebase/firestore'
 import { db } from '../firebase'
@@ -18,7 +17,7 @@ const MapOffcanvas = ({foodPlaces, onFoodItemClick, isLoadingPlaces}) => {
          collection(db, 'places'),
         // where('town', '=='  userPosition
          // ),
-         orderBy('title')
+         orderBy('name')
          )
      
   return (
