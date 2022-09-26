@@ -12,7 +12,10 @@ const useStreamDocument = (col, id) => {
         const ref = doc(db, col, id)
 
         const unsubscribe = onSnapshot(ref, (snapshot) => {
-            setData(snapshot.data())
+            setData({
+                id:snapshot.id,
+                ...snapshot.data(),
+            })
             setLoading(false)
         })
 
