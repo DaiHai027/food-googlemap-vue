@@ -4,6 +4,7 @@ import { useAuthContext } from '../contexts/AuthContext'
 // bootstrap
 import { Container, Row, Col, Form, Button, Card, Alert, Image } from 'react-bootstrap'
 
+
 const UpdateProfilePage = () => {
 	const displayNameRef = useRef()
 	const emailRef = useRef()
@@ -14,17 +15,19 @@ const UpdateProfilePage = () => {
 	const [loading, setLoading] = useState(false)
 	const [photo, setPhoto] = useState(null)
 	const [message, setMessage] = useState(null)
+	//const [isAdmin, setIsAdmin] = useState(null)
 	const {
 		currentUser,
 		reloadUser,
 		setDisplayNameAndPhoto,
 		setEmail,
 		setPassword,
-		isAdmin
 	} = useAuthContext()
+	
 
-	console.log('test', isAdmin)
+
 	console.log('current user', currentUser)
+	
 	const handleFileChange = (e) => {
 		if (!e.target.files.length) {
 			setPhoto(null)
@@ -83,7 +86,7 @@ const UpdateProfilePage = () => {
 
 	return (
 		<Container className="py-3 center-y">
-			{!isAdmin && <h1>Admin</h1>}
+			{}
 			<Row>
 				<Col md={{ span: 6, offset: 3 }}>
 					<Card>
