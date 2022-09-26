@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import { collection, addDoc } from 'firebase/firestore'
 import { db } from '../firebase'
+import mapsAPI from '../services/mapsAPI'
 
 const CreatePlaceForm = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm()
@@ -23,11 +24,11 @@ const CreatePlaceForm = () => {
             town: data.town,
             type: data.type,
             website: data.website,
-
+            coords: await mapsAPI.getLatAndLng(data.adress + data.town)
         })
 
         toast.success("A new Place was created! Yey!")
-        reset()
+        //reset()
     }
     return (
         <Form onSubmit={handleSubmit(onCreatePlace)} noValidate>
@@ -62,7 +63,7 @@ const CreatePlaceForm = () => {
                 placeholder="Adress"
                 type="text"
                 />
-              
+
             </Form.Group>
 
                {/* Form for Town */}
@@ -79,7 +80,7 @@ const CreatePlaceForm = () => {
                 placeholder="Town"
                 type="text"
                 />
-             
+
             </Form.Group>
 
                 {/* Form for Cuisine */}
@@ -92,11 +93,11 @@ const CreatePlaceForm = () => {
                 placeholder="Cusine"
                 type="text"
                 />
-             
+
                 </Form.Group>
 
                 {/* Form for Supply */}
-                
+
                 <Form.Group>
             <Form.Label>Supply</Form.Label>
                 <Form.Control
@@ -106,8 +107,8 @@ const CreatePlaceForm = () => {
                 placeholder="Supply"
                 type="text"
                 />
-            </Form.Group>  
-                
+            </Form.Group>
+
                 {/* Form for Phonenumber */}
             <Form.Group>
             <Form.Label>Phonenumber</Form.Label>
@@ -163,14 +164,14 @@ const CreatePlaceForm = () => {
              <Form.Group>
             <Form.Label>Type</Form.Label>
                 <Form.Control
-                {...register("Type", {
+                {...register("type", {
                     required: "A Type is required",
                 })}
                 placeholder="Type"
                 type="text"
                 />
-              
-            </Form.Group> 
+
+            </Form.Group>
 
             {/* Form for Description */}
             <Form.Group>
@@ -189,7 +190,7 @@ const CreatePlaceForm = () => {
                 rows={3}
                 />
             </Form.Group>
-            
+
             <Button variant="success" type="submit">Create</Button>
         </Form>
     )
