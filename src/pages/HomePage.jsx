@@ -5,34 +5,10 @@ import MapsAPI from '../services/mapsAPI'
 import userMarkerImg from '../assets/images/usermarker.png'
 import FoodPlaceInfoBox from '../components/FoodPlaceInfoBox'
 import FoodPlacesList from '../components/FoodPlacesList'
+import useGetPlaces from '../hooks/useGetPlaces'
 
 // Array of library for maps api to include
 const libraries = ['places']
-
-const foodPlaces = [
-    {
-        name: 'My food place',
-        address: 'Östra promenaden 15',
-        town: 'Malmö',
-        description: 'This is great place to eat!',
-        phone: 123456789,
-        coords: {
-            lat: 55.606689,
-            lng: 13.0131379
-        }
-    },
-    {
-        name: 'Super nice café',
-        address: 'Drottninggatan 20',
-        town: 'Malmö',
-        description: 'A lot of cookies and coffee',
-        phone: 123456789,
-        coords: {
-            lat: 55.6025315,
-            lng: 13.0072006
-        }
-    }
-]
 
 /**
  *
@@ -53,6 +29,8 @@ const HomePage = () => {
     const [userPosition, setUserPosition] = useState({lat: 55.6032746, lng: 13.0165715})
     // State for food place currently selected
     const [currentSelectedFoodPlace, setCurrentSelectedFoodPlace] = useState(null)
+
+    const { data: foodPlaces, loading: isLoadingPlaces } = useGetPlaces()
 
     /**
      *
@@ -133,7 +111,7 @@ const HomePage = () => {
                         {/* Form for centering map at different address */}
                         <SearchAddressForm onSubmit={handleOnSubmit} />
 
-                        <FoodPlacesList foodPlaces={foodPlaces} onFoodItemClick={handleFoodItemClick} />
+                        <FoodPlacesList foodPlaces={foodPlaces} onFoodItemClick={handleFoodItemClick} isLoadingPlaces={isLoadingPlaces} />
 
                         {/* The map itself */}
                         <GoogleMap
