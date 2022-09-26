@@ -13,7 +13,7 @@ const NotFoundPage = () => {
                 backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat',
                 height: '100vh',
-                textAlign: 'center',
+                position: 'relative',
             }}>
             <h1 
                 className='m-5'

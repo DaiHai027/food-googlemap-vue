@@ -5,12 +5,12 @@ import { toast } from 'react-toastify'
 import { collection, addDoc } from 'firebase/firestore'
 import { db } from '../firebase'
 
-const CreatePlaceForm = () => {
+const CreateTipForm = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm()
 
-    const onCreatePlace = async (data) => {
+    const onCreateTip = async (data) => {
             // making a firestore doc
-        await addDoc(collection(db, 'place'), {
+        await addDoc(collection(db, 'tip'), {
             adress: data.adress,
             cuisine: data.cuisine,
             description: data.description,
@@ -26,11 +26,11 @@ const CreatePlaceForm = () => {
 
         })
 
-        toast.success("A new Place was created! Yey!")
+        toast.success("A new Tip was created! Waiting for admin to approve!")
         reset()
     }
     return (
-        <Form onSubmit={handleSubmit(onCreatePlace)} noValidate>
+        <Form onSubmit={handleSubmit(onCreateTip)} noValidate>
 
             {/* Form for name */}
             <Form.Group>
@@ -46,6 +46,7 @@ const CreatePlaceForm = () => {
                 placeholder="Name"
                 type="text"
                 />
+                {errors.title && <div className="invalid">{errors.title.message}</div>}
             </Form.Group>
 
                 {/* Form for adress */}
@@ -62,11 +63,11 @@ const CreatePlaceForm = () => {
                 placeholder="Adress"
                 type="text"
                 />
-              
+                {errors.adress && <div className="invalid">{errors.adress.message}</div>}
             </Form.Group>
 
-               {/* Form for Town */}
-               <Form.Group>
+                 {/* Form for Town */}
+                 <Form.Group>
             <Form.Label>Town</Form.Label>
                 <Form.Control
                 {...register("town", {
@@ -79,7 +80,7 @@ const CreatePlaceForm = () => {
                 placeholder="Town"
                 type="text"
                 />
-             
+                {errors.town && <div className="invalid">{errors.town.message}</div>}
             </Form.Group>
 
                 {/* Form for Cuisine */}
@@ -92,7 +93,7 @@ const CreatePlaceForm = () => {
                 placeholder="Cusine"
                 type="text"
                 />
-             
+                {errors.cuisine && <div className="invalid">{errors.cuisine.message}</div>}
                 </Form.Group>
 
                 {/* Form for Supply */}
@@ -101,11 +102,12 @@ const CreatePlaceForm = () => {
             <Form.Label>Supply</Form.Label>
                 <Form.Control
                 {...register("supply", {
-                    required: "You must choose a supply",
+                    required: "You must choose a supply is required",
                 })}
                 placeholder="Supply"
                 type="text"
                 />
+                {errors.supply && <div className="invalid">{errors.supply.message}</div>}
             </Form.Group>  
                 
                 {/* Form for Phonenumber */}
@@ -138,6 +140,7 @@ const CreatePlaceForm = () => {
                 />
             </Form.Group>
 
+       
 
             {/* Form for E-mail */}
             <Form.Group>
@@ -169,7 +172,7 @@ const CreatePlaceForm = () => {
                 placeholder="Type"
                 type="text"
                 />
-              
+                {errors.type && <div className="invalid">{errors.type.message}</div>}
             </Form.Group> 
 
             {/* Form for Description */}
@@ -188,6 +191,7 @@ const CreatePlaceForm = () => {
                 as="textarea"
                 rows={3}
                 />
+                {errors.description && <div className="invalid">{errors.description.message}</div>}
             </Form.Group>
             
             <Button variant="success" type="submit">Create</Button>
@@ -195,4 +199,4 @@ const CreatePlaceForm = () => {
     )
 }
 
-export default CreatePlaceForm
+export default CreateTipForm
