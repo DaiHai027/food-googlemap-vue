@@ -11,7 +11,7 @@ import NotFoundPage from './pages/NotFoundPage'
 import ForgotPasswordPage from './pages/ForgotPasswordPage'
 import UpdateProfilePage from './pages/UpdateProfilePage'
 import AddPlacePage from './pages/AddPlacePage'
-import AddTipPage from './pages/AddTipPage'
+import AddTipsPage from './pages/AddTipsPage'
 import TipsPage from './pages/TipsPage'
 import Navigation from './components/Navigation'
 
@@ -34,7 +34,7 @@ function App() {
               <Route path="/forgotPassword" element={<ForgotPasswordPage />} />
 
               <Route path="/addPlaces" element={<AddPlacePage />} />
-              <Route path="/giveTips" element={<AddTipPage />} />
+              <Route path="/giveTips" element={<AddTipsPage />} />
               <Route path="/tips" element={<TipsPage />} />
 
 
