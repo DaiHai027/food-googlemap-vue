@@ -10,13 +10,19 @@ import SignupPage from './pages/SignupPage'
 import NotFoundPage from './pages/NotFoundPage'
 import ForgotPasswordPage from './pages/ForgotPasswordPage'
 import UpdateProfilePage from './pages/UpdateProfilePage'
+import AddPlacePage from './pages/AddPlacePage'
+import AddTipPage from './pages/AddTipPage'
+import TipsPage from './pages/TipsPage'
+import Navigation from './components/Navigation'
+
 
 function App() {
 
   return (
     <div className="App">
+        <Navigation />
 
-      <Routes>
+        <Routes>
               {/* Guest routes */}
               <Route path="*" element={<NotFoundPage />} />
               <Route path="/" element={<HomePage />} />
@@ -24,12 +30,18 @@ function App() {
               <Route path="/login" element={<LoginPage />} />
               <Route path="/logout" element={<LogoutPage />} />
               <Route path="/signup" element={<SignupPage />} />
+
               <Route path="/forgotPassword" element={<ForgotPasswordPage />} />
+
+              <Route path="/addPlaces" element={<AddPlacePage />} />
+              <Route path="/giveTips" element={<AddTipPage />} />
+              <Route path="/tips" element={<TipsPage />} />
+
 
               {/* Protected routes */}
               <Route path="/update-profile" element={<UpdateProfilePage />} />
               
-      </Routes>
+        </Routes>
 
     </div>
   )
