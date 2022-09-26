@@ -98,7 +98,7 @@ const HomePage = () => {
         <>
             <h1>This is homepage</h1>
 
-            <MapOffcanvas />
+            <MapOffcanvas foodPlaces={foodPlaces} onFoodItemClick={handleFoodItemClick} isLoadingPlaces={isLoadingPlaces} />
 
             <div className='maps-wrapper'>
                 {
