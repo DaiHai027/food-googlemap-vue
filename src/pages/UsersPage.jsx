@@ -1,19 +1,25 @@
 // context
 import { useAuthContext } from '../contexts/AuthContext'
 // hooks
-import useUser from '../hooks/useUser'
 import useAdmin from '../hooks/useAdmin'
+// components
+import UsersList from '../components/UsersList'
+
 
 const UsersPage = () => {
   const { currentUser } = useAuthContext()
   const id = currentUser.uid
-  const { isAdmin } = useAdmin(id) 
+  const { loading, isAdmin } = useAdmin(id) 
+
 
   return (
     <>
       <div>UsersPage</div>
       {/* test switching between general users and admins */}
-      {isAdmin ? <p>admin</p> : <p>general user</p>}
+      
+      {loading && <p>loaging...</p>}
+      
+      {isAdmin ? <UsersList /> : <p>You do not have permission to edit. Please contact the administrator.</p>}
 
     </>
   )

@@ -1,5 +1,3 @@
-// context
-import { useAuthContext } from '../contexts/AuthContext'
 // hooks
 import useUser from '../hooks/useUser'
 
@@ -10,10 +8,11 @@ const useAdmin = (id) => {
   
   const isAdmin = data.admin
 
-  console.log('data', data)
-  console.log('admin', isAdmin)
+  // console.log('data', data)
+  // console.log('admin', isAdmin)
   return {
-    isAdmin
+    isAdmin,
+    loading,
   }
 }
 
