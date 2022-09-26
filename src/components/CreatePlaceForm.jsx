@@ -10,7 +10,7 @@ const CreatePlaceForm = () => {
 
     const onCreatePlace = async (data) => {
             // making a firestore doc
-        await addDoc(collection(db, 'place'), {
+        await addDoc(collection(db, 'places'), {
             adress: data.adress,
             cuisine: data.cuisine,
             description: data.description,

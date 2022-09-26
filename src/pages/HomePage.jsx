@@ -4,6 +4,7 @@ import SearchAddressForm from '../components/SearchAddressForm'
 import MapsAPI from '../services/mapsAPI'
 import userMarkerImg from '../assets/images/usermarker.png'
 import FoodPlaceInfoBox from '../components/FoodPlaceInfoBox'
+import MapOffcanvas from '../components/MapOffcanvas'
 
 // Array of library for maps api to include
 const libraries = ['places']
@@ -113,6 +114,8 @@ const HomePage = () => {
     return (
         <>
             <h1>This is homepage</h1>
+
+            <MapOffcanvas />
 
             <div className='maps-wrapper'>
                 {
