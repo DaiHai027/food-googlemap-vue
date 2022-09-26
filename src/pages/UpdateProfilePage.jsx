@@ -20,10 +20,8 @@ const UpdateProfilePage = () => {
 		setDisplayNameAndPhoto,
 		setEmail,
 		setPassword,
-		isAdmin
 	} = useAuthContext()
 
-	console.log('test', isAdmin)
 	console.log('current user', currentUser)
 	const handleFileChange = (e) => {
 		if (!e.target.files.length) {
@@ -83,7 +81,6 @@ const UpdateProfilePage = () => {
 
 	return (
 		<Container className="py-3 center-y">
-			{!isAdmin && <h1>Admin</h1>}
 			<Row>
 				<Col md={{ span: 6, offset: 3 }}>
 					<Card>
