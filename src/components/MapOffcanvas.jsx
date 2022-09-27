@@ -7,21 +7,6 @@ import { useFirestoreQueryData } from '@react-query-firebase/firestore'
 import { db } from '../firebase'
 import FoodPlacesTable from './FoodPlacesTable'
 
-const data = [
-    {
-        name: 'test1',
-        town: 'town1'
-    },
-    {
-        name: 'test2',
-        town: 'town1'
-    },
-    {
-        name: 'test3',
-        town: 'town1'
-    }
-]
-
 const MapOffcanvas = ({foodPlaces, onFoodItemClick, isLoadingPlaces}) => {
 
     const columns = useMemo( () => {
@@ -36,8 +21,16 @@ const MapOffcanvas = ({foodPlaces, onFoodItemClick, isLoadingPlaces}) => {
                 accessor: 'town'
             },
             {
+                Header: 'Supply',
+                accessor: 'supply'
+            },
+            {
                 Header: 'Type',
                 accessor: 'type'
+            },
+            {
+                Header: 'Cuisine',
+                accessor: 'cuisine'
             }
         ]
 
