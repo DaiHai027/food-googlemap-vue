@@ -12,7 +12,7 @@ import {
 import { doc, setDoc } from 'firebase/firestore'
 import { ref, getDownloadURL, uploadBytes } from 'firebase/storage'
 import { auth, db, storage } from '../firebase'
-// import PacmanLoader from 'react-spinners/PacmanLoader'
+import BeatLoader from 'react-spinners/BeatLoader'
 
 const AuthContext = createContext()
 
@@ -115,7 +115,7 @@ const AuthContextProvider = ({ children }) => {
 	}, [])
 
 	const contextValues = {
-		// here be everything the children needs/should be able to use
+		
 		currentUser,
 		login,
 		logout,
@@ -134,8 +134,7 @@ const AuthContextProvider = ({ children }) => {
 		<AuthContext.Provider value={contextValues}>
 			{loading ? (
 				<div id="initial-loader">
-					Loading...
-					{/* <PacmanLoader color={'#888'} size={50} /> */}
+					<BeatLoader color='#F27166'/>
 				</div>
 			) : (
 				children

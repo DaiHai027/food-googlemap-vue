@@ -12,9 +12,9 @@ const Navigation = () => {
     console.log('user', userPhotoUrl, userName)
     
   return (
-    <Navbar bg="dark" variant="dark" expand="md">
+    <Navbar className="navbar" expand="md">
         <Container>
-            <Navbar.Brand as={Link} to="/">
+            <Navbar.Brand as={Link} to="/" >
                 <img 
                     src="/src/assets/icons/map.png"
                     width="30"
@@ -22,7 +22,7 @@ const Navigation = () => {
                     className="d-inline-block align-top"
                     alt="react Bootstrap logo"
                 />{' '}
-                Places
+                <span className="navbar-logo">Place</span>
             </Navbar.Brand>
 
             <Navbar.Toggle aria-controls="basic-navbar-nav" />

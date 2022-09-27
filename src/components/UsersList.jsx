@@ -40,10 +40,10 @@ const UsersList = ({ users }) => {
                         
                         <div className='user-edit-btn'>
                           {/* Icon tras & edit */}
-                          <Button className='user-btn'>
+                          <Button className='btn-color mx-2'>
                             <FontAwesomeIcon icon={faEdit}/>
                           </Button>
-                          <Button className='user-btn'>                                                   
+                          <Button className='btn-color mx-2'>                                                   
                             <FontAwesomeIcon icon={faTrashAlt}/>
                           </Button>
                         </div>
