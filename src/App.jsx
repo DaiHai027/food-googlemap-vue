@@ -12,6 +12,7 @@ import ForgotPasswordPage from './pages/ForgotPasswordPage'
 import UpdateProfilePage from './pages/UpdateProfilePage'
 import AddPlacePage from './pages/AddPlacePage'
 import Navigation from './components/Navigation'
+import UsersPage from './pages/UsersPage'
 
 
 function App() {
@@ -35,6 +36,9 @@ function App() {
 
               {/* Protected routes */}
               <Route path="/update-profile" element={<UpdateProfilePage />} />
+
+              <Route path="/users" element={<UsersPage />} />
+              
               
         </Routes>
 
