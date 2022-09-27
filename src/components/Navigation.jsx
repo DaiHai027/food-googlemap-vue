@@ -1,18 +1,19 @@
 import Container  from "react-bootstrap/Container"
 import Nav from "react-bootstrap/Nav"
 import Navbar from "react-bootstrap/Navbar"
+import Image from 'react-bootstrap/Image'
 import { Link, NavLink } from "react-router-dom"
 import { useAuthContext } from "../contexts/AuthContext"
 import { NavDropdown } from 'react-bootstrap'
 
 const Navigation = () => {
     const { currentUser, userName, userEmail, userPhotoUrl} = useAuthContext()
-    
+
   return (
     <Navbar bg="dark" variant="dark" expand="md">
         <Container>
             <Navbar.Brand as={Link} to="/">
-                <img 
+                <img
                     src="/src/assets/icons/map.png"
                     width="30"
                     height="30"
@@ -30,7 +31,7 @@ const Navigation = () => {
                             <>
                                 {/* User is logged in */}
                                 <Nav.Link as={NavLink} end to="/addPlaces">Add a new Places</Nav.Link>
-                             
+
                                 <NavDropdown title={
                                     userPhotoUrl
                                     ? <Image
