@@ -2,7 +2,6 @@ import React, { useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 // context
 import { useAuthContext } from '../contexts/AuthContext'
-
 // bootstrap
 import { Container, Row, Col, Form, Button, Card, Alert, Image } from 'react-bootstrap'
 
@@ -18,7 +17,6 @@ const LoginPage = () => {
 		e.preventDefault()
 		setError(null);
 
-		// try to log in the user with the specified credentials
 		try {
 			setLoading(true)
 			await login(emailRef.current.value, passwordRef.current.value)
@@ -32,11 +30,11 @@ const LoginPage = () => {
 
 	return (
 		<Container className="py-3 center-y">
-			{/* <Row>
+			<Row>
 				<Col xs={{ span: 6, offset: 3 }} md={{ span: 4, offset: 4 }} className="logo-wrapper">
 					<Image src={logo} fluid />
 				</Col>
-			</Row> */}
+			</Row>
 
 			<Row>
 				<Col md={{ span: 6, offset: 3 }}>
