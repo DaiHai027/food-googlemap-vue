@@ -42,6 +42,7 @@ const UpdateProfilePage = () => {
 
 		setError(null);
 		setMessage(null);
+		console.log('photo', photo)
 
 		// update user profile
 		try {
