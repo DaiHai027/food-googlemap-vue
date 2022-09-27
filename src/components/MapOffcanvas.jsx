@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import  Offcanvas  from 'react-bootstrap/Offcanvas'
 import Button from 'react-bootstrap/Button'
 import  ListGroup  from 'react-bootstrap/ListGroup'
@@ -7,8 +7,42 @@ import { useFirestoreQueryData } from '@react-query-firebase/firestore'
 import { db } from '../firebase'
 import FoodPlacesTable from './FoodPlacesTable'
 
+const data = [
+    {
+        name: 'test1',
+        town: 'town1'
+    },
+    {
+        name: 'test2',
+        town: 'town1'
+    },
+    {
+        name: 'test3',
+        town: 'town1'
+    }
+]
 
 const MapOffcanvas = ({foodPlaces, onFoodItemClick, isLoadingPlaces}) => {
+
+    const columns = useMemo( () => {
+
+        return [
+            {
+                Header: 'Name',
+                accessor: 'name'
+            },
+            {
+                Header: 'Town',
+                accessor: 'town'
+            },
+            {
+                Header: 'Type',
+                accessor: 'type'
+            }
+        ]
+
+    }, [] )
+
     const [show, setShow] = useState(false)
 
     const handleClose = () => setShow(false)
@@ -41,7 +75,7 @@ const MapOffcanvas = ({foodPlaces, onFoodItemClick, isLoadingPlaces}) => {
             {
                 foodPlaces && (
                     <>
-                    <FoodPlacesTable />
+                    <FoodPlacesTable foodPlaces={foodPlaces} onFoodItemClick={onFoodItemClick} columns={columns} />
                     <ListGroup className="foodplace-listgroup">
                         {
                             foodPlaces.map((foodplace, index) => (
