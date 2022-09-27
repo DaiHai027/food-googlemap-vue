@@ -12,7 +12,10 @@ import {
 import { doc, setDoc } from 'firebase/firestore'
 import { ref, getDownloadURL, uploadBytes } from 'firebase/storage'
 import { auth, db, storage } from '../firebase'
-// import PacmanLoader from 'react-spinners/PacmanLoader'
+// loader
+import BeatLoader from 'react-spinners/BeatLoader'
+
+
 
 const AuthContext = createContext()
 
@@ -85,7 +88,7 @@ const AuthContextProvider = ({ children }) => {
 		if (photo) {
 			// create a reference to upload the file to
 			const fileRef = ref(storage, `user_photos/${auth.currentUser.email}/${photo.name}`)
-
+			
 			// upload photo to fileRef
 			const uploadResult = await uploadBytes(fileRef, photo)
 
@@ -115,7 +118,7 @@ const AuthContextProvider = ({ children }) => {
 	}, [])
 
 	const contextValues = {
-		// here be everything the children needs/should be able to use
+		
 		currentUser,
 		login,
 		logout,
@@ -134,8 +137,7 @@ const AuthContextProvider = ({ children }) => {
 		<AuthContext.Provider value={contextValues}>
 			{loading ? (
 				<div id="initial-loader">
-					Loading...
-					{/* <PacmanLoader color={'#888'} size={50} /> */}
+					<BeatLoader color='#F27166'/>
 				</div>
 			) : (
 				children

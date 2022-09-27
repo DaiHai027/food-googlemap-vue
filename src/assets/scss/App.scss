@@ -1,5 +1,45 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'users';
+/* Google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
+h1,h2,h3,h4,h5 {
+    font-family: 'Acme', sans-serif;
+}
+
+.navbar {
+    background-color: #C4F2CB;
+}
+.navbar-logo {
+    font-family: 'Acme', sans-serif;
+    color: #244020;
+}
+
+
+.btn-color {
+    background-color: #F25050;
+    border-color: #F25050;
+    color: white;
+    font-weight: 500;
+}
+
+.btn-color:hover,.btn-color:focus,.btn-color:active,.btn-color:target,.btn-color:focus-within,.btn-color:focus-visible,.btn-color:visited {
+    background-color: #F27166 !important;
+    border-color: #F27166 !important;
+}
+
+// .btn-color:focus {
+//     background-color: #f27266 !important;
+//     border-color: #F27166 !important;
+// }
+
+// .btn-color:active {
+//     background-color: #f27266 !important;
+//     border-color: #F27166 !important;
+// }
+
+
+
 
 .maps-wrapper {
     height: 800px;
@@ -28,7 +68,7 @@
 
 .foodplaces-list-wrapper {
 
-    background-color: rgb(160, 250, 250);
+    background-color: #F27166;
     padding: 15px;
     position: absolute;
         width: 500px;

@@ -101,7 +101,7 @@ const HomePage = () => {
 
     return (
         <>
-            <h1>This is homepage</h1>
+            {/* <h1>This is homepage</h1> */}
 
             <MapOffcanvas foodPlaces={foodPlaces} onFoodItemClick={handleFoodItemClick} isLoadingPlaces={isLoadingPlaces} />
 

@@ -51,7 +51,7 @@ const MapOffcanvas = ({foodPlaces, onFoodItemClick, isLoadingPlaces}) => {
   return (
     <>
 
-        <Button variant="info" onClick={handleShow} className="me-2">
+        <Button  onClick={handleShow} className="me-2 btn-color">
             Places near you
         </Button>
 

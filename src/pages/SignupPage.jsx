@@ -101,7 +101,7 @@ const SignupPage = () => {
 									<Form.Control type="password" ref={passwordConfirmRef} required />
 								</Form.Group>
 
-								<Button disabled={loading} type="submit">Create Account</Button>
+								<Button disabled={loading} type="submit" className='btn-color'>Create Account</Button>
 							</Form>
 
 						</Card.Body>
