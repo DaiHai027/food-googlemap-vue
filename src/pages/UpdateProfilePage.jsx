@@ -46,18 +46,18 @@ const UpdateProfilePage = () => {
 		// update user profile
 		try {
 			setLoading(true)
-
+			// upload users name or photo
 			if (
 				displayNameRef.current.value !== currentUser.displayName
 				|| photo
 			) {
 				await setDisplayNameAndPhoto(displayNameRef.current.value, photo)
 			}
-
+			// update email
 			if (emailRef.current.value !== currentUser.email) {
 				await setEmail(emailRef.current.value)
 			}
-
+			//update password
 			if (passwordRef.current.value) {
 				await setPassword(passwordRef.current.value)
 			}

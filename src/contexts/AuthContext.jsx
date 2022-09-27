@@ -28,7 +28,7 @@ const AuthContextProvider = ({ children }) => {
 	const [loading, setLoading] = useState(true)
 
 	
-	const signup = async (email, password, name, photo, admin) => {
+	const signup = async (email, password, name, photo) => {
 		// create the user
 		await createUserWithEmailAndPassword(auth, email, password)
 
@@ -84,7 +84,7 @@ const AuthContextProvider = ({ children }) => {
 
 		if (photo) {
 			// create a reference to upload the file to
-			const fileRef = ref(storage, `photos/${auth.currentUser.email}/${photo.name}`)
+			const fileRef = ref(storage, `user_photos/${auth.currentUser.email}/${photo.name}`)
 
 			// upload photo to fileRef
 			const uploadResult = await uploadBytes(fileRef, photo)

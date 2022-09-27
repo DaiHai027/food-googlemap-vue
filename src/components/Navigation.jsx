@@ -1,12 +1,15 @@
+import { Link, NavLink } from "react-router-dom"
+import { useAuthContext } from "../contexts/AuthContext"
+// bootstrap
 import Container  from "react-bootstrap/Container"
 import Nav from "react-bootstrap/Nav"
 import Navbar from "react-bootstrap/Navbar"
-import { Link, NavLink } from "react-router-dom"
-import { useAuthContext } from "../contexts/AuthContext"
-import { NavDropdown } from 'react-bootstrap'
+import NavDropdown from 'react-bootstrap/NavDropdown'
+import Image from 'react-bootstrap/Image'
 
 const Navigation = () => {
     const { currentUser, userName, userEmail, userPhotoUrl} = useAuthContext()
+    console.log('user', userPhotoUrl, userName)
     
   return (
     <Navbar bg="dark" variant="dark" expand="md">
@@ -45,6 +48,10 @@ const Navigation = () => {
                                     <NavLink to="/update-profile"
                                     className="dropdown-item">Update Profile</NavLink>
                                     <NavDropdown.Divider />
+                                    
+                                    <NavLink to="/users"
+                                    className="dropdown-item">Edit Users</NavLink>
+
                                     <NavLink to="/logout"
                                     className="dropdown-item">Log Out</NavLink>
                                 </NavDropdown>

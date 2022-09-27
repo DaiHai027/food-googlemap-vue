@@ -2,14 +2,16 @@
 import { useAuthContext } from '../contexts/AuthContext'
 // hooks
 import useAdmin from '../hooks/useAdmin'
+import useUsers from '../hooks/useUsers'
 // components
 import UsersList from '../components/UsersList'
 
 
 const UsersPage = () => {
+  const{ data: users, loading } = useUsers()
   const { currentUser } = useAuthContext()
   const id = currentUser.uid
-  const { loading, isAdmin } = useAdmin(id) 
+  const { isAdmin } = useAdmin(id) 
 
 
   return (
@@ -19,7 +21,7 @@ const UsersPage = () => {
       
       {loading && <p>loaging...</p>}
       
-      {isAdmin ? <UsersList /> : <p>You do not have permission to edit. Please contact the administrator.</p>}
+      {isAdmin ? <UsersList users={users}/> : <p>You do not have permission to edit. Please contact the administrator.</p>}
 
     </>
   )

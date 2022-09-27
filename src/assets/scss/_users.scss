@@ -1,0 +1,32 @@
+
+.user-list {
+    .user-list-item {
+        display: flex;
+        align-items: center;
+        flex-direction: row;       
+    }  
+    
+    .user-image {
+        margin-right: 1rem;
+        width: 10%;
+        background-color: #888;
+    }
+
+    .user-info {
+        display: flex;
+        flex-direction: column;
+        width: 70%;
+    }
+
+    .user-edit-btn {
+        display: flex;
+        flex-direction: row;
+        width: 20%;       
+
+        .user-btn {
+            margin: 2px;
+            background-color: #555;
+            border-color: #555;
+        }
+    }
+}
