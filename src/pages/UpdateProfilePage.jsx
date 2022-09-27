@@ -4,18 +4,16 @@ import { useAuthContext } from '../contexts/AuthContext'
 // bootstrap
 import { Container, Row, Col, Form, Button, Card, Alert, Image } from 'react-bootstrap'
 
-
 const UpdateProfilePage = () => {
 	const displayNameRef = useRef()
 	const emailRef = useRef()
-	// const photoRef = useRef()
+	const photoRef = useRef()
 	const passwordRef = useRef()
 	const passwordConfirmRef = useRef()
 	const [error, setError] = useState(null)
 	const [loading, setLoading] = useState(false)
 	const [photo, setPhoto] = useState(null)
 	const [message, setMessage] = useState(null)
-	//const [isAdmin, setIsAdmin] = useState(null)
 	const {
 		currentUser,
 		reloadUser,
@@ -24,9 +22,6 @@ const UpdateProfilePage = () => {
 		setPassword,
 	} = useAuthContext()
 	
-
-
-	console.log('current user', currentUser)
 	
 	const handleFileChange = (e) => {
 		if (!e.target.files.length) {
@@ -50,28 +45,23 @@ const UpdateProfilePage = () => {
 
 		// update user profile
 		try {
-			// disable update-button while updating is in progress
 			setLoading(true)
-
-			// update displayName *ONLY* if it has changed
+			// upload users name or photo
 			if (
 				displayNameRef.current.value !== currentUser.displayName
 				|| photo
 			) {
 				await setDisplayNameAndPhoto(displayNameRef.current.value, photo)
 			}
-
-			// update email *ONLY* if it has changed
+			// update email
 			if (emailRef.current.value !== currentUser.email) {
 				await setEmail(emailRef.current.value)
 			}
-
-			// update password *ONLY* if the user has provided a new password to set
+			//update password
 			if (passwordRef.current.value) {
 				await setPassword(passwordRef.current.value)
 			}
 
-			// reload user
 			await reloadUser()
 
 			setMessage("Profile successfully updated")
