@@ -9,27 +9,6 @@ import mapsAPI from '../services/mapsAPI'
 const CreatePlaceForm = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm()
 
-//     const onCreateTip = async (data) => {
-//         // making a firestore doc
-//     await addDoc(collection(db, 'tip'), {
-//         adress: data.adress,
-//         cuisine: data.cuisine,
-//         description: data.description,
-//         email: data.email,
-//         facebook: data.facebook,
-//         instagram: data.instagram,
-//         name: data.name,
-//         phonenumber: data.phonenumber,
-//         supply: data.supply,
-//         town: data.town,
-//         type: data.type,
-//         website: data.website,
-
-//     })
-
-//     toast.success("A new Tip was created! Waiting for admin to approve!")
-//     reset()
-// }
 
     const onCreatePlace = async (data) => {
             // making a firestore doc

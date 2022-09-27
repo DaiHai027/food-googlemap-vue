@@ -7,6 +7,7 @@ import FoodPlaceInfoBox from '../components/FoodPlaceInfoBox'
 import MapOffcanvas from '../components/MapOffcanvas'
 import FoodPlacesList from '../components/FoodPlacesList'
 import useGetPlaces from '../hooks/useGetPlaces'
+import AddtipForm from '../components/AddtipForm'
 
 // Array of library for maps api to include
 const libraries = ['places']
@@ -96,7 +97,8 @@ const HomePage = () => {
 
     return (
         <>
-            <h1>This is homepage</h1>
+
+            <AddtipForm />
 
             <MapOffcanvas foodPlaces={foodPlaces} onFoodItemClick={handleFoodItemClick} isLoadingPlaces={isLoadingPlaces} />
 
