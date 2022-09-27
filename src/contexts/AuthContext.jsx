@@ -12,7 +12,10 @@ import {
 import { doc, setDoc } from 'firebase/firestore'
 import { ref, getDownloadURL, uploadBytes } from 'firebase/storage'
 import { auth, db, storage } from '../firebase'
+// loader
 import BeatLoader from 'react-spinners/BeatLoader'
+
+
 
 const AuthContext = createContext()
 
@@ -85,7 +88,7 @@ const AuthContextProvider = ({ children }) => {
 		if (photo) {
 			// create a reference to upload the file to
 			const fileRef = ref(storage, `user_photos/${auth.currentUser.email}/${photo.name}`)
-
+			
 			// upload photo to fileRef
 			const uploadResult = await uploadBytes(fileRef, photo)
 

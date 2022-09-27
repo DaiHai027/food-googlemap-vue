@@ -46,7 +46,7 @@ const UpdateProfilePage = () => {
 		// update user profile
 		try {
 			setLoading(true)
-			// upload users name or photo
+			// upldate users name or photo
 			if (
 				displayNameRef.current.value !== currentUser.displayName
 				|| photo
@@ -127,7 +127,7 @@ const UpdateProfilePage = () => {
 									<Form.Control type="password" ref={passwordConfirmRef} autoComplete="new-password" />
 								</Form.Group>
 
-								<Button disabled={loading} type="submit">Update</Button>
+								<Button disabled={loading} type="submit" className='btn-color'>Update</Button>
 							</Form>
 						</Card.Body>
 					</Card>

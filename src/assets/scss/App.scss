@@ -3,6 +3,10 @@
 /* Google fonts */
 @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 
+h1,h2,h3,h4,h5 {
+    font-family: 'Acme', sans-serif;    
+}
+
 .navbar {
     background-color: #C4F2CB;
 }
@@ -19,15 +23,21 @@
     font-weight: 500;
 }
 
-.btn-color:focus {
-    background-color: #f27266 !important;
-    border-color: #F27166 !important;
-}
-
-.btn-color:hover {
+.btn-color:hover,.btn-color:focus,.btn-color:active,.btn-color:target,.btn-color:focus-within,.btn-color:focus-visible,.btn-color:visited {
     background-color: #F27166 !important;
     border-color: #F27166 !important;
 }
+
+// .btn-color:focus {
+//     background-color: #f27266 !important;
+//     border-color: #F27166 !important;
+// }
+
+// .btn-color:active {
+//     background-color: #f27266 !important;
+//     border-color: #F27166 !important;
+// }
+
 
 
 
@@ -66,8 +76,8 @@
         left: 50px;
         z-index: 99;
 
-    .foodplace-listgroup {
+    // .foodplace-listgroup {
 
-    }
+    // }
 
 }
