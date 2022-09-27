@@ -114,7 +114,7 @@ const HomePage = () => {
                         {/* Form for centering map at different address */}
                         <SearchAddressForm onSubmit={handleOnSubmit} />
 
-                        <FoodPlacesList foodPlaces={foodPlaces} onFoodItemClick={handleFoodItemClick} isLoadingPlaces={isLoadingPlaces} />
+                        {/* <FoodPlacesList foodPlaces={foodPlaces} onFoodItemClick={handleFoodItemClick} isLoadingPlaces={isLoadingPlaces} /> */}
 
                         {/* The map itself */}
                         <GoogleMap

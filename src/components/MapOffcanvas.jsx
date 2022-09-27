@@ -2,9 +2,10 @@ import { useState } from 'react'
 import  Offcanvas  from 'react-bootstrap/Offcanvas'
 import Button from 'react-bootstrap/Button'
 import  ListGroup  from 'react-bootstrap/ListGroup'
-import { collection, orderBy, query, where } from 'firebase/firestore' 
+import { collection, orderBy, query, where } from 'firebase/firestore'
 import { useFirestoreQueryData } from '@react-query-firebase/firestore'
 import { db } from '../firebase'
+import FoodPlacesTable from './FoodPlacesTable'
 
 
 const MapOffcanvas = ({foodPlaces, onFoodItemClick, isLoadingPlaces}) => {
@@ -19,14 +20,14 @@ const MapOffcanvas = ({foodPlaces, onFoodItemClick, isLoadingPlaces}) => {
          // ),
          orderBy('name')
          )
-     
+
   return (
     <>
-       
+
         <Button variant="info" onClick={handleShow} className="me-2">
             Places near you
         </Button>
-            
+
         <Offcanvas show={show} onHide={handleClose}>
             <Offcanvas.Header closeButton>
 
@@ -39,6 +40,8 @@ const MapOffcanvas = ({foodPlaces, onFoodItemClick, isLoadingPlaces}) => {
         )}
             {
                 foodPlaces && (
+                    <>
+                    <FoodPlacesTable />
                     <ListGroup className="foodplace-listgroup">
                         {
                             foodPlaces.map((foodplace, index) => (
@@ -60,13 +63,14 @@ const MapOffcanvas = ({foodPlaces, onFoodItemClick, isLoadingPlaces}) => {
                             ))
                         }
                     </ListGroup>
+                    </>
                 )
             }
-              
+
 
             </Offcanvas.Body>
         </Offcanvas>
-    
+
     </>
   )
 }
