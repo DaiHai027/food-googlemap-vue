@@ -15,7 +15,7 @@ const SignupPage = () => {
 	const [error, setError] = useState(null)
 	const [loading, setLoading] = useState(false)
 	const [photo, setPhoto] = useState(false)
-	const { signup, setDisplayNameAndPhoto, reloadUser } = useAuthContext()
+	const { signup, reloadUser } = useAuthContext()
 	const navigate = useNavigate()
 
 	const handleFileChange = (e) => {
