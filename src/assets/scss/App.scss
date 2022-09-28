@@ -7,6 +7,10 @@ h1,h2,h3,h4,h5 {
     font-family: 'Acme', sans-serif;    
 }
 
+.h-text-color {
+    color: #244020;
+}
+
 .navbar {
     background-color: #C4F2CB;
 }
@@ -40,7 +44,6 @@ h1,h2,h3,h4,h5 {
 
 
 
-
 .maps-wrapper {
     height: 800px;
     position: relative;
@@ -60,10 +63,20 @@ h1,h2,h3,h4,h5 {
 
 }
 
+
 .place-info-box {
-    background-color: beige;
+    border: #F25050 solid 1px;
+    border-radius: 7px;
+    background-color: #f8ceca;
     font-size: 1rem;
-    padding: 5px;
+    padding: 8px;
+    position: relative;
+}
+
+.x-btn {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
 }
 
 .foodplaces-list-wrapper {

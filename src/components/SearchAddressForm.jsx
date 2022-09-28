@@ -37,7 +37,7 @@ const SearchCityForm = ({onSubmit}) => {
                     <Form.Control type='text' ref={addressRef} required />
                 </Autocomplete>
             </Form.Group>
-            <Button type='submit'>Goto</Button>
+            <Button className='btn-color my-3' type='submit'>Goto</Button>
         </Form>
     )
 
