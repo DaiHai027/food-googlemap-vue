@@ -5,7 +5,7 @@ import { useAuthContext } from '../contexts/AuthContext'
 // bootstrap
 import { Container, Row, Col, Form, Button, Card, Alert, Image } from 'react-bootstrap'
 
-// import logo from '../assets/images/logo.png'
+import logo from '../assets/icons/map.png'
 
 const SignupPage = () => {
 	const emailRef = useRef()
@@ -15,7 +15,7 @@ const SignupPage = () => {
 	const [error, setError] = useState(null)
 	const [loading, setLoading] = useState(false)
 	const [photo, setPhoto] = useState(false)
-	const { signup, setDisplayNameAndPhoto, reloadUser } = useAuthContext()
+	const { signup, reloadUser } = useAuthContext()
 	const navigate = useNavigate()
 
 	const handleFileChange = (e) => {
@@ -31,18 +31,18 @@ const SignupPage = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault()
 
-		// make sure user has entered the same password in both input fields
 		if (passwordRef.current.value !== passwordConfirmRef.current.value) {
 			return setError("The passwords does not match")
 		}
 
 		setError(null);
 
-		// try to sign up the user with the specified credentials
 		try {
 			setLoading(true)
 
 			await signup(emailRef.current.value, passwordRef.current.value, displayNameRef.current.value, photo)
+
+		await reloadUser()
 
 			navigate('/')
 		} catch (err) {
@@ -53,11 +53,11 @@ const SignupPage = () => {
 
 	return (
 		<Container className="py-3 center-y">
-			<Row>
+			{/* <Row>
 				<Col xs={{ span: 6, offset: 3 }} md={{ span: 4, offset: 4 }} className="logo-wrapper">
-					{/* <Image src={logo} fluid /> */}
+					<Image src={logo} fluid />
 				</Col>
-			</Row>
+			</Row> */}
 
 			<Row>
 				<Col md={{ span: 6, offset: 3 }}>
@@ -101,7 +101,7 @@ const SignupPage = () => {
 									<Form.Control type="password" ref={passwordConfirmRef} required />
 								</Form.Group>
 
-								<Button disabled={loading} type="submit">Create Account</Button>
+								<Button disabled={loading} type="submit" className='btn-color'>Create Account</Button>
 							</Form>
 
 						</Card.Body>

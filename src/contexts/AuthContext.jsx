@@ -9,10 +9,12 @@ import {
 	updatePassword,
 	updateProfile,
 } from 'firebase/auth'
-import { doc, setDoc } from 'firebase/firestore'
+import { doc, setDoc, updateDoc } from 'firebase/firestore'
 import { ref, getDownloadURL, uploadBytes } from 'firebase/storage'
 import { auth, db, storage } from '../firebase'
-// import PacmanLoader from 'react-spinners/PacmanLoader'
+// loader
+import BeatLoader from 'react-spinners/BeatLoader'
+
 
 const AuthContext = createContext()
 
@@ -28,7 +30,7 @@ const AuthContextProvider = ({ children }) => {
 	const [loading, setLoading] = useState(true)
 
 	
-	const signup = async (email, password, name, photo, admin) => {
+	const signup = async (email, password, name, photo) => {
 		// create the user
 		await createUserWithEmailAndPassword(auth, email, password)
 
@@ -47,8 +49,22 @@ const AuthContextProvider = ({ children }) => {
 			admin: false,
 		})
 	}
-	
-	
+
+	const update = async (email, name, photo) => {
+
+		await setDisplayNameAndPhoto(name, photo)
+
+		await setEmail(email)
+		
+		await reloadUser()
+
+		await updateDoc(doc(db, 'users', auth.currentUser.uid), {
+			name,
+			email,
+			photoURL: auth.currentUser.photoURL,			
+		})
+	}
+		
 
 	const login = (email, password) => {
 		return signInWithEmailAndPassword(auth, email, password)
@@ -84,8 +100,8 @@ const AuthContextProvider = ({ children }) => {
 
 		if (photo) {
 			// create a reference to upload the file to
-			const fileRef = ref(storage, `photos/${auth.currentUser.email}/${photo.name}`)
-
+			const fileRef = ref(storage, `user_photos/${auth.currentUser.email}/${photo.name}`)
+			
 			// upload photo to fileRef
 			const uploadResult = await uploadBytes(fileRef, photo)
 
@@ -93,6 +109,9 @@ const AuthContextProvider = ({ children }) => {
 			photoURL = await getDownloadURL(uploadResult.ref)
 
 			console.log("Photo uploaded successfully, download url is:", photoURL)
+		}
+		if(displayName){
+			console.log('displayName', displayName)
 		}
 
 		return updateProfile(auth.currentUser, {
@@ -103,7 +122,8 @@ const AuthContextProvider = ({ children }) => {
 
 	useEffect(() => {
 		// listen for auth-state changes
-		const unsubscribe = onAuthStateChanged(auth, (user) => {
+		const unsubscribe = auth.onAuthStateChanged(user => {
+			console.log('auth-user', user)
 			setCurrentUser(user)
 			setUserName(user?.displayName)
 			setUserEmail(user?.email)
@@ -115,9 +135,10 @@ const AuthContextProvider = ({ children }) => {
 	}, [])
 
 	const contextValues = {
-		// here be everything the children needs/should be able to use
+		
 		currentUser,
 		login,
+		update,
 		logout,
 		signup,
 		reloadUser,
@@ -134,8 +155,7 @@ const AuthContextProvider = ({ children }) => {
 		<AuthContext.Provider value={contextValues}>
 			{loading ? (
 				<div id="initial-loader">
-					Loading...
-					{/* <PacmanLoader color={'#888'} size={50} /> */}
+					<BeatLoader color='#F27166'/>
 				</div>
 			) : (
 				children

@@ -2,7 +2,6 @@ import React, { useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 // context
 import { useAuthContext } from '../contexts/AuthContext'
-
 // bootstrap
 import { Container, Row, Col, Form, Button, Card, Alert, Image } from 'react-bootstrap'
 
@@ -18,7 +17,6 @@ const LoginPage = () => {
 		e.preventDefault()
 		setError(null);
 
-		// try to log in the user with the specified credentials
 		try {
 			setLoading(true)
 			await login(emailRef.current.value, passwordRef.current.value)
@@ -58,7 +56,7 @@ const LoginPage = () => {
 									<Form.Control type="password" ref={passwordRef} required />
 								</Form.Group>
 
-								<Button disabled={loading} type="submit">Log In</Button>
+								<Button disabled={loading} type="submit" className='btn-color'>Log In</Button>
 							</Form>
 
 							<div className="text-center mt-3">

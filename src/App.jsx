@@ -2,6 +2,8 @@ import { Routes, Route } from 'react-router-dom'
 import { ReactQueryDevtools } from 'react-query/devtools'
 // styles
 import './assets/scss/App.scss'
+//components
+import Navigation from './components/Navigation'
 // pages
 import HomePage from './pages/HomePage'
 import LoginPage from './pages/LoginPage'
@@ -11,7 +13,7 @@ import NotFoundPage from './pages/NotFoundPage'
 import ForgotPasswordPage from './pages/ForgotPasswordPage'
 import UpdateProfilePage from './pages/UpdateProfilePage'
 import AddPlacePage from './pages/AddPlacePage'
-import Navigation from './components/Navigation'
+import UsersPage from './pages/UsersPage'
 
 
 function App() {
@@ -35,6 +37,9 @@ function App() {
 
               {/* Protected routes */}
               <Route path="/update-profile" element={<UpdateProfilePage />} />
+
+              <Route path="/users" element={<UsersPage />} />
+              
               
         </Routes>
 
