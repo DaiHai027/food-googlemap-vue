@@ -21,7 +21,7 @@ const PlacePage = () => {
 
       {loading && <p>Loading ....</p>}
 
-      {!loading && !place && <p>That place dose not exist... It might have been deleted</p>}
+      {!loading && !place && <p>That place dose not exist... It might have been deleted...</p>}
 
       {!loading && place && (
         <>

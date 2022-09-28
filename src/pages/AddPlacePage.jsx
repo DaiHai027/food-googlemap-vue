@@ -10,7 +10,7 @@ const AddPlacePage = () => {
 
   const queryRef = query(
     collection(db,'place'),
-    where('admin', '==', true),
+    where('admin', '==', currentUser.admin ==true),
     orderBy('name')
   )
   const { data: place, isLoading } = useFirestoreQueryData(['place',], queryRef,{
