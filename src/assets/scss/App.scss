@@ -23,7 +23,7 @@ h1,h2,h3,h4,h5 {
     font-weight: 500;
 }
 
-.btn-color:hover,.btn-color:focus,.btn-color:active,.btn-color:target,.btn-color:focus-within,.btn-color:focus-visible,.btn-color:visited {
+.btn-color:hover, .btn-color:disabled {
     background-color: #F27166 !important;
     border-color: #F27166 !important;
 }
