@@ -1,12 +1,12 @@
-import moment from 'moment'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
-import { doc, updateDoc, Timestamp } from 'firebase/firestore'
+import { doc, updateDoc} from 'firebase/firestore'
 import { db } from '../firebase'
 
 import React from 'react'
+import PlacePage from '../pages/PlacePage'
 
 const EditPlaceForm = ({ place, onPlaceUpdate}) => {
     const { register, handleSubmit, formState: { errors}} = useForm()
@@ -35,7 +35,7 @@ const EditPlaceForm = ({ place, onPlaceUpdate}) => {
     <Form onSubmit={handleSubmit(onUpdatePlace)} noValidate>
 
     {/* Form for name */}
-    <Form.Group>
+    <Form.Group controlId='name'>
         <Form.Label>Name</Form.Label>
         <Form.Control
         {...register("name", {
@@ -45,13 +45,13 @@ const EditPlaceForm = ({ place, onPlaceUpdate}) => {
                 message: "Must atlest be 2 charatcers"
             }
         })}
-        placeholder="Name"
+        defaultValue={place.name}
         type="text"
         />
     </Form.Group>
 
         {/* Form for adress */}
-    <Form.Group>
+    <Form.Group controlId='adress'>
     <Form.Label>Adress</Form.Label>
         <Form.Control
         {...register("adress", {
@@ -61,14 +61,14 @@ const EditPlaceForm = ({ place, onPlaceUpdate}) => {
                 message: "Must atlest be 2 charatcers"
             }
         })}
-        placeholder="Adress"
+        defaultValue={place.adress}
         type="text"
         />
 
     </Form.Group>
 
        {/* Form for Town */}
-       <Form.Group>
+       <Form.Group controlId='town'>
     <Form.Label>Town</Form.Label>
         <Form.Control
         {...register("town", {
@@ -78,20 +78,20 @@ const EditPlaceForm = ({ place, onPlaceUpdate}) => {
                 message: "Must atlest be 2 charatcers"
             }
         })}
-        placeholder="Town"
+        defaultValue={place.town}
         type="text"
         />
 
     </Form.Group>
 
         {/* Form for Cuisine */}
-     <Form.Group>
+     <Form.Group controlId='cuisine'>
     <Form.Label>Cuisine</Form.Label>
         <Form.Control
         {...register("cuisine", {
             required: "A cuisine is required",
         })}
-        placeholder="Cusine"
+        defaultValue={place.cuisine}
         type="text"
         />
 
@@ -99,83 +99,83 @@ const EditPlaceForm = ({ place, onPlaceUpdate}) => {
 
         {/* Form for Supply */}
 
-        <Form.Group>
+        <Form.Group controlId='supply'>
     <Form.Label>Supply</Form.Label>
         <Form.Control
         {...register("supply", {
             required: "You must choose a supply",
         })}
-        placeholder="Supply"
+        defaultValue={place.supply}
         type="text"
         />
     </Form.Group>
 
         {/* Form for Phonenumber */}
-    <Form.Group>
+    <Form.Group controlId='phonenumber'>
     <Form.Label>Phonenumber</Form.Label>
         <Form.Control
         {...register("phonenumber",)}
-        placeholder="Phonenumber"
+        defaultValue={place.phonenumber}
         type="text"
         />
     </Form.Group>
 
     {/* Form for Facebook */}
-    <Form.Group>
+    <Form.Group controlId='facebook'>
     <Form.Label>Facebook</Form.Label>
         <Form.Control
         {...register("facebook",)}
-        placeholder="Facebbok"
+        defaultValue={place.facebook}
         type="text"
         />
     </Form.Group>
 
     {/* Form for Instagram */}
-    <Form.Group>
+    <Form.Group controlId='instagram'>
     <Form.Label>Instagram</Form.Label>
         <Form.Control
         {...register("instagram",)}
-        placeholder="instagram"
+        defaultValue={place.instagram}
         type="text"
         />
     </Form.Group>
 
 
     {/* Form for E-mail */}
-    <Form.Group>
+    <Form.Group controlId='email'>
     <Form.Label>Email</Form.Label>
         <Form.Control
         {...register("email",)}
-        placeholder="email"
+        defaultValue={place.email}
         type="text"
         />
     </Form.Group>
 
     {/* Form for Website */}
-    <Form.Group>
+    <Form.Group controlId='website'>
     <Form.Label>Website</Form.Label>
         <Form.Control
         {...register("website",)}
-        placeholder="website"
+        defaultValue={place.website}
         type="text"
         />
     </Form.Group>
 
     {/* Form for type */}
-     <Form.Group>
+     <Form.Group controlId='type'>
     <Form.Label>Type</Form.Label>
         <Form.Control
         {...register("type", {
             required: "A Type is required",
         })}
-        placeholder="Type"
+        defaultValue={place.type}
         type="text"
         />
 
     </Form.Group>
 
     {/* Form for Description */}
-    <Form.Group>
+    <Form.Group controlId='description'>
     <Form.Label>Description</Form.Label>
         <Form.Control
         {...register("description", {
@@ -185,7 +185,7 @@ const EditPlaceForm = ({ place, onPlaceUpdate}) => {
                 message: "Must atlest be 2 charatcers"
             }
         })}
-        placeholder="Description"
+        defaultValue={place.description}
         type="text"
         as="textarea"
         rows={3}
