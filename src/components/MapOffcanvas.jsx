@@ -97,7 +97,7 @@ const MapOffcanvas = ({onFoodItemClick}) => {
                     <select className="form-select" aria-label="Default select example" onChange={(e)=>{setSupplyWhere(e.target.value)}} defaultValue={supplyWhere}>
                         <option value="All">All supplies</option>
                         <option value="Lunch">Lunch</option>
-                        <option value="After work">After Work</option>
+                        <option value="After Work">After Work</option>
                         <option value="A la Carte">A la carte</option>
                     </select>
 
