@@ -14,6 +14,8 @@ import ForgotPasswordPage from './pages/ForgotPasswordPage'
 import UpdateProfilePage from './pages/UpdateProfilePage'
 import AddPlacePage from './pages/AddPlacePage'
 import UsersPage from './pages/UsersPage'
+import PlacesPage from './pages/PlacesPage'
+import PlacePage from './pages/PlacePage'
 
 
 function App() {
@@ -26,21 +28,25 @@ function App() {
               {/* Guest routes */}
               <Route path="*" element={<NotFoundPage />} />
               <Route path="/" element={<HomePage />} />
-              
+
               <Route path="/login" element={<LoginPage />} />
               <Route path="/logout" element={<LogoutPage />} />
               <Route path="/signup" element={<SignupPage />} />
 
-              <Route path="/forgotPassword" element={<ForgotPasswordPage />} />
+              <Route path="/forgot-password" element={<ForgotPasswordPage />} />
 
               <Route path="/addPlaces" element={<AddPlacePage />} />
+
+              <Route path="/places" element={<PlacesPage /> } />
+
+              <Route path="/places/:id" element={ <PlacePage />} />
 
               {/* Protected routes */}
               <Route path="/update-profile" element={<UpdateProfilePage />} />
 
               <Route path="/users" element={<UsersPage />} />
-              
-              
+
+
         </Routes>
 
     </div>

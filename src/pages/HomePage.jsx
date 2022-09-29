@@ -9,6 +9,7 @@ import MapOffcanvas from '../components/MapOffcanvas'
 import FoodPlacesList from '../components/FoodPlacesList'
 //hooks
 import useGetPlaces from '../hooks/useGetPlaces'
+import AddtipForm from '../components/AddtipForm'
 // API
 import MapsAPI from '../services/mapsAPI'
 
@@ -101,6 +102,8 @@ const HomePage = () => {
 
     return (
         <>
+
+            <AddtipForm />
             {/* <h1>This is homepage</h1> */}
 
             {/* Sidebar containing list of food places */}

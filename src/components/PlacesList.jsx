@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
  * Component that will list all foodplaces in a listgroup
  *
  */
-const FoodPlacesList = ({foodPlaces, onFoodItemClick, isLoadingPlaces}) => {
+const PlacesList = ({foodPlaces, onFoodItemClick, isLoadingPlaces}) => {
 
     return (
         <div className="foodplaces-list-wrapper">
@@ -18,7 +18,7 @@ const FoodPlacesList = ({foodPlaces, onFoodItemClick, isLoadingPlaces}) => {
             }
             {
                 foodPlaces && (
-                    <ListGroup className="foodplace-listgroup">
+                    <ListGroup>
                         {
                             foodPlaces.map((foodplace, index) => (
                                 <ListGroup.Item action as={Link} key={index} onClick={() => {onFoodItemClick(foodplace)}}
@@ -27,6 +27,7 @@ const FoodPlacesList = ({foodPlaces, onFoodItemClick, isLoadingPlaces}) => {
                                     <span>{foodplace.adress + ' ' + foodplace.town}</span>
                                     <br />
                                     <span>{foodplace.supply} | {foodplace.type}</span>
+                                    <span>{foodplace.facebook}</span>
                                     <div className="foodplace-contact">
                                         {foodplace.phonenumber && (
                                             <a href={`tel:${foodplace.phonenumber}`}>{foodplace.phonenumber}</a>
@@ -48,4 +49,4 @@ const FoodPlacesList = ({foodPlaces, onFoodItemClick, isLoadingPlaces}) => {
 
 }
 
-export default FoodPlacesList
+export default PlacesList

@@ -10,7 +10,7 @@ const AddPlacePage = () => {
 
   const queryRef = query(
     collection(db,'place'),
-    where('admin', '==', true),
+    where('admin', '==', currentUser.admin ==true),
     orderBy('name')
   )
   const { data: place, isLoading } = useFirestoreQueryData(['place',], queryRef,{
@@ -22,7 +22,7 @@ const AddPlacePage = () => {
     <Container className="py-3">
 
         <div className="d-flex justify-content-between align-items-start mb-3">
-            <h1>Add a new place</h1>
+            <h1 className='h-text-color-dark'>Add a new place</h1>
         </div>
 
             <CreatePlaceForm />

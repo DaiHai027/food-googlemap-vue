@@ -15,6 +15,7 @@ const UpdateProfilePage = () => {
 	const [photo, setPhoto] = useState(null)
 	const [message, setMessage] = useState(null)
 	const {
+		update,
 		currentUser,
 		reloadUser,
 		setDisplayNameAndPhoto,
@@ -42,6 +43,7 @@ const UpdateProfilePage = () => {
 
 		setError(null);
 		setMessage(null);
+		console.log('photo', photo)
 
 		// update user profile
 		try {
@@ -61,7 +63,12 @@ const UpdateProfilePage = () => {
 			if (passwordRef.current.value) {
 				await setPassword(passwordRef.current.value)
 			}
-
+			
+			update({
+				email:emailRef.current.value, 
+				name:displayNameRef.current.value, 
+				photo
+			})
 			await reloadUser()
 
 			setMessage("Profile successfully updated")

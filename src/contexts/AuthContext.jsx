@@ -9,12 +9,11 @@ import {
 	updatePassword,
 	updateProfile,
 } from 'firebase/auth'
-import { doc, setDoc } from 'firebase/firestore'
+import { doc, setDoc, updateDoc } from 'firebase/firestore'
 import { ref, getDownloadURL, uploadBytes } from 'firebase/storage'
 import { auth, db, storage } from '../firebase'
 // loader
 import BeatLoader from 'react-spinners/BeatLoader'
-
 
 
 const AuthContext = createContext()
@@ -50,8 +49,23 @@ const AuthContextProvider = ({ children }) => {
 			admin: false,
 		})
 	}
+
+	const update = async ({email, name, photo}) => {
+
+		await setDisplayNameAndPhoto(name, photo)
+
+		await setEmail(email)
+		
+		await reloadUser()
+		console.log('auth.currentUser', auth.currentUser)
 	
-	
+		await updateDoc(doc(db, 'users', auth.currentUser.uid), {
+			email,
+			name:auth.currentUser.displayName,
+			photoURL:auth.currentUser.photoURL,			
+		})
+	}
+		
 
 	const login = (email, password) => {
 		return signInWithEmailAndPassword(auth, email, password)
@@ -82,7 +96,7 @@ const AuthContextProvider = ({ children }) => {
 		return updatePassword(currentUser, newPassword)
 	}
 
-	const setDisplayNameAndPhoto = async (displayName, photo) => {
+	const setDisplayNameAndPhoto = async (name, photo) => {
 		let photoURL = auth.currentUser.photoURL
 
 		if (photo) {
@@ -97,16 +111,21 @@ const AuthContextProvider = ({ children }) => {
 
 			console.log("Photo uploaded successfully, download url is:", photoURL)
 		}
+		if(name) {
+			console.log('name',name)
+		}
+
 
 		return updateProfile(auth.currentUser, {
-			displayName,
+			displayName: name,
 			photoURL,
 		})
 	}
 
 	useEffect(() => {
 		// listen for auth-state changes
-		const unsubscribe = onAuthStateChanged(auth, (user) => {
+		const unsubscribe = onAuthStateChanged(auth, user => {
+			console.log('auth-user', user)
 			setCurrentUser(user)
 			setUserName(user?.displayName)
 			setUserEmail(user?.email)
@@ -121,6 +140,7 @@ const AuthContextProvider = ({ children }) => {
 		
 		currentUser,
 		login,
+		update,
 		logout,
 		signup,
 		reloadUser,
