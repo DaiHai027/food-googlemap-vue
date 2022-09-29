@@ -28,7 +28,7 @@ function App() {
               {/* Guest routes */}
               <Route path="*" element={<NotFoundPage />} />
               <Route path="/" element={<HomePage />} />
-              
+
               <Route path="/login" element={<LoginPage />} />
               <Route path="/logout" element={<LogoutPage />} />
               <Route path="/signup" element={<SignupPage />} />
@@ -39,14 +39,14 @@ function App() {
 
               <Route path="/places" element={<PlacesPage /> } />
 
-              <Route path="/places/id" element={ <PlacePage />} />
+              <Route path="/places/:id" element={ <PlacePage />} />
 
               {/* Protected routes */}
               <Route path="/update-profile" element={<UpdateProfilePage />} />
 
               <Route path="/users" element={<UsersPage />} />
-              
-              
+
+
         </Routes>
 
     </div>

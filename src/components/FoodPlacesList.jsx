@@ -22,7 +22,7 @@ const FoodPlacesList = ({foodPlaces, onFoodItemClick, isLoadingPlaces}) => {
                         {
                             foodPlaces.map((foodplace, index) => (
                                 <ListGroup.Item action as={Link} key={index} onClick={() => {onFoodItemClick(foodplace)}}
-                                to={`/places/${foodPlaces.id}`}>
+                                to={`/places/${foodplace.id}`}>
                                     <h3>{foodplace.name}</h3>
                                     <span>{foodplace.adress + ' ' + foodplace.town}</span>
                                     <br />
