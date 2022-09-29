@@ -10995,15 +10995,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
 }
 
 .searchaddressform {
-  position: absolute;
-  width: 400px;
-  top: 100px;
-  left: 50px;
-  z-index: 99;
-  background-color: #f8ceca;
   padding: 10px;
-  border: #F25050 solid 1px;
-  border-radius: 7px;
 }
 
 .place-info-box {
@@ -11038,12 +11030,6 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
   color: #244020;
 }
 
-.foodplaces-list-wrapper {
-  background-color: #F27166;
-  padding: 15px;
-  position: absolute;
-  width: 500px;
-  top: 300px;
-  left: 50px;
-  z-index: 99;
+.offcanvas-bg {
+  background-color: #f8ceca;
 }/*# sourceMappingURL=App.css.map */
