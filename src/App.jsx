@@ -33,7 +33,7 @@ function App() {
               <Route path="/logout" element={<LogoutPage />} />
               <Route path="/signup" element={<SignupPage />} />
 
-              <Route path="/forgotPassword" element={<ForgotPasswordPage />} />
+              <Route path="/forgot-password" element={<ForgotPasswordPage />} />
 
               <Route path="/addPlaces" element={<AddPlacePage />} />
 
