@@ -1,5 +1,4 @@
 // bootstrap
-import ListGroupItem from 'react-bootstrap/ListGroupItem'
 import ListGroup from 'react-bootstrap/ListGroup'
 import Button from 'react-bootstrap/Button'
 import Image from 'react-bootstrap/Image'
