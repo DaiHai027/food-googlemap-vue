@@ -1,12 +1,15 @@
 import { useTable, useSortBy } from 'react-table'
 import { Table } from 'react-bootstrap'
-import { useMemo } from 'react'
+
+/**
+ *
+ * Component to display table with react-table
+ *
+ */
 
 const FoodPlacesTable = ({foodPlaces, onFoodItemClick, columns}) => {
 
-    // console.log(columns)
-    //console.log(foodPlaces)
-
+    // Get needed functions and properties from useTable
     const {
         getTableProps,
         getTableBodyProps,
