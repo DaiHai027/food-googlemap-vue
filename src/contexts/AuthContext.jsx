@@ -50,18 +50,19 @@ const AuthContextProvider = ({ children }) => {
 		})
 	}
 
-	const update = async (email, name, photo) => {
+	const update = async ({email, name, photo}) => {
 
 		await setDisplayNameAndPhoto(name, photo)
 
 		await setEmail(email)
 		
 		await reloadUser()
-
+		console.log('auth.currentUser', auth.currentUser)
+	
 		await updateDoc(doc(db, 'users', auth.currentUser.uid), {
-			name,
 			email,
-			photoURL: auth.currentUser.photoURL,			
+			name:auth.currentUser.displayName,
+			photoURL:auth.currentUser.photoURL,			
 		})
 	}
 		
@@ -95,7 +96,7 @@ const AuthContextProvider = ({ children }) => {
 		return updatePassword(currentUser, newPassword)
 	}
 
-	const setDisplayNameAndPhoto = async (displayName, photo) => {
+	const setDisplayNameAndPhoto = async (name, photo) => {
 		let photoURL = auth.currentUser.photoURL
 
 		if (photo) {
@@ -110,19 +111,20 @@ const AuthContextProvider = ({ children }) => {
 
 			console.log("Photo uploaded successfully, download url is:", photoURL)
 		}
-		if(displayName){
-			console.log('displayName', displayName)
+		if(name) {
+			console.log('name',name)
 		}
 
+
 		return updateProfile(auth.currentUser, {
-			displayName,
+			displayName: name,
 			photoURL,
 		})
 	}
 
 	useEffect(() => {
 		// listen for auth-state changes
-		const unsubscribe = auth.onAuthStateChanged(user => {
+		const unsubscribe = onAuthStateChanged(auth, user => {
 			console.log('auth-user', user)
 			setCurrentUser(user)
 			setUserName(user?.displayName)
