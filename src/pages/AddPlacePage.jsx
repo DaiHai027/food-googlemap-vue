@@ -22,7 +22,7 @@ const AddPlacePage = () => {
     <Container className="py-3">
 
         <div className="d-flex justify-content-between align-items-start mb-3">
-            <h1>Add a new place</h1>
+            <h1 className='h-text-color-dark'>Add a new place</h1>
         </div>
 
             <CreatePlaceForm />

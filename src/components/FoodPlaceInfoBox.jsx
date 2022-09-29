@@ -3,7 +3,7 @@ import MapsAPI from '../services/mapsAPI'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 //bootstrap
-import { Button } from 'react-bootstrap'
+import { Button, Card } from 'react-bootstrap'
 
 
 /**
@@ -14,13 +14,19 @@ import { Button } from 'react-bootstrap'
 const FoodPlaceInfoBox = ({userPosition, foodPlace, onClose}) => {
 
     return (        
-        <div className='place-info-box'>
-            <h5 className='h-text-color'>{foodPlace.name}</h5>
-            <p>{foodPlace.adress + ' ' + foodPlace.town}</p>
-            <p>{foodPlace.description}</p>
-            <a href={MapsAPI.getDirectionsLink(userPosition, foodPlace.coords)} target='_blank'>Directions</a>
-            <Button onClick={onClose} className='btn-color x-btn'><FontAwesomeIcon icon={faXmark} /></Button>
-        </div>    
+        <Card className='place-info-box'>
+            <div className='box-header'>
+                <h5 className='h-text-color-white'>{foodPlace.name}</h5>
+                <Button onClick={onClose} className='x-btn'><FontAwesomeIcon icon={faXmark} /></Button>
+            </div>
+            <div className='address-box'>
+                <p>{foodPlace.adress + ' ' + foodPlace.town}</p>
+                <p>{foodPlace.description}</p>
+                <a href={MapsAPI.getDirectionsLink(userPosition, foodPlace.coords)} target='_blank'>Directions</a>
+            
+            </div>
+            
+        </Card>    
     )
 
 }

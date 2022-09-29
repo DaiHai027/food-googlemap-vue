@@ -2,7 +2,7 @@ import React from 'react'
 
 const EditPlacePage = () => {
   return (
-    <div>EditPlacePage</div>
+    <div className='h-text-color-dark'>EditPlacePage</div>
   )
 }
 
