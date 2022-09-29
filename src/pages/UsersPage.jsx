@@ -7,6 +7,8 @@ import useUsers from '../hooks/useUsers'
 import UsersList from '../components/UsersList'
 // loader
 import BeatLoader from 'react-spinners/BeatLoader'
+// bootstrap
+import Container from 'react-bootstrap/Container'
 
 
 const UsersPage = () => {
@@ -17,7 +19,7 @@ const UsersPage = () => {
 
 
   return (
-    <>
+    <Container>
       <h1 className="h-text-color-dark">Edit Users</h1>
       {/* test switching between general users and admins */}
       {loading && <BeatLoader  color='#F27166' /> }
@@ -32,7 +34,7 @@ const UsersPage = () => {
       }
       
 
-    </>
+    </Container>
   )
 }
 
