@@ -36,6 +36,8 @@ const HomePage = () => {
     // State for food place currently selected
     const [currentSelectedFoodPlace, setCurrentSelectedFoodPlace] = useState(null)
 
+    const [queryLimits, setQueryLimits] = useState('All')
+
     const { data: foodPlaces, loading: isLoadingPlaces } = useGetPlaces()
 
     /**
@@ -88,6 +90,12 @@ const HomePage = () => {
         map.panTo(place.coords)
     }
 
+    const handleChangeQueryLimits = (sortOrder, type, supply) => {
+
+        setQueryLimits(value)
+        console.log(value)
+    }
+
     useEffect(() => {
 
         // If user browser shares its geolocation, set current user position to those coordinates
@@ -103,7 +111,11 @@ const HomePage = () => {
         <>
             {/* <h1>This is homepage</h1> */}
 
-            <MapOffcanvas foodPlaces={foodPlaces} onFoodItemClick={handleFoodItemClick} isLoadingPlaces={isLoadingPlaces} />
+            {
+                !isLoadingPlaces && (
+                    <MapOffcanvas foodPlaces={foodPlaces} onFoodItemClick={handleFoodItemClick} isLoadingPlaces={isLoadingPlaces} onChangeQueryLimits={handleChangeQueryLimits} />
+                )
+            }
 
             <div className='maps-wrapper'>
                 {
@@ -147,7 +159,7 @@ const HomePage = () => {
 
                             {/* Marker for each food place */}
                             {
-                                foodPlaces.map( (place, index) => (
+                                foodPlaces && foodPlaces.map( (place, index) => (
                                     <MarkerF
                                         key={index}
                                         position={place.coords}
