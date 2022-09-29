@@ -1,4 +1,5 @@
 import { ListGroup } from "react-bootstrap"
+import { Link } from 'react-router-dom'
 
 /**
  *
@@ -20,7 +21,8 @@ const FoodPlacesList = ({foodPlaces, onFoodItemClick, isLoadingPlaces}) => {
                     <ListGroup className="foodplace-listgroup">
                         {
                             foodPlaces.map((foodplace, index) => (
-                                <ListGroup.Item action key={index} onClick={() => {onFoodItemClick(foodplace)}}>
+                                <ListGroup.Item action as={Link} key={index} onClick={() => {onFoodItemClick(foodplace)}}
+                                to={`/places/${foodPlaces.id}`}>
                                     <h3>{foodplace.name}</h3>
                                     <span>{foodplace.adress + ' ' + foodplace.town}</span>
                                     <br />
