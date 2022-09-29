@@ -4,6 +4,12 @@ import Button from 'react-bootstrap/Button'
 import  ListGroup  from 'react-bootstrap/ListGroup'
 import FoodPlacesTable from './FoodPlacesTable'
 import useGetQueryPlaces from '../hooks/useGetQueryPlaces'
+import { collection, orderBy, query, where } from 'firebase/firestore' 
+import { useFirestoreQueryData } from '@react-query-firebase/firestore'
+import { db } from '../firebase'
+//component
+import SearchAddressForm from '../components/SearchAddressForm'
+
 
 const MapOffcanvas = ({onFoodItemClick}) => {
 
@@ -53,6 +59,7 @@ const MapOffcanvas = ({onFoodItemClick}) => {
     const handleClose = () => setShow(false)
     const handleShow = () => setShow(true)
 
+
     // Update query settings
     const handleFilterPlaces = () => {
         setQueryLimits({
@@ -62,6 +69,34 @@ const MapOffcanvas = ({onFoodItemClick}) => {
         })
     }
 
+     const queryRef = query(
+        collection(db, 'places'),
+        // where('town', '=='  userPosition
+         // ),
+         orderBy('name')
+        )
+    
+    
+     /**
+     *
+     * Function to handle when search form has been submitted
+     *
+     */
+      const handleOnSubmit = async (address) => {
+
+        // If no address has been given, return
+        if(!address) {
+            return
+        }
+
+        // Get coordinates for address
+        const newCoords = await MapsAPI.getLatAndLng(address)
+        // Center map on the new coordinates
+        map.panTo(newCoords)
+
+    }
+
+     
   return (
     <>
 
@@ -69,10 +104,11 @@ const MapOffcanvas = ({onFoodItemClick}) => {
             Places near you
         </Button>
 
-        <Offcanvas show={show} onHide={handleClose}>
+                    <Offcanvas show={show} onHide={handleClose} className='offcanvas-bg'>
+
             <Offcanvas.Header closeButton>
 
-                <Offcanvas.Title>Places near you</Offcanvas.Title>
+                <Offcanvas.Title className='h-text-color-dark'>Places near you</Offcanvas.Title>
 
             </Offcanvas.Header>
             <Offcanvas.Body>
@@ -111,6 +147,10 @@ const MapOffcanvas = ({onFoodItemClick}) => {
 
                     <FoodPlacesTable foodPlaces={data} onFoodItemClick={onFoodItemClick} columns={columns} />
                     <ListGroup className="foodplace-listgroup">
+                        
+                        <SearchAddressForm onSubmit={handleOnSubmit} />
+                    
+
                         {
                             data.map((foodplace, index) => (
                                 <ListGroup.Item action key={index} onClick={() => {onFoodItemClick(foodplace)}}>

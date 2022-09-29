@@ -11,10 +11,7 @@ const PlacesPage = () => {
 
   return (
     <Container>
-        <div>
-            List of Places
-        </div>
-
+        <h1 className="h-text-color-dark">Restaurants</h1>
         <FoodPlacesList foodPlaces={foodPlaces} isLoadingPlaces={isLoadingPlaces} />
     </Container>
     

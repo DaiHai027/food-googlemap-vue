@@ -1,5 +1,7 @@
 import { ListGroup } from "react-bootstrap"
 import { Link } from 'react-router-dom'
+// loader
+import BeatLoader from 'react-spinners/BeatLoader'
 
 /**
  *
@@ -10,10 +12,9 @@ const PlacesList = ({foodPlaces, onFoodItemClick, isLoadingPlaces}) => {
 
     return (
         <div className="foodplaces-list-wrapper">
-            <h2>Restaurants</h2>
             {
                 isLoadingPlaces && (
-                    <p>... Loading food places</p>
+                    <BeatLoader  color='#F27166' />
                 )
             }
             {

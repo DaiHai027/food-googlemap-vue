@@ -34,17 +34,19 @@ const Navigation = () => {
                                 {/* User is logged in */}
                                 <Nav.Link as={NavLink} end to="/addPlaces">Add a new Places</Nav.Link>
                                 <Nav.Link as={NavLink} end to="/places">List of Places</Nav.Link>
+                             
+                                <NavDropdown align={'end'}
+                                    title={
+                                        userPhotoUrl
+                                        ? <Image
+                                            src={userPhotoUrl}
+                                            height={30}
+                                            width={30}
+                                            fluid
+                                            roundedCircle
+                                            />
+                                        : userName || userEmail
 
-                                <NavDropdown title={
-                                    userPhotoUrl
-                                    ? <Image
-                                        src={userPhotoUrl}
-                                        height={30}
-                                        width={30}
-                                        fluid
-                                        roundedCircle
-                                        />
-                                    : userName || userEmail
                                 }>
                                     <NavLink to="/update-profile"
                                     className="dropdown-item">Update Profile</NavLink>
