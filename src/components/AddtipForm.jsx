@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form'
 import { collection, addDoc } from 'firebase/firestore'
 import { db } from '../firebase'
 import { useState } from 'react'
+import { toast } from 'react-toastify'
 
 
 const AddtipForm = () => {
@@ -22,7 +23,15 @@ const AddtipForm = () => {
             email: data.email,
             tip: data.tip
         })
-        alert("Thanks for your sugestion!")
+        toast.info('Thanks for your suggestion!', {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
         reset()
     }
   return (
