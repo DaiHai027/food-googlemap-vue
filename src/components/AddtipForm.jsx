@@ -52,6 +52,7 @@ const AddtipForm = () => {
                             placeholder="Email"
                             type="text"
                             />
+                            {errors.email && <div className="invalid">{errors.email.message}</div>}
                 </Form.Group>
 
          {/* Form for tip */}
@@ -68,7 +69,7 @@ const AddtipForm = () => {
             placeholder="Write your tip here"
             as="textarea"
             />
-            
+            {errors.tip && <div className="invalid">{errors.tip.message}</div>}
             <Modal.Footer>
                 <Button variant="success" type="submit">Send</Button>
             </Modal.Footer>

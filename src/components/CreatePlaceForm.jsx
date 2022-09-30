@@ -48,6 +48,7 @@ const CreatePlaceForm = () => {
                 placeholder="Name"
                 type="text"
                 />
+                {errors.name && <div className="invalid">{errors.name.message}</div>}
             </Form.Group>
 
                 {/* Form for adress */}
@@ -64,7 +65,7 @@ const CreatePlaceForm = () => {
                 placeholder="Adress"
                 type="text"
                 />
-
+                {errors.adress && <div className="invalid">{errors.adress.message}</div>}
             </Form.Group>
 
                {/* Form for Town */}
@@ -81,7 +82,7 @@ const CreatePlaceForm = () => {
                 placeholder="Town"
                 type="text"
                 />
-
+                {errors.town && <div className="invalid">{errors.town.message}</div>}
             </Form.Group>
 
                 {/* Form for Cuisine */}
@@ -94,7 +95,7 @@ const CreatePlaceForm = () => {
                 placeholder="Cusine"
                 type="text"
                 />
-
+                {errors.cuisine && <div className="invalid">{errors.cuisine.message}</div>}
                 </Form.Group>
 
                 {/* Form for Supply */}
@@ -108,6 +109,7 @@ const CreatePlaceForm = () => {
                 placeholder="Supply"
                 type="text"
                 />
+                {errors.supply && <div className="invalid">{errors.supply.message}</div>}
             </Form.Group>
 
                 {/* Form for Phonenumber */}
@@ -171,7 +173,7 @@ const CreatePlaceForm = () => {
                 placeholder="Type"
                 type="text"
                 />
-
+                {errors.type && <div className="invalid">{errors.type.message}</div>}
             </Form.Group>
 
             {/* Form for Description */}
@@ -190,6 +192,7 @@ const CreatePlaceForm = () => {
                 as="textarea"
                 rows={3}
                 />
+                {errors.description && <div className="invalid">{errors.description.message}</div>}
             </Form.Group>
 
             <Button variant="success" type="submit">Create</Button>
