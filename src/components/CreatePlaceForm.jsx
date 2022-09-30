@@ -1,7 +1,6 @@
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import { useForm } from 'react-hook-form'
-import { toast } from 'react-toastify'
 import { collection, addDoc } from 'firebase/firestore'
 import { db } from '../firebase'
 import mapsAPI from '../services/mapsAPI'
@@ -29,7 +28,7 @@ const CreatePlaceForm = () => {
         })
 
         alert("A new food place was created!")
-        //reset()
+        reset()
     }
     return (
         <Form onSubmit={handleSubmit(onCreatePlace)} noValidate>
