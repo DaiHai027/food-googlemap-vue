@@ -33,7 +33,8 @@ const Navigation = () => {
                             <>
                                 {/* User is logged in */}
                                 <Nav.Link as={NavLink} end to="/addPlaces">Add a new Places</Nav.Link>
-                                <Nav.Link as={NavLink} end to="/places">List of Places</Nav.Link>
+                                <Nav.Link as={NavLink} end to="/places">Foodplaces</Nav.Link>
+                                <Nav.Link as={NavLink} end to="/tips">Suggestions</Nav.Link>
                              
                                 <NavDropdown align={'end'}
                                     title={
