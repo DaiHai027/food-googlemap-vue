@@ -39,7 +39,7 @@ const HomePage = () => {
 
     const { data: foodPlaces, loading: isLoadingPlaces } = useGetPlaces()
 
-   
+
 
     /**
      *
@@ -72,6 +72,25 @@ const HomePage = () => {
         map.panTo(place.coords)
     }
 
+    /**
+     *
+     * Function to handle when search adress form has been submitted
+     *
+     */
+    const handleOnSubmit = async (address) => {
+
+        // If no address has been given, return
+        if(!address) {
+            return
+        }
+
+        // Get coordinates for address
+        const newCoords = await MapsAPI.getLatAndLng(address)
+        // Center map on the new coordinates
+        map.panTo(newCoords)
+
+    }
+
     useEffect(() => {
 
         // If user browser shares its geolocation, set current user position to those coordinates
@@ -90,7 +109,7 @@ const HomePage = () => {
             {/* <h1>This is homepage</h1> */}
 
             {/* Sidebar containing list of food places */}
-            <MapOffcanvas onFoodItemClick={handleFoodItemClick} />
+            <MapOffcanvas onFoodItemClick={handleFoodItemClick} onAddressFormSubmit={handleOnSubmit} />
 
             <div className='maps-wrapper'>
                 {
