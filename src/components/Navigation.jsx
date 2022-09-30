@@ -1,5 +1,9 @@
 import { Link, NavLink } from "react-router-dom"
 import { useAuthContext } from "../contexts/AuthContext"
+import { useState } from "react"
+// hooks
+import useAdmin from '../hooks/useAdmin'
+import useUser from '../hooks/useUser'
 // bootstrap
 import Container  from "react-bootstrap/Container"
 import Nav from "react-bootstrap/Nav"
@@ -7,9 +11,24 @@ import Navbar from "react-bootstrap/Navbar"
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import Image from 'react-bootstrap/Image'
 
+
 const Navigation = () => {
-    const { currentUser, userName, userEmail, userPhotoUrl} = useAuthContext()
-    console.log('user', userPhotoUrl, userName)
+    const [admin, setAdmin] = useState(false)
+    const { data, loading } = useUser(id)
+    const { currentUser, userName, userEmail, userPhotoUrl} = useAuthContext() 
+    // const id = currentUser.uid
+    // const { isAdmin } = useAdmin(id) 
+
+    // console.log('current user id', currentUser.uid)
+    // if(currentUser){
+    //     const id = currentUser.uid
+    //     // const { isAdmin } = useAdmin(id)  
+    //     // console.log('isAdmin', isAdmin)
+    //     //setAdmin(isAdmin)
+    // }
+    // console.log('isAdmin', isAdmin)
+    console.log('admin', data.admin)
+
 
   return (
     <Navbar className="navbar" expand="md">
@@ -28,10 +47,8 @@ const Navigation = () => {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ms-auto align-items-center">
-                    {
-                        currentUser? (
-                            <>
-                                                                                         
+                    {currentUser ? (
+                            <>                                         
                                 <NavDropdown align={'end'}
                                     title={
                                         userPhotoUrl
@@ -44,18 +61,32 @@ const Navigation = () => {
                                             roundedCircle
                                             />
                                         : userName || userEmail
+                                    }>
 
-                                }>
-                                    <NavLink to="/update-profile" className="dropdown-item">Update Profile</NavLink>
+                                    <NavLink to="/update-profile" className="dropdown-item">
+                                        Update Profile
+                                    </NavLink>
                                     <NavDropdown.Divider />
 
-                                    <NavLink to="/users" className="dropdown-item">Edit Users</NavLink>
-                                    <NavLink to="/addPlaces" className="dropdown-item">Add a new Places</NavLink>
-                                    <NavLink to="/places" className="dropdown-item">List of Places</NavLink>
+                                    {/* admin only */}
+                                     
+                                    <NavLink to="/users" className="dropdown-item">
+                                        Edit Users
+                                    </NavLink>
+                                                                            
+                                    <NavLink to="/addPlaces" className="dropdown-item">
+                                        Add a new Places
+                                    </NavLink>
+
+                                    <NavLink to="/places" className="dropdown-item">
+                                        List of Places
+                                    </NavLink>
+
                                     <NavDropdown.Divider />
 
-                                    <NavLink to="/logout"
-                                    className="dropdown-item">Log Out</NavLink>
+                                    {/* logout */}
+
+                                    <NavLink to="/logout" className="dropdown-item">Log Out</NavLink>
                                 </NavDropdown>
                             </>
                         ) : (
