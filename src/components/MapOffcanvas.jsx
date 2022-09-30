@@ -4,14 +4,14 @@ import Button from 'react-bootstrap/Button'
 import  ListGroup  from 'react-bootstrap/ListGroup'
 import FoodPlacesTable from './FoodPlacesTable'
 import useGetQueryPlaces from '../hooks/useGetQueryPlaces'
-import { collection, orderBy, query, where } from 'firebase/firestore' 
+import { collection, orderBy, query, where } from 'firebase/firestore'
 import { useFirestoreQueryData } from '@react-query-firebase/firestore'
 import { db } from '../firebase'
 //component
 import SearchAddressForm from '../components/SearchAddressForm'
 
 
-const MapOffcanvas = ({onFoodItemClick}) => {
+const MapOffcanvas = ({onFoodItemClick, onAddressFormSubmit}) => {
 
     // What columns table should include
     const columns = useMemo( () => {
@@ -75,8 +75,8 @@ const MapOffcanvas = ({onFoodItemClick}) => {
          // ),
          orderBy('name')
         )
-    
-    
+
+
      /**
      *
      * Function to handle when search form has been submitted
@@ -89,14 +89,12 @@ const MapOffcanvas = ({onFoodItemClick}) => {
             return
         }
 
-        // Get coordinates for address
-        const newCoords = await MapsAPI.getLatAndLng(address)
-        // Center map on the new coordinates
-        map.panTo(newCoords)
+        // Let parent component take over
+        onAddressFormSubmit(address)
 
     }
 
-     
+
   return (
     <>
 
@@ -147,9 +145,9 @@ const MapOffcanvas = ({onFoodItemClick}) => {
 
                     <FoodPlacesTable foodPlaces={data} onFoodItemClick={onFoodItemClick} columns={columns} />
                     <ListGroup className="foodplace-listgroup">
-                        
+
                         <SearchAddressForm onSubmit={handleOnSubmit} />
-                    
+
 
                         {
                             data.map((foodplace, index) => (
