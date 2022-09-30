@@ -9,7 +9,7 @@ import { useFirestoreQueryData } from '@react-query-firebase/firestore'
 import { db } from '../firebase'
 //component
 import SearchAddressForm from '../components/SearchAddressForm'
-
+import MapsAPI from '../services/mapsAPI'
 
 const MapOffcanvas = ({onFoodItemClick, onAddressFormSubmit}) => {
 
@@ -47,10 +47,12 @@ const MapOffcanvas = ({onFoodItemClick, onAddressFormSubmit}) => {
     const [nameOrder, setNameOrder] = useState('asc')
     const [supplyWhere, setSupplyWhere] = useState('All')
     const [typeWhere, setTypeWhere] = useState('All')
+    const [townWhere, setTownWhere] = useState(null)
     const [queryLimits, setQueryLimits] = useState({
         nameOrder,
         supplyWhere,
-        typeWhere
+        typeWhere,
+        townWhere,
     })
 
     // Get list of food places from hook
@@ -61,21 +63,14 @@ const MapOffcanvas = ({onFoodItemClick, onAddressFormSubmit}) => {
 
 
     // Update query settings
-    const handleFilterPlaces = () => {
+    const handleFilterPlaces = (town) => {
         setQueryLimits({
             nameOrder,
             supplyWhere,
-            typeWhere
+            typeWhere,
+            townWhere: town,
         })
     }
-
-     const queryRef = query(
-        collection(db, 'places'),
-        // where('town', '=='  userPosition
-         // ),
-         orderBy('name')
-        )
-
 
      /**
      *
@@ -89,11 +84,20 @@ const MapOffcanvas = ({onFoodItemClick, onAddressFormSubmit}) => {
             return
         }
 
+        const town = await MapsAPI.getTown(address)
+
+        setTownWhere(town)
+        handleFilterPlaces(town)
+
         // Let parent component take over
         onAddressFormSubmit(address)
 
     }
 
+    const resetTownWhere = () => {
+        setTownWhere(null)
+        handleFilterPlaces(null)
+    }
 
   return (
     <>
@@ -141,13 +145,14 @@ const MapOffcanvas = ({onFoodItemClick, onAddressFormSubmit}) => {
                         <option value="desc">Descending</option>
                     </select>
 
-                    <Button onClick={handleFilterPlaces}>Filter</Button>
+                    <Button onClick={() =>{handleFilterPlaces(townWhere)}}>Filter</Button>
 
                     <FoodPlacesTable foodPlaces={data} onFoodItemClick={onFoodItemClick} columns={columns} />
+
+                    <Button onClick={resetTownWhere}>Show for all towns</Button>
+                    <SearchAddressForm onSubmit={handleOnSubmit} />
+
                     <ListGroup className="foodplace-listgroup">
-
-                        <SearchAddressForm onSubmit={handleOnSubmit} />
-
 
                         {
                             data.map((foodplace, index) => (

@@ -23,6 +23,18 @@ const getLatAndLng = async (address) => {
 
 }
 
+const getTown = async (adress) => {
+
+    const res = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${adress}&key=${apiKey}`)
+
+    const resres = res.data.results[0].address_components.filter((component) => {
+        return component.types.includes('locality') || component.types.includes('postal_town')
+    })
+
+    return resres[0].long_name
+
+}
+
 /**
  *
  * Function to get directions guide from google between two places
@@ -42,6 +54,7 @@ const getDirectionsLink = (origin, destination) => {
 const exports = {
     getLatAndLng,
     getDirectionsLink,
+    getTown,
 }
 
 export default exports
