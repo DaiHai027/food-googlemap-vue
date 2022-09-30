@@ -28,7 +28,7 @@ const CreatePlaceForm = () => {
             coords: await mapsAPI.getLatAndLng(data.adress + data.town)
         })
 
-        toast.success("A new Place was created! Yey!")
+        alert("A new food place was created!")
         //reset()
     }
     return (

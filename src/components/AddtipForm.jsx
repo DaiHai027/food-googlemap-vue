@@ -22,7 +22,7 @@ const AddtipForm = () => {
             email: data.email,
             tip: data.tip
         })
-   
+        alert("Thanks for your sugestion!")
         reset()
     }
   return (
