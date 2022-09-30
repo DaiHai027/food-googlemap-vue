@@ -39,6 +39,7 @@ const Navigation = () => {
                                     title={
                                         userPhotoUrl
                                         ? <Image
+                                            className="photo-placeholder"
                                             src={userPhotoUrl}
                                             height={30}
                                             width={30}

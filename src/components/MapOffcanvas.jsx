@@ -143,7 +143,7 @@ const MapOffcanvas = ({onFoodItemClick}) => {
                         <option value="desc">Descending</option>
                     </select>
 
-                    <Button onClick={handleFilterPlaces}>Filter</Button>
+                    <Button onClick={handleFilterPlaces} className='btn-color my-3'>Filter</Button>
 
                     <FoodPlacesTable foodPlaces={data} onFoodItemClick={onFoodItemClick} columns={columns} />
                     <ListGroup className="foodplace-listgroup">

@@ -8,22 +8,20 @@ import { db } from '../firebase'
 const AddPlacePage = () => {
   const { currentUser } = useAuthContext()
 
-  const queryRef = query(
-    collection(db,'place'),
-    where('admin', '==', currentUser.admin ==true),
-    orderBy('name')
-  )
-  const { data: place, isLoading } = useFirestoreQueryData(['place',], queryRef,{
-      idField: 'id',
-      subscribe: true,
-  })
+  // const queryRef = query(
+  //   collection(db,'places'),
+  //   orderBy('name')
+  // )
+  // const { data: place, isLoading } = useFirestoreQueryData(['places',], queryRef,{
+  //     idField: 'id',
+  //     subscribe: true,
+  // })
+  // console.log('place', place)
 
   return (
     <Container className="py-3">
-
-        <div className="d-flex justify-content-between align-items-start mb-3">
             <h1 className='h-text-color-dark'>Add a new place</h1>
-        </div>
+       
 
             <CreatePlaceForm />
 

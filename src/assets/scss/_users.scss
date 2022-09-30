@@ -8,8 +8,10 @@
     
     .user-image {
         margin-right: 1rem;
-        width: 10%;
-        background-color: #888;
+        width: 80px　!important;
+        height: 80px !important;
+        background-color: #ddd;
+        object-fit:cover;
     }
 
     .user-info {
