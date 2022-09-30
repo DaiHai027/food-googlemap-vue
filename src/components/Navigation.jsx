@@ -13,8 +13,7 @@ const Navigation = () => {
     const { currentUser, userName, userEmail, userPhotoUrl} = useAuthContext()
     console.log('user', userPhotoUrl, userName)
 
-    const id = currentUser.uid
-    const { isAdmin } = useAdmin(id)
+
 
   return (
     <Navbar className="navbar" expand="md">
@@ -37,11 +36,15 @@ const Navigation = () => {
                         currentUser? (
                             <>
                                 {/* User is logged in */}
-
-                                <Nav.Link as={NavLink} end to="/addPlaces">Add a new Places</Nav.Link>
-                                <Nav.Link as={NavLink} end to="/places">Foodplaces</Nav.Link>
-                                <Nav.Link as={NavLink} end to="/tips">Suggestions</Nav.Link>
-
+                                
+                                
+                                
+                                    <Nav.Link as={NavLink} end to="/addPlaces">Add a new Places</Nav.Link>
+                                    <Nav.Link as={NavLink} end to="/places">Foodplaces</Nav.Link>
+                                    <Nav.Link as={NavLink} end to="/tips">Suggestions</Nav.Link> 
+                                    
+                                
+                                
                                 <NavDropdown align={'end'}
                                     title={
                                         userPhotoUrl

@@ -18,7 +18,7 @@ import PlacesPage from './pages/PlacesPage'
 import PlacePage from './pages/PlacePage'
 import TipsPage from './pages/TipsPage'
 
-//import { ToastContainer } from 'react-toastify'
+import { ToastContainer } from 'react-toastify'
 
 import RequireAuth from './components/RequireAuth'
 
@@ -71,7 +71,16 @@ function App() {
 
         </Routes>
 
-        {/* <ToastContainer autoClose={3000} /> */}
+        <ToastContainer 
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover />
         <ReactQueryDevtools />
 
     </div>

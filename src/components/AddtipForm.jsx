@@ -1,8 +1,7 @@
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
-import Modal from 'react-bootstrap/Modal';
+import Modal from 'react-bootstrap/Modal'
 import { useForm } from 'react-hook-form'
-import { toast } from 'react-toastify'
 import { collection, addDoc } from 'firebase/firestore'
 import { db } from '../firebase'
 import { useState } from 'react'
@@ -23,7 +22,7 @@ const AddtipForm = () => {
             email: data.email,
             tip: data.tip
         })
-        toast.success("Your tip has been sent! Thank you!")
+   
         reset()
     }
   return (
