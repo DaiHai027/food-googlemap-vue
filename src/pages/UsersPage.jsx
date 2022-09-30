@@ -21,11 +21,11 @@ const UsersPage = () => {
   return (
     <Container>
       <h1 className="h-text-color-dark">Edit Users</h1>
-      {/* test switching between general users and admins */}
       {loading && <BeatLoader  color='#F27166' /> }
       
       {!loading && 
         <>
+          {/* switching between general users and admins */}
           {isAdmin 
             ? <UsersList users={users}/> 
             : <p>You do not have permission to edit. Please contact the administrator.</p>
