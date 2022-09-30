@@ -152,7 +152,8 @@ const MapOffcanvas = ({onFoodItemClick, onAddressFormSubmit}) => {
                         <option value="desc">Descending</option>
                     </select>
 
-                    <Button onClick={() =>{handleFilterPlaces(townWhere)}}>Filter</Button>
+
+                    <Button onClick={() =>{handleFilterPlaces(townWhere)}} className='btn-color my-3'>Filter</Button>
 
                     <FoodPlacesTable foodPlaces={data} onFoodItemClick={onFoodItemClick} columns={columns} />
 

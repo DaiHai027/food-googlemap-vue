@@ -83,11 +83,11 @@ const UpdateProfilePage = () => {
 
 	return (
 		<Container className="py-3 center-y">
-			{}
+			<h1 className="h-text-color-dark">Update Profile</h1>
 			<Row>
 				<Col md={{ span: 6, offset: 3 }}>
 					<Card>
-						<Card.Header as="h5">Update Profile</Card.Header>
+						
 						<Card.Body>
 							{error && (<Alert variant="danger">{error}</Alert>)}
 							{message && (<Alert variant="success">{message}</Alert>)}
@@ -98,6 +98,8 @@ const UpdateProfilePage = () => {
 									<Image
 										src={currentUser.photoURL || 'https://via.placeholder.com/225'}
 										fluid
+										width="200px"
+										height="200px"
 										roundedCircle
 									/>
 								</div>

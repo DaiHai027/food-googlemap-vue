@@ -20,10 +20,10 @@ const UsersListItem = ({ users }) => {
                 <Image 
                     className='user-image'
                     src={user.photoURL}
-                    height={50}
-                    width={50}
                     fluid
                     roundedCircle
+                    height={'80'}
+                    width={'80'}
                 />
 
                 <div className='user-info'>
