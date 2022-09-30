@@ -18,6 +18,8 @@ import PlacesPage from './pages/PlacesPage'
 import PlacePage from './pages/PlacePage'
 import TipsPage from './pages/TipsPage'
 
+//import { ToastContainer } from 'react-toastify'
+
 
 function App() {
 
@@ -36,11 +38,29 @@ function App() {
 
               <Route path="/forgot-password" element={<ForgotPasswordPage />} />
 
-              <Route path="/tips" element={<TipsPage />} />
+              <Route path="/tips" element={
+                      <RequireAuth>
+                        <TipsPage /> 
+                      </RequireAuth>
+                      } />
 
-              <Route path="/addPlaces" element={<AddPlacePage />} />
-              <Route path="/places" element={<PlacesPage /> } />
-              <Route path="/places/:id" element={ <PlacePage />} />
+              <Route path="/addPlaces" element={
+                      <RequireAuth>
+                        <AddPlacePage />
+                      </RequireAuth>
+                      } />
+
+              <Route path="/places" element={
+                      <RequireAuth>
+                        <PlacesPage />
+                      </RequireAuth> 
+                      } />
+
+              <Route path="/places/:id" element={
+                      <RequireAuth>
+                        <PlacePage />
+                      </RequireAuth> 
+                      } />
 
               {/* Protected routes */}
               <Route path="/update-profile" element={<UpdateProfilePage />} />
@@ -48,6 +68,8 @@ function App() {
               <Route path="/users" element={<UsersPage />} />
 
         </Routes>
+
+        {/* <ToastContainer autoClose={3000} /> */}
         <ReactQueryDevtools />
 
     </div>

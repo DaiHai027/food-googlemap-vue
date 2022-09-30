@@ -23,14 +23,13 @@ const AddtipForm = () => {
             email: data.email,
             tip: data.tip
         })
-        
-        toast.success("Your tip has been sent!")
-
+        toast.success("Your tip has been sent! Thank you!")
+        reset()
     }
   return (
     <>
-        <Button variant="info" onClick={handleShow}>
-            Give us a tip about a plce!
+        <Button variant="outline-primary tip-button" onClick={handleShow}>
+            Give us a tip about a foodplace!
         </Button>
 
     <Modal show={show} onHide={handleClose}>
