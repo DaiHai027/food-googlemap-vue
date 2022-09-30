@@ -34,7 +34,7 @@ function App() {
               <Route path="/logout" element={<LogoutPage />} />
               <Route path="/signup" element={<SignupPage />} />
 
-              <Route path="/forgotPassword" element={<ForgotPasswordPage />} />
+              <Route path="/forgot-password" element={<ForgotPasswordPage />} />
 
               <Route path="/tips" element={<TipsPage />} />
 
@@ -48,6 +48,7 @@ function App() {
               <Route path="/users" element={<UsersPage />} />
 
         </Routes>
+        <ReactQueryDevtools />
 
     </div>
   )

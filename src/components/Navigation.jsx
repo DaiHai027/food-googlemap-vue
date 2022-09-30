@@ -10,12 +10,12 @@ import Image from 'react-bootstrap/Image'
 const Navigation = () => {
     const { currentUser, userName, userEmail, userPhotoUrl} = useAuthContext()
     console.log('user', userPhotoUrl, userName)
-    
+
   return (
     <Navbar className="navbar" expand="md">
         <Container>
-            <Navbar.Brand as={Link} to="/" >
-                <img 
+            <Navbar.Brand as={Link} to="/">
+                <img
                     src="/src/assets/icons/map.png"
                     width="30"
                     height="30"
@@ -36,21 +36,23 @@ const Navigation = () => {
                                 <Nav.Link as={NavLink} end to="/places">Foodplaces</Nav.Link>
                                 <Nav.Link as={NavLink} end to="/tips">Suggestions</Nav.Link>
                              
-                                <NavDropdown title={
-                                    userPhotoUrl
-                                    ? <Image
-                                        src={userPhotoUrl}
-                                        height={30}
-                                        width={30}
-                                        fluid
-                                        roundedCircle
-                                        />
-                                    : userName || userEmail
+                                <NavDropdown align={'end'}
+                                    title={
+                                        userPhotoUrl
+                                        ? <Image
+                                            src={userPhotoUrl}
+                                            height={30}
+                                            width={30}
+                                            fluid
+                                            roundedCircle
+                                            />
+                                        : userName || userEmail
+
                                 }>
                                     <NavLink to="/update-profile"
                                     className="dropdown-item">Update Profile</NavLink>
                                     <NavDropdown.Divider />
-                                    
+
                                     <NavLink to="/users"
                                     className="dropdown-item">Edit Users</NavLink>
 

@@ -38,7 +38,7 @@ const ForgotPasswordPage = () => {
 				<Col md={{ span: 6, offset: 3 }}>
 					<Card>
 						<Card.Body>
-							<Card.Title className="mb-3">Forgot Password?</Card.Title>
+							<Card.Title className="mb-3 h-text-color-dark">Forgot Password?</Card.Title>
 
 							{error && (<Alert variant="danger">{error}</Alert>)}
 							{message && (<Alert variant="success">{message}</Alert>)}
@@ -54,7 +54,7 @@ const ForgotPasswordPage = () => {
 									<Form.Control type="email" ref={emailRef} required />
 								</Form.Group>
 
-								<Button disabled={loading} type="submit">Send password reset email</Button>
+								<Button disabled={loading} type="submit" className='btn-color'>Send password reset email</Button>
 							</Form>
 
 						</Card.Body>

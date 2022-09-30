@@ -39,24 +39,7 @@ const HomePage = () => {
 
     const { data: foodPlaces, loading: isLoadingPlaces } = useGetPlaces()
 
-    /**
-     *
-     * Function to handle when search form has been submitted
-     *
-     */
-    const handleOnSubmit = async (address) => {
-
-        // If no address has been given, return
-        if(!address) {
-            return
-        }
-
-        // Get coordinates for address
-        const newCoords = await MapsAPI.getLatAndLng(address)
-        // Center map on the new coordinates
-        map.panTo(newCoords)
-
-    }
+   
 
     /**
      *
@@ -106,7 +89,8 @@ const HomePage = () => {
             <AddtipForm />
             {/* <h1>This is homepage</h1> */}
 
-            <MapOffcanvas foodPlaces={foodPlaces} onFoodItemClick={handleFoodItemClick} isLoadingPlaces={isLoadingPlaces} />
+            {/* Sidebar containing list of food places */}
+            <MapOffcanvas onFoodItemClick={handleFoodItemClick} />
 
             <div className='maps-wrapper'>
                 {
@@ -120,7 +104,7 @@ const HomePage = () => {
 
                         <>
                         {/* Form for centering map at different address */}
-                        <SearchAddressForm onSubmit={handleOnSubmit} />
+                        {/* <SearchAddressForm onSubmit={handleOnSubmit} /> */}
 
                         {/* <FoodPlacesList foodPlaces={foodPlaces} onFoodItemClick={handleFoodItemClick} isLoadingPlaces={isLoadingPlaces} /> */}
 
@@ -150,7 +134,7 @@ const HomePage = () => {
 
                             {/* Marker for each food place */}
                             {
-                                foodPlaces.map( (place, index) => (
+                                foodPlaces && foodPlaces.map( (place, index) => (
                                     <MarkerF
                                         key={index}
                                         position={place.coords}

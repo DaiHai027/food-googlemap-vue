@@ -4,7 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 
 h1,h2,h3,h4,h5 {
-    font-family: 'Acme', sans-serif;    
+    font-family: 'Acme', sans-serif;
 }
 
 .h-text-color-white {
@@ -22,7 +22,6 @@ h1,h2,h3,h4,h5 {
     font-family: 'Acme', sans-serif;
     color: #244020;
 }
-
 
 .btn-color {
     background-color: #F25050;
@@ -53,17 +52,8 @@ h1,h2,h3,h4,h5 {
     position: relative;
 }
 
-.searchaddressform {
-    position: absolute;
-    width: 400px;
-    top: 100px;
-    left: 50px;
-    z-index: 99;
-    background-color: #f8ceca;
+.searchaddressform {    
     padding: 10px;
-    border:  #F25050 solid 1px;
-    border-radius: 7px;
-
 }
 
 
@@ -74,15 +64,14 @@ h1,h2,h3,h4,h5 {
     padding: 8px;
     display: flex;
 
-    
+
     .box-header {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         margin-bottom: 2px;
     }
-    
-    
+
 
     .x-btn {
         margin-bottom: 2px;
@@ -99,29 +88,34 @@ h1,h2,h3,h4,h5 {
     .address-box {
         background-color: #f8ceca;
         border-radius: 7px;
-        padding: 7px; 
-        margin: auto; 
-        font-family: 'Acme', sans-serif;  
+        padding: 7px;
+        margin: auto;
+        font-family: 'Acme', sans-serif;
         color: #244020;
     }
 
 }
 
 
-.foodplaces-list-wrapper {
+// .foodplaces-list-wrapper {
+//     padding: 15px;
+//     position: absolute;
+//         width: 500px;
+//         top: 300px;
+//         left: 50px;
+//         z-index: 99;
 
-    background-color: #F27166;
-    padding: 15px;
-    position: absolute;
-        width: 500px;
-        top: 300px;
-        left: 50px;
-        z-index: 99;
 
-       
 
-    // .foodplace-listgroup {
+//     // .foodplace-listgroup {
 
-    // }
+//     // }
 
+// }
+.offcanvas-bg {
+    background-color: #f8ceca;
+}
+
+.offcanvas.offcanvas-start {
+    width: 600px;
 }
