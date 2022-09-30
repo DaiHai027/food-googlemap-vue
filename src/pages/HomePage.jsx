@@ -1,4 +1,4 @@
-import { useJsApiLoader, GoogleMap, MarkerF, InfoBox } from '@react-google-maps/api'
+import { useJsApiLoader, GoogleMap, MarkerF, InfoBox, Autocomplete } from '@react-google-maps/api'
 import { useState, useEffect } from 'react'
 // assets
 import userMarkerImg from '../assets/images/usermarker.png'
@@ -12,6 +12,8 @@ import useGetPlaces from '../hooks/useGetPlaces'
 import AddtipForm from '../components/AddtipForm'
 // API
 import MapsAPI from '../services/mapsAPI'
+import { Button, Modal } from 'react-bootstrap'
+import PlacesListModal from '../components/PlacesListModal'
 
 
 // Array of library for maps api to include
@@ -36,6 +38,7 @@ const HomePage = () => {
     const [userPosition, setUserPosition] = useState({lat: 55.6032746, lng: 13.0165715})
     // State for food place currently selected
     const [currentSelectedFoodPlace, setCurrentSelectedFoodPlace] = useState(null)
+    const [isModalOPen, setIsModalOpen] = useState(false)
 
     const { data: foodPlaces, loading: isLoadingPlaces } = useGetPlaces()
 
@@ -111,6 +114,8 @@ const HomePage = () => {
             {/* Sidebar containing list of food places */}
             <MapOffcanvas onFoodItemClick={handleFoodItemClick} onAddressFormSubmit={handleOnSubmit} />
 
+
+
             <div className='maps-wrapper'>
                 {
                     !isLoaded && (
@@ -126,6 +131,8 @@ const HomePage = () => {
                         {/* <SearchAddressForm onSubmit={handleOnSubmit} /> */}
 
                         {/* <FoodPlacesList foodPlaces={foodPlaces} onFoodItemClick={handleFoodItemClick} isLoadingPlaces={isLoadingPlaces} /> */}
+
+                        <PlacesListModal />
 
                         {/* The map itself */}
                         <GoogleMap

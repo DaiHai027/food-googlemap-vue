@@ -56,6 +56,15 @@ h1,h2,h3,h4,h5 {
     padding: 10px;
 }
 
+.foodplace-modal {
+    background-color: aquamarine;
+    width: 400px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+}
+
 .place-info-box {
     border: #F25050 solid 1px;
     background-color: #F25050;
