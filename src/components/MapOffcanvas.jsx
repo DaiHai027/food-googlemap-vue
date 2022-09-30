@@ -84,8 +84,10 @@ const MapOffcanvas = ({onFoodItemClick, onAddressFormSubmit}) => {
             return
         }
 
+        // Get only town name from address given
         const town = await MapsAPI.getTown(address)
 
+        // Update states to show only given town
         setTownWhere(town)
         handleFilterPlaces(town)
 
@@ -94,6 +96,11 @@ const MapOffcanvas = ({onFoodItemClick, onAddressFormSubmit}) => {
 
     }
 
+    /**
+     *
+     * Function to reset current selected town so that all will show in food places list
+     *
+     */
     const resetTownWhere = () => {
         setTownWhere(null)
         handleFilterPlaces(null)

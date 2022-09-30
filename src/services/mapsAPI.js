@@ -23,15 +23,25 @@ const getLatAndLng = async (address) => {
 
 }
 
+/**
+ *
+ * Function to get town name from submitted address
+ *
+ * @param {string} adress
+ * @returns town name of given address
+ */
 const getTown = async (adress) => {
 
+    // Get all info about address from google maps api
     const res = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${adress}&key=${apiKey}`)
 
-    const resres = res.data.results[0].address_components.filter((component) => {
+    // Get the address component that shows town name
+    const townInfoArr = res.data.results[0].address_components.filter((component) => {
         return component.types.includes('locality') || component.types.includes('postal_town')
     })
 
-    return resres[0].long_name
+    // Return name of town
+    return townInfoArr[0].long_name
 
 }
 
