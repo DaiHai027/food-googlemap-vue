@@ -1,7 +1,14 @@
 import ListGroup from 'react-bootstrap/ListGroup'
 import Button from 'react-bootstrap/Button'
+import useDeleteTip from '../hooks/useDeleteTip'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+    
 
 const TipsList = ({tips, isLoadingTips}) => {
+    const deleteTip = useDeleteTip()
+
+
   return (
         <>
       {
@@ -17,7 +24,7 @@ const TipsList = ({tips, isLoadingTips}) => {
                 <ListGroup.Item action key={index}>
                   <h3>{tip.email}</h3>
                   <p>{tip.tip}</p>
-                  <Button></Button>
+                  <Button variant="danger" onClick={() => deleteTip.mutate(tip)}><FontAwesomeIcon icon={faTrashAlt}/></Button>
                 </ListGroup.Item>
               ))
             }

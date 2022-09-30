@@ -7,9 +7,13 @@ import Navbar from "react-bootstrap/Navbar"
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import Image from 'react-bootstrap/Image'
 
+import useAdmin from '../hooks/useAdmin'
+
 const Navigation = () => {
     const { currentUser, userName, userEmail, userPhotoUrl} = useAuthContext()
     console.log('user', userPhotoUrl, userName)
+
+
 
   return (
     <Navbar className="navbar" expand="md">
@@ -31,7 +35,6 @@ const Navigation = () => {
                     {
                         currentUser? (
                             <>
-                                                                                         
                                 <NavDropdown align={'end'}
                                     title={
                                         userPhotoUrl
