@@ -20,6 +20,8 @@ import TipsPage from './pages/TipsPage'
 
 //import { ToastContainer } from 'react-toastify'
 
+import RequireAuth from './components/RequireAuth'
+
 
 function App() {
 
