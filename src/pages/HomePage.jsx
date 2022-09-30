@@ -1,4 +1,4 @@
-import { useJsApiLoader, GoogleMap, MarkerF, InfoBox} from '@react-google-maps/api'
+import { useJsApiLoader, GoogleMap, MarkerF, InfoBox } from '@react-google-maps/api'
 import { useState, useEffect } from 'react'
 // assets
 import userMarkerImg from '../assets/images/usermarker.png'

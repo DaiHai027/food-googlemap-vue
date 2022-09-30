@@ -52,10 +52,9 @@ h1,h2,h3,h4,h5 {
     position: relative;
 }
 
-.searchaddressform {    
+.searchaddressform {
     padding: 10px;
 }
-
 
 .place-info-box {
     border: #F25050 solid 1px;
@@ -92,6 +91,13 @@ h1,h2,h3,h4,h5 {
         margin: auto;
         font-family: 'Acme', sans-serif;
         color: #244020;
+
+        .place-contact {
+            display: flex;
+            flex-flow: column;
+            gap: 0.2rem;
+            margin: 0.4rem 0;
+        }
     }
 
 }
