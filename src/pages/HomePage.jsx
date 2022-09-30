@@ -132,7 +132,7 @@ const HomePage = () => {
 
                         {/* <FoodPlacesList foodPlaces={foodPlaces} onFoodItemClick={handleFoodItemClick} isLoadingPlaces={isLoadingPlaces} /> */}
 
-                        <PlacesListModal />
+                        <PlacesListModal onFoodItemClick={handleFoodItemClick} onAddressFormSubmit={handleOnSubmit} />
 
                         {/* The map itself */}
                         <GoogleMap

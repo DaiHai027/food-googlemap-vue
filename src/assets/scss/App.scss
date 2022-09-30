@@ -61,12 +61,22 @@ h1,h2,h3,h4,h5 {
 }
 
 .foodplace-modal {
-    background-color: aquamarine;
-    width: 400px;
+    background-color: white;
+    // width: 400px;
+    // border-right: 1px solid black;
     position: fixed;
     top: 0;
     left: 0;
+    height: 100vh;
     z-index: 999;
+    overflow-y: scroll;
+    padding: 0.5rem;
+
+    .foodplace-modal-button {
+        position: absolute;
+        right: 0.5rem;
+        top: 0.5rem;
+    }
 }
 
 .place-info-box {
