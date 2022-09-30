@@ -1,8 +1,12 @@
-import Button from 'react-bootstrap/Button'
-import Form from 'react-bootstrap/Form'
-import { useForm } from 'react-hook-form'
+import { toast } from 'react-toastify'
 import { collection, addDoc } from 'firebase/firestore'
 import { db } from '../firebase'
+// bootstrap
+import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form'
+// hooks
+import { useForm } from 'react-hook-form'
+// API
 import mapsAPI from '../services/mapsAPI'
 
 const CreatePlaceForm = () => {
@@ -10,7 +14,8 @@ const CreatePlaceForm = () => {
 
 
     const onCreatePlace = async (data) => {
-            // making a firestore doc
+        // making a firestore doc
+     
         await addDoc(collection(db, 'places'), {
             adress: data.adress,
             cuisine: data.cuisine,
@@ -37,47 +42,82 @@ const CreatePlaceForm = () => {
             progress: undefined,
             });
         reset()
+
+
     }
     return (
         <Form onSubmit={handleSubmit(onCreatePlace)} noValidate>
 
             {/* Form for name */}
-            <Form.Group>
+            <Form.Group controlId="name">
                 <Form.Label>Name</Form.Label>
                 <Form.Control
-                {...register("name", {
-                    required: "A name is required",
-                    minLength: {
-                        value: 2,
-                        message: "Must atlest be 2 charatcers"
-                    }
-                })}
-                placeholder="Name"
-                type="text"
+                    {...register("name", {
+                        required: "A name is required",
+                        minLength: {
+                            value: 2,
+                            message: "Must atlest be 2 charatcers"
+                        }
+                    })}
+                    placeholder="Name"
+                    type="text"
                 />
+
                 {errors.name && <div className="invalid">{errors.name.message}</div>}
+
             </Form.Group>
 
-                {/* Form for adress */}
-            <Form.Group>
-            <Form.Label>Adress</Form.Label>
+            {/* Form for adress */}
+            <Form.Group controlId='adress'>
+                <Form.Label>Adress</Form.Label>
                 <Form.Control
-                {...register("adress", {
-                    required: "A adress is required",
-                    minLength: {
-                        value: 2,
-                        message: "Must atlest be 2 charatcers"
-                    }
-                })}
-                placeholder="Adress"
-                type="text"
+                    {...register("adress", {
+                        required: "A adress is required",
+                        minLength: {
+                            value: 2,
+                            message: "Must atlest be 2 charatcers"
+                        }
+                    })}
+                    placeholder="Adress"
+                    type="text"
+                />
+                {errors.adress && <div className='invalid'>{errors.message}</div>}
+            </Form.Group>
+
+            {/* Form for Town */}
+            <Form.Group controlId='town'>
+                <Form.Label>Town</Form.Label>
+                <Form.Control
+                    {...register("town", {
+                        required: "A town is required",
+                        minLength: {
+                            value: 1,
+                            message: "Must atlest be 1 charatcers"
+                        }
+                    })}
+                    placeholder="Town"
+                    type="text"
+                />
+                {errors.town && <div className='invalid'>{errors.message}</div>}
+            </Form.Group>
+
+            {/* Form for Cuisine */}
+            <Form.Group controlId='cuisine'>
+                <Form.Label>Cuisine</Form.Label>
+                <Form.Control
+                    {...register("cuisine", {
+                        required: "A cuisine is required",
+                    })}
+                    placeholder="Cusine"
+                    type="text"
                 />
                 {errors.adress && <div className="invalid">{errors.adress.message}</div>}
             </Form.Group>
 
-               {/* Form for Town */}
-               <Form.Group>
-            <Form.Label>Town</Form.Label>
+            {/* Form for Supply */}
+
+            <Form.Group controlId='supply'>
+                <Form.Label>Supply</Form.Label>
                 <Form.Control
                 {...register("town", {
                     required: "A town is required",
@@ -115,94 +155,95 @@ const CreatePlaceForm = () => {
                 })}
                 placeholder="Supply"
                 type="text"
+                
                 />
                 {errors.supply && <div className="invalid">{errors.supply.message}</div>}
             </Form.Group>
 
-                {/* Form for Phonenumber */}
-            <Form.Group>
+            {/* Form for Phonenumber */}
+            <Form.Group controlId='phonenumber'>
             <Form.Label>Phonenumber</Form.Label>
                 <Form.Control
-                {...register("phonenumber",)}
-                placeholder="Phonenumber"
-                type="text"
+                    {...register("phonenumber",)}
+                    placeholder="Phonenumber"
+                    type="text"
                 />
             </Form.Group>
 
             {/* Form for Facebook */}
-            <Form.Group>
+            <Form.Group controlId='facebook'>
             <Form.Label>Facebook</Form.Label>
                 <Form.Control
-                {...register("facebook",)}
-                placeholder="Facebbok"
-                type="text"
+                    {...register("facebook",)}
+                    placeholder="Facebbok"
+                    type="text"
                 />
             </Form.Group>
 
             {/* Form for Instagram */}
-            <Form.Group>
+            <Form.Group controlId='instagram'>
             <Form.Label>Instagram</Form.Label>
                 <Form.Control
-                {...register("instagram",)}
-                placeholder="instagram"
-                type="text"
+                    {...register("instagram",)}
+                    placeholder="instagram"
+                    type="text"
                 />
             </Form.Group>
 
 
             {/* Form for E-mail */}
-            <Form.Group>
+            <Form.Group controlId='email'>
             <Form.Label>Email</Form.Label>
                 <Form.Control
-                {...register("email",)}
-                placeholder="email"
-                type="text"
+                    {...register("email",)}
+                    placeholder="email"
+                    type="text"
                 />
             </Form.Group>
 
             {/* Form for Website */}
-            <Form.Group>
+            <Form.Group controlId='website'>
             <Form.Label>Website</Form.Label>
                 <Form.Control
-                {...register("website",)}
-                placeholder="website"
-                type="text"
+                    {...register("website",)}
+                    placeholder="website"
+                    type="text"
                 />
             </Form.Group>
 
             {/* Form for type */}
-             <Form.Group>
-            <Form.Label>Type</Form.Label>
+            <Form.Group controlId='type'>
+                <Form.Label>Type</Form.Label>
                 <Form.Control
-                {...register("type", {
-                    required: "A Type is required",
-                })}
-                placeholder="Type"
-                type="text"
+                    {...register("type", {
+                        required: "A Type is required",
+                    })}
+                    placeholder="Type"
+                    type="text"
                 />
                 {errors.type && <div className="invalid">{errors.type.message}</div>}
             </Form.Group>
 
             {/* Form for Description */}
-            <Form.Group>
-            <Form.Label>Description</Form.Label>
+            <Form.Group controlId='description'>
+                <Form.Label>Description</Form.Label>
                 <Form.Control
-                {...register("description", {
-                    required: "A description is required",
-                    minLength: {
-                        value: 2,
-                        message: "Must atlest be 2 charatcers"
-                    }
-                })}
-                placeholder="Description"
-                type="text"
-                as="textarea"
-                rows={3}
+                    {...register("description", {
+                        required: "A description is required",
+                        minLength: {
+                            value: 2,
+                            message: "Must atlest be 2 charatcers"
+                        }
+                    })}
+                    placeholder="Description"
+                    type="text"
+                    as="textarea"
+                    rows={3}
                 />
                 {errors.description && <div className="invalid">{errors.description.message}</div>}
             </Form.Group>
 
-            <Button variant="success" type="submit">Create</Button>
+            <Button className='btn-color my-3' type="submit">Create</Button>
         </Form>
     )
 }

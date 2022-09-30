@@ -4,14 +4,14 @@ import Button from 'react-bootstrap/Button'
 import  ListGroup  from 'react-bootstrap/ListGroup'
 import FoodPlacesTable from './FoodPlacesTable'
 import useGetQueryPlaces from '../hooks/useGetQueryPlaces'
-import { collection, orderBy, query, where } from 'firebase/firestore' 
+import { collection, orderBy, query, where } from 'firebase/firestore'
 import { useFirestoreQueryData } from '@react-query-firebase/firestore'
 import { db } from '../firebase'
 //component
 import SearchAddressForm from '../components/SearchAddressForm'
+import MapsAPI from '../services/mapsAPI'
 
-
-const MapOffcanvas = ({onFoodItemClick}) => {
+const MapOffcanvas = ({onFoodItemClick, onAddressFormSubmit}) => {
 
     // What columns table should include
     const columns = useMemo( () => {
@@ -47,10 +47,12 @@ const MapOffcanvas = ({onFoodItemClick}) => {
     const [nameOrder, setNameOrder] = useState('asc')
     const [supplyWhere, setSupplyWhere] = useState('All')
     const [typeWhere, setTypeWhere] = useState('All')
+    const [townWhere, setTownWhere] = useState(null)
     const [queryLimits, setQueryLimits] = useState({
         nameOrder,
         supplyWhere,
-        typeWhere
+        typeWhere,
+        townWhere,
     })
 
     // Get list of food places from hook
@@ -61,22 +63,15 @@ const MapOffcanvas = ({onFoodItemClick}) => {
 
 
     // Update query settings
-    const handleFilterPlaces = () => {
+    const handleFilterPlaces = (town) => {
         setQueryLimits({
             nameOrder,
             supplyWhere,
-            typeWhere
+            typeWhere,
+            townWhere: town,
         })
     }
 
-     const queryRef = query(
-        collection(db, 'places'),
-        // where('town', '=='  userPosition
-         // ),
-         orderBy('name')
-        )
-    
-    
      /**
      *
      * Function to handle when search form has been submitted
@@ -89,14 +84,28 @@ const MapOffcanvas = ({onFoodItemClick}) => {
             return
         }
 
-        // Get coordinates for address
-        const newCoords = await MapsAPI.getLatAndLng(address)
-        // Center map on the new coordinates
-        map.panTo(newCoords)
+        // Get only town name from address given
+        const town = await MapsAPI.getTown(address)
+
+        // Update states to show only given town
+        setTownWhere(town)
+        handleFilterPlaces(town)
+
+        // Let parent component take over
+        onAddressFormSubmit(address)
 
     }
 
-     
+    /**
+     *
+     * Function to reset current selected town so that all will show in food places list
+     *
+     */
+    const resetTownWhere = () => {
+        setTownWhere(null)
+        handleFilterPlaces(null)
+    }
+
   return (
     <>
 
@@ -143,13 +152,15 @@ const MapOffcanvas = ({onFoodItemClick}) => {
                         <option value="desc">Descending</option>
                     </select>
 
-                    <Button onClick={handleFilterPlaces}>Filter</Button>
+
+                    <Button onClick={() =>{handleFilterPlaces(townWhere)}} className='btn-color my-3'>Filter</Button>
 
                     <FoodPlacesTable foodPlaces={data} onFoodItemClick={onFoodItemClick} columns={columns} />
+
+                    <Button onClick={resetTownWhere}>Show for all towns</Button>
+                    <SearchAddressForm onSubmit={handleOnSubmit} />
+
                     <ListGroup className="foodplace-listgroup">
-                        
-                        <SearchAddressForm onSubmit={handleOnSubmit} />
-                    
 
                         {
                             data.map((foodplace, index) => (
