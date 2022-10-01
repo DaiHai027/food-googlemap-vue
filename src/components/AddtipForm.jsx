@@ -1,11 +1,11 @@
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
-import Modal from 'react-bootstrap/Modal';
+import Modal from 'react-bootstrap/Modal'
 import { useForm } from 'react-hook-form'
-import { toast } from 'react-toastify'
 import { collection, addDoc } from 'firebase/firestore'
 import { db } from '../firebase'
 import { useState } from 'react'
+import { toast } from 'react-toastify'
 
 
 const AddtipForm = () => {
@@ -23,14 +23,21 @@ const AddtipForm = () => {
             email: data.email,
             tip: data.tip
         })
-        
-        toast.success("Your tip has been sent!")
-
+        toast.info('Thanks for your suggestion!', {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
+        reset()
     }
   return (
     <>
-        <Button variant="info" onClick={handleShow}>
-            Give us a tip about a plce!
+        <Button variant="outline-primary tip-button" onClick={handleShow}>
+            Give us a tip about a foodplace!
         </Button>
 
     <Modal show={show} onHide={handleClose}>
@@ -54,6 +61,7 @@ const AddtipForm = () => {
                             placeholder="Email"
                             type="text"
                             />
+                            {errors.email && <div className="invalid">{errors.email.message}</div>}
                 </Form.Group>
 
          {/* Form for tip */}
@@ -70,7 +78,7 @@ const AddtipForm = () => {
             placeholder="Write your tip here"
             as="textarea"
             />
-            
+            {errors.tip && <div className="invalid">{errors.tip.message}</div>}
             <Modal.Footer>
                 <Button variant="success" type="submit">Send</Button>
             </Modal.Footer>

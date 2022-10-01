@@ -1,4 +1,4 @@
-// import { toast } from 'react-toastify'
+import { toast } from 'react-toastify'
 import { collection, addDoc } from 'firebase/firestore'
 import { db } from '../firebase'
 // bootstrap
@@ -32,10 +32,18 @@ const CreatePlaceForm = () => {
             coords: await mapsAPI.getLatAndLng(data.adress + data.town)
         })
 
-        //toast.success("A new Place was created! Yey!")
-        console.log("A new Place was created! Yey!")
+        toast.success('A foodplace waas created!', {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
         reset()
-      
+
+
     }
     return (
         <Form onSubmit={handleSubmit(onCreatePlace)} noValidate>
@@ -54,7 +62,9 @@ const CreatePlaceForm = () => {
                     placeholder="Name"
                     type="text"
                 />
-                {errors.name && <div className='invalid'>{errors.message}</div>}
+
+                {errors.name && <div className="invalid">{errors.name.message}</div>}
+
             </Form.Group>
 
             {/* Form for adress */}
@@ -101,7 +111,7 @@ const CreatePlaceForm = () => {
                     placeholder="Cusine"
                     type="text"
                 />
-
+                {errors.adress && <div className="invalid">{errors.adress.message}</div>}
             </Form.Group>
 
             {/* Form for Supply */}
@@ -109,12 +119,45 @@ const CreatePlaceForm = () => {
             <Form.Group controlId='supply'>
                 <Form.Label>Supply</Form.Label>
                 <Form.Control
-                    {...register("supply", {
-                        required: "You must choose a supply",
-                    })}
-                    placeholder="Supply"
-                    type="text"
+                {...register("town", {
+                    required: "A town is required",
+                    minLength: {
+                        value: 2,
+                        message: "Must atlest be 2 charatcers"
+                    }
+                })}
+                placeholder="Town"
+                type="text"
                 />
+                {errors.town && <div className="invalid">{errors.town.message}</div>}
+            </Form.Group>
+
+                {/* Form for Cuisine */}
+             <Form.Group>
+            <Form.Label>Cuisine</Form.Label>
+                <Form.Control
+                {...register("cuisine", {
+                    required: "A cuisine is required",
+                })}
+                placeholder="Cusine"
+                type="text"
+                />
+                {errors.cuisine && <div className="invalid">{errors.cuisine.message}</div>}
+                </Form.Group>
+
+                {/* Form for Supply */}
+
+                <Form.Group>
+            <Form.Label>Supply</Form.Label>
+                <Form.Control
+                {...register("supply", {
+                    required: "You must choose a supply",
+                })}
+                placeholder="Supply"
+                type="text"
+                
+                />
+                {errors.supply && <div className="invalid">{errors.supply.message}</div>}
             </Form.Group>
 
             {/* Form for Phonenumber */}
@@ -178,7 +221,7 @@ const CreatePlaceForm = () => {
                     placeholder="Type"
                     type="text"
                 />
-
+                {errors.type && <div className="invalid">{errors.type.message}</div>}
             </Form.Group>
 
             {/* Form for Description */}
@@ -197,6 +240,7 @@ const CreatePlaceForm = () => {
                     as="textarea"
                     rows={3}
                 />
+                {errors.description && <div className="invalid">{errors.description.message}</div>}
             </Form.Group>
 
             <Button className='btn-color my-3' type="submit">Create</Button>

@@ -107,12 +107,14 @@ const HomePage = () => {
 
     return (
         <>
-
+            <div className='button-div'>
             <AddtipForm />
             {/* <h1>This is homepage</h1> */}
 
             {/* Sidebar containing list of food places */}
             <MapOffcanvas onFoodItemClick={handleFoodItemClick} onAddressFormSubmit={handleOnSubmit} />
+            </div>
+            
 
 
 
