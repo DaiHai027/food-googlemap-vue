@@ -112,9 +112,10 @@ const HomePage = () => {
             {/* <h1>This is homepage</h1> */}
 
             {/* Sidebar containing list of food places */}
-            <MapOffcanvas onFoodItemClick={handleFoodItemClick} onAddressFormSubmit={handleOnSubmit} />
+            <PlacesListModal onFoodItemClick={handleFoodItemClick} onAddressFormSubmit={handleOnSubmit} />
+            {/* <MapOffcanvas onFoodItemClick={handleFoodItemClick} onAddressFormSubmit={handleOnSubmit} /> */}
             </div>
-            
+
 
 
 
@@ -129,17 +130,11 @@ const HomePage = () => {
                     isLoaded && (
 
                         <>
-                        {/* Form for centering map at different address */}
-                        {/* <SearchAddressForm onSubmit={handleOnSubmit} /> */}
-
-                        {/* <FoodPlacesList foodPlaces={foodPlaces} onFoodItemClick={handleFoodItemClick} isLoadingPlaces={isLoadingPlaces} /> */}
-
-                        <PlacesListModal onFoodItemClick={handleFoodItemClick} onAddressFormSubmit={handleOnSubmit} />
 
                         {/* The map itself */}
                         <GoogleMap
                             center={userPosition}
-                            zoom={15}
+                            zoom={14}
                             mapContainerStyle={{width: '100%', height: '100%'}}
                             options={{
                                 streetViewControl: false,

@@ -117,7 +117,7 @@ const PlacesListModal = ({onFoodItemClick, onAddressFormSubmit}) => {
     return (
         <>
             <Button variant="primary" onClick={handleShow}>
-                Open modal
+                Places near you
             </Button>
 
             {

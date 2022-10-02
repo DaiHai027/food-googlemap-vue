@@ -24,6 +24,7 @@ h1,h2,h3,h4,h5 {
 
 .navbar {
     background-color: #C4F2CB;
+    min-height: 6vh;
 }
 .navbar-logo {
     font-family: 'Acme', sans-serif;
@@ -55,7 +56,7 @@ h1,h2,h3,h4,h5 {
 
 
 .maps-wrapper {
-    height: 800px;
+    height: 89vh;
     position: relative;
 }
 
