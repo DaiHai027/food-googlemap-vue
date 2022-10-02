@@ -1,18 +1,33 @@
-import Container from 'react-bootstrap/Container'
 import { collection, orderBy, query, where } from 'firebase/firestore'
 import { useFirestoreQueryData } from '@react-query-firebase/firestore'
 import { db } from '../firebase'
-import FoodPlacesList from '../components/FoodPlacesList'
+// hooks
 import useGetPlaces from '../hooks/useGetPlaces'
+import useAdmin from '../hooks/useAdmin'
+// context
+import { useAuthContext } from '../contexts/AuthContext'
+// components
+import FoodPlacesList from '../components/FoodPlacesList'
+// loader
+import BeatLoader from 'react-spinners/BeatLoader'
+// bootstrap
+import Container from 'react-bootstrap/Container'
 
 const PlacesPage = () => {
-
-    const { data: foodPlaces, loading: isLoadingPlaces } = useGetPlaces()
+  const { data: foodPlaces, loading } = useGetPlaces()
+  const { currentUser } = useAuthContext()
+  const id = currentUser.uid
+  const { isAdmin } = useAdmin(id) 
 
   return (
-    <Container>
+    <Container className="py-3">
         <h1 className="h-text-color-dark">Restaurants</h1>
-        <FoodPlacesList foodPlaces={foodPlaces} isLoadingPlaces={isLoadingPlaces} />
+        {loading && <BeatLoader  color='#F27166' /> }
+        {isAdmin 
+          ? <FoodPlacesList foodPlaces={foodPlaces}  />
+          : <p>You do not have permission to edit. Please contact the administrator.</p>
+        }
+        
     </Container>
     
   )
