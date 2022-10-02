@@ -1,9 +1,8 @@
 import { Link, NavLink } from "react-router-dom"
 import { useAuthContext } from "../contexts/AuthContext"
+import { doc, onSnapshot } from "firebase/firestore"
+import { db } from "../firebase"
 import { useEffect, useState } from "react"
-// hooks
-import useAdmin from '../hooks/useAdmin'
-import useUser from '../hooks/useUser'
 // bootstrap
 import Container  from "react-bootstrap/Container"
 import Nav from "react-bootstrap/Nav"
@@ -11,27 +10,26 @@ import Navbar from "react-bootstrap/Navbar"
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import Image from 'react-bootstrap/Image'
 
-
 const Navigation = () => {
-    const [admin, setAdmin] = useState(false)
-    const [id, setId] = useState(null)
-    const { currentUser, userName, userEmail, userPhotoUrl} = useAuthContext() 
-    //const id = currentUser.uid
-    const { data, loading } = useUser(id)
-    const { isAdmin } = useAdmin(id) 
+    const [data, setData] = useState([])
+    const { currentUser, userName, userEmail, userPhotoUrl} = useAuthContext()
+    
 
-    useEffect(() => {
-        if (currentUser == null) {
-            setId(undefined)
-            setAdmin(false)
-        }
-        console.log('data.admin', data.admin)
-        setAdmin(data.admin)
+    useEffect(() => {       
+        if (currentUser) {            
+            const ref = doc(db, 'users', currentUser.uid)
+            const unsubscribe = onSnapshot(ref, (snapshot) => {
+                setData({
+                    id: snapshot.id,
+                    ...snapshot.data(),
+                })
+            })
+            return unsubscribe
+        } 
+        return
+    },[currentUser])
 
-    },[id])
-    console.log('isAdmin', isAdmin)
-    console.log('admin', admin )
-
+    console.log('data', data)
 
   return (
     <Navbar className="navbar" expand="md">
@@ -50,8 +48,9 @@ const Navigation = () => {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ms-auto align-items-center">
-                    {currentUser ? (
-                            <>                                         
+                    {
+                        currentUser? (
+                            <>
                                 <NavDropdown align={'end'}
                                     title={
                                         userPhotoUrl
@@ -64,32 +63,27 @@ const Navigation = () => {
                                             roundedCircle
                                             />
                                         : userName || userEmail
-                                    }>
 
-                                    <NavLink to="/update-profile" className="dropdown-item">
-                                        Update Profile
-                                    </NavLink>
+                                }>
+                                    
+                                    <NavLink to="/update-profile" className="dropdown-item">Update Profile</NavLink>
                                     <NavDropdown.Divider />
+                                    
+                                   {data.admin &&
+                                        (
+                                            <>
+                                                <NavLink to="/users" className="dropdown-item">Edit Users</NavLink>
+                                                <NavLink to="/addPlaces" className="dropdown-item">Add a new Places</NavLink>
+                                                <NavLink to="/places" className="dropdown-item">List of Places</NavLink>
+                                                <NavDropdown.Divider />
+                                            </>
+                                        )
+                                    }
+                                    
+                                    
 
-                                    {/* admin only */}
-                                     
-                                    <NavLink to="/users" className="dropdown-item">
-                                        Edit Users
-                                    </NavLink>
-                                                                            
-                                    <NavLink to="/addPlaces" className="dropdown-item">
-                                        Add a new Places
-                                    </NavLink>
-
-                                    <NavLink to="/places" className="dropdown-item">
-                                        List of Places
-                                    </NavLink>
-
-                                    <NavDropdown.Divider />
-
-                                    {/* logout */}
-
-                                    <NavLink to="/logout" className="dropdown-item">Log Out</NavLink>
+                                    <NavLink to="/logout"
+                                    className="dropdown-item">Log Out</NavLink>
                                 </NavDropdown>
                             </>
                         ) : (
