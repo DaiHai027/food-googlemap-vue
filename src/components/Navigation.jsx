@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router-dom"
 import { useAuthContext } from "../contexts/AuthContext"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 // hooks
 import useAdmin from '../hooks/useAdmin'
 import useUser from '../hooks/useUser'
@@ -14,20 +14,23 @@ import Image from 'react-bootstrap/Image'
 
 const Navigation = () => {
     const [admin, setAdmin] = useState(false)
-    const { data, loading } = useUser(id)
+    const [id, setId] = useState(null)
     const { currentUser, userName, userEmail, userPhotoUrl} = useAuthContext() 
-    // const id = currentUser.uid
-    // const { isAdmin } = useAdmin(id) 
+    //const id = currentUser.uid
+    const { data, loading } = useUser(id)
+    const { isAdmin } = useAdmin(id) 
 
-    // console.log('current user id', currentUser.uid)
-    // if(currentUser){
-    //     const id = currentUser.uid
-    //     // const { isAdmin } = useAdmin(id)  
-    //     // console.log('isAdmin', isAdmin)
-    //     //setAdmin(isAdmin)
-    // }
-    // console.log('isAdmin', isAdmin)
-    console.log('admin', data.admin)
+    useEffect(() => {
+        if (currentUser == null) {
+            setId(undefined)
+            setAdmin(false)
+        }
+        console.log('data.admin', data.admin)
+        setAdmin(data.admin)
+
+    },[id])
+    console.log('isAdmin', isAdmin)
+    console.log('admin', admin )
 
 
   return (

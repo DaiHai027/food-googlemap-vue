@@ -125,7 +125,7 @@ const AuthContextProvider = ({ children }) => {
 	useEffect(() => {
 		// listen for auth-state changes
 		const unsubscribe = onAuthStateChanged(auth, user => {
-			console.log('auth-user', user)
+			//console.log('auth-user', user)
 			setCurrentUser(user)
 			setUserName(user?.displayName)
 			setUserEmail(user?.email)
