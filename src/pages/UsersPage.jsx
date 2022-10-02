@@ -19,7 +19,7 @@ const UsersPage = () => {
 
 
   return (
-    <Container>
+    <Container className="py-3">
       <h1 className="h-text-color-dark">Edit Users</h1>
       {loading && <BeatLoader  color='#F27166' /> }
       
