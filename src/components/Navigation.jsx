@@ -10,8 +10,6 @@ import Navbar from "react-bootstrap/Navbar"
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import Image from 'react-bootstrap/Image'
 
-import useAdmin from '../hooks/useAdmin'
-
 const Navigation = () => {
     const [data, setData] = useState([])
     const { currentUser, userName, userEmail, userPhotoUrl} = useAuthContext()
@@ -32,7 +30,6 @@ const Navigation = () => {
     },[currentUser])
 
     console.log('data', data)
-
 
 
   return (
