@@ -29,22 +29,32 @@ const FoodPlaceInfoBox = ({userPosition, foodPlace, onClose}) => {
                 </div>
                 <div className='place-contact'>
                     { foodPlace.phonenumber && (
-                        <a href={`tel:${foodPlace.phonenumber}`}>{foodPlace.phonenumber}</a>
+                        <a href={`tel:${foodPlace.phonenumber}`}>
+                            <img src='src/assets/icons/phone.svg' />
+                        </a>
                     ) }
                     { foodPlace.email && (
-                        <a href={`mailto:${foodPlace.email}`}>{foodPlace.email}</a>
+                        <a href={`mailto:${foodPlace.email}`}>
+                            <img src='src/assets/icons/email.svg' />
+                        </a>
                     ) }
                     { foodPlace.website && (
-                        <a href={foodPlace.website}>{foodPlace.website}</a>
+                        <a href={foodPlace.website} target='_blank'>
+                            <img src='src/assets/icons/internet.svg' />
+                        </a>
                     ) }
                     { foodPlace.facebook && (
-                        <a href={foodPlace.website}>{foodPlace.facebook}</a>
+                        <a href={foodPlace.facebook} target='_blank'>
+                            <img src='src/assets/icons/fb.svg' />
+                        </a>
                     ) }
                     { foodPlace.instagram && (
-                        <a href={foodPlace.website}>{foodPlace.instagram}</a>
+                        <a href={foodPlace.instagram} target='_blank'>
+                            <img src='src/assets/icons/ig.svg' />
+                        </a>
                     ) }
                 </div>
-                <a href={MapsAPI.getDirectionsLink(userPosition, foodPlace.coords)} target='_blank'>Directions</a>
+                <a href={MapsAPI.getDirectionsLink(userPosition, foodPlace.coords)} target='_blank'>Get directions to {foodPlace.name}</a>
 
             </div>
 
