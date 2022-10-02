@@ -26,18 +26,20 @@ const SearchCityForm = ({onSubmit}) => {
         // Call function provided though prop, and give it input field value as parameter
         onSubmit(addressRef.current.value)
 
+        addressRef.current.value = ''
+
     }
 
     return (
         <Form onSubmit={handleFormSubmit} className='searchaddressform'>
             <Form.Group controlId='address'>
-                <Form.Label>Enter address or city to view nearby food places</Form.Label>
+                <Form.Label>Enter city to view nearby food places</Form.Label>
                 {/* Use Autocomplete from @react-google-maps/api to give user search suggestions */}
                 <Autocomplete>
                     <Form.Control type='text' ref={addressRef} required />
                 </Autocomplete>
             </Form.Group>
-            <Button className='btn-color my-3' type='submit'>Goto</Button>
+            <Button className='btn-color' type='submit'>Search</Button>
         </Form>
     )
 

@@ -13,7 +13,7 @@ import { Button, Card } from 'react-bootstrap'
  */
 const FoodPlaceInfoBox = ({userPosition, foodPlace, onClose}) => {
 
-    return (        
+    return (
         <Card className='place-info-box'>
             <div className='box-header'>
                 <h5 className='h-text-color-white'>{foodPlace.name}</h5>
@@ -22,11 +22,43 @@ const FoodPlaceInfoBox = ({userPosition, foodPlace, onClose}) => {
             <div className='address-box'>
                 <p>{foodPlace.adress + ' ' + foodPlace.town}</p>
                 <p>{foodPlace.description}</p>
-                <a href={MapsAPI.getDirectionsLink(userPosition, foodPlace.coords)} target='_blank'>Directions</a>
-            
+                <div>
+                    <span>{foodPlace.cuisine}</span>
+                    <span> | {foodPlace.type}</span>
+                    <span> | {foodPlace.supply}</span>
+                </div>
+                <div className='place-contact'>
+                    { foodPlace.phonenumber && (
+                        <a href={`tel:${foodPlace.phonenumber}`}>
+                            <img src='src/assets/icons/phone.svg' />
+                        </a>
+                    ) }
+                    { foodPlace.email && (
+                        <a href={`mailto:${foodPlace.email}`}>
+                            <img src='src/assets/icons/email.svg' />
+                        </a>
+                    ) }
+                    { foodPlace.website && (
+                        <a href={foodPlace.website} target='_blank'>
+                            <img src='src/assets/icons/internet.svg' />
+                        </a>
+                    ) }
+                    { foodPlace.facebook && (
+                        <a href={foodPlace.facebook} target='_blank'>
+                            <img src='src/assets/icons/fb.svg' />
+                        </a>
+                    ) }
+                    { foodPlace.instagram && (
+                        <a href={foodPlace.instagram} target='_blank'>
+                            <img src='src/assets/icons/ig.svg' />
+                        </a>
+                    ) }
+                </div>
+                <a href={MapsAPI.getDirectionsLink(userPosition, foodPlace.coords)} target='_blank'>Get directions to {foodPlace.name}</a>
+
             </div>
-            
-        </Card>    
+
+        </Card>
     )
 
 }
