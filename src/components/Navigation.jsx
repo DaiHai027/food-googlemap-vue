@@ -1,5 +1,8 @@
 import { Link, NavLink } from "react-router-dom"
 import { useAuthContext } from "../contexts/AuthContext"
+import { doc, onSnapshot } from "firebase/firestore"
+import { db } from "../firebase"
+import { useEffect, useState } from "react"
 // bootstrap
 import Container  from "react-bootstrap/Container"
 import Nav from "react-bootstrap/Nav"
@@ -10,8 +13,25 @@ import Image from 'react-bootstrap/Image'
 import useAdmin from '../hooks/useAdmin'
 
 const Navigation = () => {
+    const [data, setData] = useState([])
     const { currentUser, userName, userEmail, userPhotoUrl} = useAuthContext()
-    console.log('user', userPhotoUrl, userName)
+    
+
+    useEffect(() => {       
+        if (currentUser) {            
+            const ref = doc(db, 'users', currentUser.uid)
+            const unsubscribe = onSnapshot(ref, (snapshot) => {
+                setData({
+                    id: snapshot.id,
+                    ...snapshot.data(),
+                })
+            })
+            return unsubscribe
+        } 
+        return
+    },[currentUser])
+
+    console.log('data', data)
 
 
 
@@ -49,13 +69,22 @@ const Navigation = () => {
                                         : userName || userEmail
 
                                 }>
+                                    
                                     <NavLink to="/update-profile" className="dropdown-item">Update Profile</NavLink>
                                     <NavDropdown.Divider />
-
-                                    <NavLink to="/users" className="dropdown-item">Edit Users</NavLink>
-                                    <NavLink to="/addPlaces" className="dropdown-item">Add a new Places</NavLink>
-                                    <NavLink to="/places" className="dropdown-item">List of Places</NavLink>
-                                    <NavDropdown.Divider />
+                                    
+                                   {data.admin &&
+                                        (
+                                            <>
+                                                <NavLink to="/users" className="dropdown-item">Edit Users</NavLink>
+                                                <NavLink to="/addPlaces" className="dropdown-item">Add a new Places</NavLink>
+                                                <NavLink to="/places" className="dropdown-item">List of Places</NavLink>
+                                                <NavDropdown.Divider />
+                                            </>
+                                        )
+                                    }
+                                    
+                                    
 
                                     <NavLink to="/logout"
                                     className="dropdown-item">Log Out</NavLink>
