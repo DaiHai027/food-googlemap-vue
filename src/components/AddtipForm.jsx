@@ -36,7 +36,7 @@ const AddtipForm = () => {
     }
   return (
     <>
-        <Button variant="outline-primary tip-button" onClick={handleShow}>
+        <Button variant="outline-primary tip-button" onClick={handleShow} className="mt-3 col-12 col-md-4">
             Give us a tip about a foodplace!
         </Button>
 

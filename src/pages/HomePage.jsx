@@ -12,11 +12,8 @@ import BeatLoader from 'react-spinners/BeatLoader'
 // API
 import MapsAPI from '../services/mapsAPI'
 import { useJsApiLoader, GoogleMap, MarkerF, InfoBox, Autocomplete } from '@react-google-maps/api'
-
-
-
-
-
+// bootstrap
+import { Container } from 'react-bootstrap'
 
 
 // Array of library for maps api to include
@@ -108,12 +105,12 @@ const HomePage = () => {
     }, [])
 
     return (
-        <>
-            <div className='button-div'>
+        <Container>
+            <div className='button-div bg-white row　align-items-center'>
                 <AddtipForm />
 
-            {/* Sidebar containing list of food places */}
-            <PlacesListModal onFoodItemClick={handleFoodItemClick} onAddressFormSubmit={handleOnSubmit} />
+                {/* Sidebar containing list of food places */}
+                <PlacesListModal onFoodItemClick={handleFoodItemClick} onAddressFormSubmit={handleOnSubmit} />
 
             </div>
 
@@ -192,7 +189,7 @@ const HomePage = () => {
                     )
                 }
             </div>
-        </>
+        </Container>
     )
 
 }

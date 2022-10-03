@@ -49,11 +49,12 @@ const Navigation = () => {
 
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="ms-auto align-items-center d-block">
+                <Nav className="ms-auto align-items-center">
                     {
                         currentUser? (
                             <>
-                                <NavDropdown align={'end'}
+                                <NavDropdown                                    
+                                    align={'end'}
                                     title={
                                         userPhotoUrl
                                         ? <Image
