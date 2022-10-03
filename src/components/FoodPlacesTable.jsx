@@ -7,7 +7,7 @@ import { Table } from 'react-bootstrap'
  *
  */
 
-const FoodPlacesTable = ({foodPlaces, onFoodItemClick, columns}) => {
+const FoodPlacesTable = ({foodPlaces, columns}) => {
 
     // Get needed functions and properties from useTable
     const {
@@ -38,10 +38,10 @@ const FoodPlacesTable = ({foodPlaces, onFoodItemClick, columns}) => {
 
             <tbody {...getTableBodyProps()}>
                 {
-                    rows.map( (row, i) => {
+                    rows.map( (row) => {
                         prepareRow(row)
                         return (
-                            <tr {...row.getRowProps()} onClick={()=>{onFoodItemClick(foodPlaces[i])}}>
+                            <tr {...row.getRowProps()} >
                                 {
                                     row.cells.map( cell => (
                                         <td {...cell.getCellProps()}>

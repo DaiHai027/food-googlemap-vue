@@ -10,8 +10,6 @@ import Navbar from "react-bootstrap/Navbar"
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import Image from 'react-bootstrap/Image'
 
-import useAdmin from '../hooks/useAdmin'
-
 const Navigation = () => {
     const [data, setData] = useState([])
     const { currentUser, userName, userEmail, userPhotoUrl} = useAuthContext()
@@ -32,7 +30,6 @@ const Navigation = () => {
     },[currentUser])
 
     console.log('data', data)
-
 
 
   return (
@@ -77,7 +74,7 @@ const Navigation = () => {
                                         (
                                             <>
                                                 <NavLink to="/users" className="dropdown-item">Edit Users</NavLink>
-                                                <NavLink to="/addPlaces" className="dropdown-item">Add a new Places</NavLink>
+                                                <NavLink to="/add-places" className="dropdown-item">Add a new Places</NavLink>
                                                 <NavLink to="/places" className="dropdown-item">List of Places</NavLink>
                                                 <NavDropdown.Divider />
                                             </>

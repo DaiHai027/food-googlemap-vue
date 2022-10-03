@@ -113,11 +113,11 @@ const MapOffcanvas = ({onFoodItemClick, onAddressFormSubmit}) => {
             Places near you
         </Button>
 
-                    <Offcanvas show={show} onHide={handleClose} className='offcanvas-bg'>
+            <Offcanvas show={show} onHide={handleClose} className='offcanvas-bg'>
 
             <Offcanvas.Header closeButton>
 
-                <Offcanvas.Title className='h-text-color-dark'>Places near you</Offcanvas.Title>
+            <Offcanvas.Title className='h-text-color-dark'>Places near you</Offcanvas.Title>
 
             </Offcanvas.Header>
             <Offcanvas.Body>

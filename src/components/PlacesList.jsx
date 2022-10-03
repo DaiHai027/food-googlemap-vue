@@ -17,13 +17,17 @@ const PlacesList = ({foodPlaces, onFoodItemClick, isLoadingPlaces}) => {
                     <BeatLoader  color='#F27166' />
                 )
             }
-            {
-                foodPlaces && (
+            
                     <ListGroup>
                         {
-                            foodPlaces.map((foodplace, index) => (
-                                <ListGroup.Item action as={Link} key={index} onClick={() => {onFoodItemClick(foodplace)}}
-                                to={`/places/${foodplace.id}`}>
+                            !isLoadingPlaces && foodPlaces &&  
+                            foodPlaces.map(foodplace => (
+                                <ListGroup.Item 
+                                    action as={Link} 
+                                    key={index} 
+                                    onClick={() => {onFoodItemClick(foodplace)}}
+                                    to={`/places/${foodplace.id}`}
+                                >
                                     <h3>{foodplace.name}</h3>
                                     <span>{foodplace.adress + ' ' + foodplace.town}</span>
                                     <br />
@@ -42,8 +46,7 @@ const PlacesList = ({foodPlaces, onFoodItemClick, isLoadingPlaces}) => {
                             ))
                         }
                     </ListGroup>
-                )
-            }
+                
 
         </div>
     )

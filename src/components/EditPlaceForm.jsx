@@ -101,13 +101,17 @@ const EditPlaceForm = ({ place, onPlaceUpdate}) => {
 
         <Form.Group className='editPlaceForm' controlId='supply'>
     <Form.Label><strong>Supply</strong></Form.Label>
-        <Form.Control
+        <Form.Select
         {...register("supply", {
             required: "You must choose a supply",
         })}
         defaultValue={place.supply}
         type="text"
-        />
+        >
+            <option value="Lunch">Lunch</option>
+            <option value="After Work">After Work</option>
+            <option value="A la Carte">A la carte</option>
+        </Form.Select>
     </Form.Group>
 
         {/* Form for Phonenumber */}
@@ -164,13 +168,20 @@ const EditPlaceForm = ({ place, onPlaceUpdate}) => {
     {/* Form for type */}
      <Form.Group className='editPlaceForm' controlId='type'>
     <Form.Label><strong>Type</strong></Form.Label>
-        <Form.Control
+        <Form.Select
         {...register("type", {
             required: "A Type is required",
         })}
         defaultValue={place.type}
         type="text"
-        />
+        >  
+            <option value="Café">Café</option>
+            <option value="Restaurant">Restaurant</option>
+            <option value="Fast food">Fast food</option>
+            <option value="Grill">Grill</option>
+            <option value="Foodtruck">Foodtruck</option>
+
+        </Form.Select>
 
     </Form.Group>
 
@@ -192,7 +203,7 @@ const EditPlaceForm = ({ place, onPlaceUpdate}) => {
         />
     </Form.Group>
 
-    <Button className="updatePlaceButton" variant="success" type="submit">Update</Button>
+    <Button className='btn-color my-3 updatePlaceButton' type="submit">Update</Button>
 </Form>
   )
 }

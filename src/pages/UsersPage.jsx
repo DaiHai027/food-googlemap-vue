@@ -25,10 +25,8 @@ const UsersPage = () => {
       
       {!loading && 
         <>
-          {/* switching between general users and admins */}
-          {isAdmin 
-            ? <UsersList users={users}/> 
-            : <p>You do not have permission to edit. Please contact the administrator.</p>
+          {isAdmin &&
+            <UsersList users={users}/> 
           }
         </>
       }
