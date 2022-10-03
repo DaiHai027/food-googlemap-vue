@@ -16,13 +16,7 @@ import AddPlacePage from './pages/AddPlacePage'
 import UsersPage from './pages/UsersPage'
 import PlacesPage from './pages/PlacesPage'
 import PlacePage from './pages/PlacePage'
-<<<<<<< HEAD
-import TipsPage from './pages/TipsPage'
-
-=======
 import TipsPage from './pages/Tipspage'
-import EditPlacePage from './pages/EditPlacePage'
->>>>>>> 126d80fbeb1149b32e8ac1b70a0cafffd08a90c8
 
 import { ToastContainer } from 'react-toastify'
 
