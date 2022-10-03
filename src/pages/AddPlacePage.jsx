@@ -36,9 +36,8 @@ const AddPlacePage = () => {
       {!loading && 
         <>
           {/* switching between general users and admins */}
-          {isAdmin 
-            ? <CreatePlaceForm />
-            : <p>You do not have permission to edit. Please contact the administrator.</p>
+          {isAdmin &&
+            <CreatePlaceForm />
           }      
         </>
       }    

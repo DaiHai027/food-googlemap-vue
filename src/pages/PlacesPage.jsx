@@ -12,10 +12,14 @@ import FoodPlacesList from '../components/FoodPlacesList'
 import BeatLoader from 'react-spinners/BeatLoader'
 // bootstrap
 import Container from 'react-bootstrap/Container'
+
 import { Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useMemo } from 'react'
 import FoodPlacesTable from '../components/FoodPlacesTable'
+
+import { ListGroup } from "react-bootstrap" 
+
 
 const PlacesPage = () => {
   const { data: foodPlaces, loading } = useGetPlaces()
@@ -69,13 +73,25 @@ const PlacesPage = () => {
 
   return (
     <Container className="py-3">
-        <h1 className="h-text-color-dark">Restaurants</h1>
-        {loading && <BeatLoader  color='#F27166' /> }
-        {isAdmin
-          ? <FoodPlacesTable foodPlaces={foodPlaces} columns={columns} />
-          // ? <FoodPlacesList foodPlaces={foodPlaces}  />
-          : <p>You do not have permission to edit. Please contact the administrator.</p>
-        }
+
+      <h1 className="h-text-color-dark">Restaurants</h1>
+      {loading && <BeatLoader  color='#F27166' /> }
+      
+      {!loading && 
+        <>
+          {isAdmin && (
+            <>    
+              <ListGroup className="foodplace-listgroup">
+                {!loading && foodPlaces &&  
+                foodPlaces.map(foodplace => (      
+                  <FoodPlacesList foodPlaces={foodplace} key={foodplace.id} /> 
+                ))}      
+              </ListGroup>                                  
+            </>
+          )}
+        </>
+      }
+        
 
     </Container>
 
