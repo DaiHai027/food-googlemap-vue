@@ -1,9 +1,6 @@
-import Modal from 'react-bootstrap/Modal'
-import { Button, Form } from 'react-bootstrap';
-import { useState, useMemo, useEffect } from 'react';
-import { Autocomplete } from '@react-google-maps/api';
+import { Button } from 'react-bootstrap'
+import { useState, useEffect } from 'react'
 import  ListGroup  from 'react-bootstrap/ListGroup'
-import FoodPlacesTable from './FoodPlacesTable'
 import useGetQueryPlaces from '../hooks/useGetQueryPlaces'
 import SearchAddressForm from '../components/SearchAddressForm'
 import MapsAPI from '../services/mapsAPI'
@@ -12,38 +9,10 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons'
 
 
 const PlacesListModal = ({onFoodItemClick, onAddressFormSubmit}) => {
-    const [show, setShow] = useState(false);
+    const [show, setShow] = useState(false)
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
-    // What columns table should include
-    const columns = useMemo( () => {
-
-        return [
-            {
-                Header: 'Name',
-                accessor: 'name'
-            },
-            {
-                Header: 'Town',
-                accessor: 'town'
-            },
-            {
-                Header: 'Supply',
-                accessor: 'supply'
-            },
-            {
-                Header: 'Type',
-                accessor: 'type'
-            },
-            {
-                Header: 'Cuisine',
-                accessor: 'cuisine'
-            }
-        ]
-
-    }, [] )
+    const handleClose = () => setShow(false)
+    const handleShow = () => setShow(true)
 
     // States for how food places list should be filtered
     const [nameOrder, setNameOrder] = useState('asc')
@@ -60,16 +29,6 @@ const PlacesListModal = ({onFoodItemClick, onAddressFormSubmit}) => {
     // Get list of food places from hook
     const { data, loading } = useGetQueryPlaces(queryLimits)
 
-    // Update query settings
-    // const handleFilterPlaces = (town) => {
-    //     setQueryLimits({
-    //         nameOrder,
-    //         supplyWhere,
-    //         typeWhere,
-    //         townWhere: town,
-    //     })
-    // }
-
     /**
      *
      * Function to handle when search form has been submitted
@@ -82,12 +41,8 @@ const PlacesListModal = ({onFoodItemClick, onAddressFormSubmit}) => {
             return
         }
 
-        // Get only town name from address given
-        const town = await MapsAPI.getTown(address)
-
         // Update states to show only given town
-        setTownWhere(town)
-        //handleFilterPlaces(town)
+        setTownWhere(await MapsAPI.getTown(address))
 
         // Let parent component take over
         onAddressFormSubmit(address)
@@ -101,7 +56,6 @@ const PlacesListModal = ({onFoodItemClick, onAddressFormSubmit}) => {
      */
     const resetTownWhere = () => {
         setTownWhere(null)
-        //handleFilterPlaces(null)
     }
 
     useEffect( () => {
@@ -160,10 +114,6 @@ const PlacesListModal = ({onFoodItemClick, onAddressFormSubmit}) => {
                                     <option value="asc">Acending</option>
                                     <option value="desc">Descending</option>
                                 </select>
-
-                                {/* <Button onClick={() =>{handleFilterPlaces(townWhere)}} className='btn-color my-3'>Filter</Button> */}
-
-                                {/* <FoodPlacesTable foodPlaces={data} onFoodItemClick={onFoodItemClick} columns={columns} /> */}
 
                                 {
                                     townWhere && (
