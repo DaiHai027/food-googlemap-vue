@@ -1,13 +1,19 @@
+// context
+import { useAuthContext } from '../contexts/AuthContext'
 // bootstrap
 import ListGroup from 'react-bootstrap/ListGroup'
 import Button from 'react-bootstrap/Button'
 import Image from 'react-bootstrap/Image'
+import Form from 'react-bootstrap/Form'
 // icon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faEdit} from '@fortawesome/free-solid-svg-icons'
 
 
-const UsersListItem = ({ users }) => {  
+
+const UsersListItem = ({ users }) => { 
+    const { currentUser } = useAuthContext()
+
    
   return (
     <>                 
@@ -36,13 +42,14 @@ const UsersListItem = ({ users }) => {
                 </div>
                 
                 <div className='user-edit-btn'>
-                    {/* Icon tras & edit */}
-                    <Button 
-                        className='btn-color mx-2'                        
-                    >
-                        <FontAwesomeIcon icon={faEdit}/>
-                    </Button>
-                   
+                    {/* Switch admin / user */}
+                    {/* <Form>
+                        <Form.Check 
+                            type="switch"
+                            id="custom-switch"
+                            label="admin"                                  
+                        />
+                        </Form>                    */}
                 </div>
             </ListGroup.Item>
         ))} 

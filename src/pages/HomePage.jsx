@@ -1,15 +1,26 @@
+<<<<<<< HEAD
 import { useJsApiLoader, GoogleMap, MarkerF, InfoBox } from '@react-google-maps/api'
+=======
+>>>>>>> dev
 import { useState, useEffect } from 'react'
-// assets
-import userMarkerImg from '../assets/images/usermarker.png'
 //components
 import FoodPlaceInfoBox from '../components/FoodPlaceInfoBox'
+<<<<<<< HEAD
+=======
+import AddtipForm from '../components/AddtipForm'
+import PlacesListModal from '../components/PlacesListModal'
+>>>>>>> dev
 //hooks
 import useGetPlaces from '../hooks/useGetPlaces'
-import AddtipForm from '../components/AddtipForm'
+// assets
+import userMarkerImg from '../assets/images/usermarker.png'
 // API
 import MapsAPI from '../services/mapsAPI'
+<<<<<<< HEAD
 import PlacesListModal from '../components/PlacesListModal'
+=======
+import { useJsApiLoader, GoogleMap, MarkerF, InfoBox, Autocomplete } from '@react-google-maps/api'
+>>>>>>> dev
 
 
 // Array of library for maps api to include
@@ -105,8 +116,14 @@ const HomePage = () => {
             <div className='button-div'>
                 <AddtipForm />
 
+<<<<<<< HEAD
                 {/* Sidebar containing list of food places */}
                 <PlacesListModal onFoodItemClick={handleFoodItemClick} onAddressFormSubmit={handleOnSubmit} />
+=======
+            {/* Sidebar containing list of food places */}
+            <PlacesListModal onFoodItemClick={handleFoodItemClick} onAddressFormSubmit={handleOnSubmit} />
+            
+>>>>>>> dev
             </div>
 
 
