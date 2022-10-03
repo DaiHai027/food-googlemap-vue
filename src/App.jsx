@@ -16,7 +16,7 @@ import AddPlacePage from './pages/AddPlacePage'
 import UsersPage from './pages/UsersPage'
 import PlacesPage from './pages/PlacesPage'
 import PlacePage from './pages/PlacePage'
-import TipsPage from './pages/TipsPage'
+import TipsPage from './pages/Tipspage'
 import EditPlacePage from './pages/EditPlacePage'
 
 import { ToastContainer } from 'react-toastify'
@@ -43,7 +43,7 @@ function App() {
 
               <Route path="/tips" element={
                       <RequireAuth>
-                        <TipsPage /> 
+                        <TipsPage />
                       </RequireAuth>
                       } />
 
@@ -62,13 +62,13 @@ function App() {
               <Route path="/places" element={
                       <RequireAuth>
                         <PlacesPage />
-                      </RequireAuth> 
+                      </RequireAuth>
                       } />
 
               <Route path="/places/:id" element={
                       <RequireAuth>
                         <PlacePage />
-                      </RequireAuth> 
+                      </RequireAuth>
                       } />
 
               {/* Protected routes */}
