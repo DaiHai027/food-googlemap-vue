@@ -32,11 +32,11 @@ const PlacePage = () => {
           <p><strong>Type: </strong>{place.type}</p>
           <p><strong>Cuisine: </strong>{place.cuisine}</p>
           <p><strong>Supply: </strong>{place.supply}</p>
-          <p><strong>Facebook: </strong>{place.facebook}</p>
-          <p><strong>Website: </strong>{place.website}</p>
-          <p><strong>Instagram: </strong>{place.instagram}</p>
-          <p><strong>Phonenumber: </strong>{place.phonenumber}</p>
-          <p><strong>E-mail: </strong>{place.email}</p>
+          {place.facebook? <p><strong>Facebook: </strong>{place.facebook}</p>  :null}
+          {place.website? <p><strong>Website: </strong>{place.website}</p>  :null}
+          {place.instagram? <p><strong>Instagram: </strong>{place.instagram}</p>  :null}
+          {place.phonenumber? <p><strong>Phonenumber: </strong>{place.phonenumber}</p>  :null}
+          {place.email? <p><strong>E-mail: </strong>{place.email}</p>  :null}
           <p><strong>Description: </strong>{place.description}</p>
           <hr />
 
