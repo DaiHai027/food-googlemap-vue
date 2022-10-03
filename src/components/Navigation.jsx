@@ -59,8 +59,8 @@ const Navigation = () => {
                                         ? <Image
                                             className="photo-placeholder"
                                             src={userPhotoUrl}
-                                            height={30}
-                                            width={30}
+                                            height={50}
+                                            width={50}
                                             fluid
                                             roundedCircle
                                             />

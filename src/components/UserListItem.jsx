@@ -42,6 +42,14 @@ const UsersListItem = ({ users }) => {
                 </div>
                 
                 <div className='user-edit-btn'>
+                    {/* Icon tras & edit */}
+                    <Button
+                        variant='warning'
+                        className='mx-2'                        
+                    >
+                        <FontAwesomeIcon icon={faEdit}/>
+                    </Button>
+                   
                     {/* Switch admin / user */}
                     {/* <Form>
                         <Form.Check 

@@ -105,12 +105,12 @@ const UpdateProfilePage = () => {
 								</div>
 
 								<Form.Group id="displayName" className="mb-3">
-									<Form.Label>Name</Form.Label>
+									<Form.Label><strong>Name</strong></Form.Label>
 									<Form.Control type="text" ref={displayNameRef} defaultValue={currentUser.displayName} />
 								</Form.Group>
 
 								<Form.Group id="photo" className="mb-3">
-									<Form.Label>Photo</Form.Label>
+									<Form.Label><strong>Photo</strong></Form.Label>
 									<Form.Control type="file" onChange={handleFileChange} />
 									<Form.Text>
 										{
@@ -122,17 +122,17 @@ const UpdateProfilePage = () => {
 								</Form.Group>
 
 								<Form.Group id="email" className="mb-3">
-									<Form.Label>Email</Form.Label>
+									<Form.Label><strong>Email</strong></Form.Label>
 									<Form.Control type="email" ref={emailRef} defaultValue={currentUser.email} required />
 								</Form.Group>
 
 								<Form.Group id="password" className="mb-3">
-									<Form.Label>New Password</Form.Label>
+									<Form.Label><strong>New Password</strong></Form.Label>
 									<Form.Control type="password" ref={passwordRef} autoComplete="new-password" />
 								</Form.Group>
 
 								<Form.Group id="password-confirm" className="mb-3">
-									<Form.Label>Confirm New Password</Form.Label>
+									<Form.Label><strong>Confirm New Password</strong></Form.Label>
 									<Form.Control type="password" ref={passwordConfirmRef} autoComplete="new-password" />
 								</Form.Group>
 

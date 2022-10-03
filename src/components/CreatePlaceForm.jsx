@@ -49,8 +49,8 @@ const CreatePlaceForm = () => {
         <Form onSubmit={handleSubmit(onCreatePlace)} noValidate>
 
             {/* Form for name */}
-            <Form.Group controlId="name">
-                <Form.Label>Name</Form.Label>
+            <Form.Group className='placeFormG' controlId="name">
+                <Form.Label><strong>Name</strong></Form.Label>
                 <Form.Control
                     {...register("name", {
                         required: "A name is required",
@@ -68,8 +68,8 @@ const CreatePlaceForm = () => {
             </Form.Group>
 
             {/* Form for adress */}
-            <Form.Group controlId='adress'>
-                <Form.Label>Adress</Form.Label>
+            <Form.Group className='placeFormG' controlId='adress'>
+                <Form.Label><strong>Adress</strong></Form.Label>
                 <Form.Control
                     {...register("adress", {
                         required: "A adress is required",
@@ -85,8 +85,8 @@ const CreatePlaceForm = () => {
             </Form.Group>
 
             {/* Form for Town */}
-            <Form.Group controlId='town'>
-                <Form.Label>Town</Form.Label>
+            <Form.Group className='placeFormG' controlId='town'>
+                <Form.Label><strong>Town</strong></Form.Label>
                 <Form.Control
                     {...register("town", {
                         required: "A town is required",
@@ -102,8 +102,8 @@ const CreatePlaceForm = () => {
             </Form.Group>
 
             {/* Form for Cuisine */}
-            <Form.Group controlId='cuisine'>
-                <Form.Label>Cuisine</Form.Label>
+            <Form.Group className='placeFormG' controlId='cuisine'>
+                <Form.Label><strong>Cuisine</strong></Form.Label>
                 <Form.Control
                     {...register("cuisine", {
                         required: "A cuisine is required",
@@ -116,8 +116,8 @@ const CreatePlaceForm = () => {
 
             {/* Form for Supply */}
 
-            <Form.Group controlId='supply'>
-                <Form.Label>Supply</Form.Label>
+            <Form.Group className='placeFormG' controlId='supply'>
+                <Form.Label><strong>Supply</strong></Form.Label>
                 <Form.Select
                 {...register("supply", {
                     required: "A town is required",
@@ -138,8 +138,8 @@ const CreatePlaceForm = () => {
 
 
             {/* Form for Phonenumber */}
-            <Form.Group controlId='phonenumber'>
-            <Form.Label>Phonenumber</Form.Label>
+            <Form.Group className='placeFormG' controlId='phonenumber'>
+            <Form.Label><strong>Phonenumber</strong></Form.Label>
                 <Form.Control
                     {...register("phonenumber",)}
                     placeholder="Phonenumber"
@@ -148,8 +148,8 @@ const CreatePlaceForm = () => {
             </Form.Group>
 
             {/* Form for Facebook */}
-            <Form.Group controlId='facebook'>
-            <Form.Label>Facebook</Form.Label>
+            <Form.Group className='placeFormG' controlId='facebook'>
+            <Form.Label><strong>Facebook</strong></Form.Label>
                 <Form.Control
                     {...register("facebook",)}
                     placeholder="Facebbok"
@@ -158,8 +158,8 @@ const CreatePlaceForm = () => {
             </Form.Group>
 
             {/* Form for Instagram */}
-            <Form.Group controlId='instagram'>
-            <Form.Label>Instagram</Form.Label>
+            <Form.Group className='placeFormG' controlId='instagram'>
+            <Form.Label><strong>Instagram</strong></Form.Label>
                 <Form.Control
                     {...register("instagram",)}
                     placeholder="instagram"
@@ -169,8 +169,8 @@ const CreatePlaceForm = () => {
 
 
             {/* Form for E-mail */}
-            <Form.Group controlId='email'>
-            <Form.Label>Email</Form.Label>
+            <Form.Group className='placeFormG' controlId='email'>
+            <Form.Label><strong>Email</strong></Form.Label>
                 <Form.Control
                     {...register("email",)}
                     placeholder="email"
@@ -179,8 +179,8 @@ const CreatePlaceForm = () => {
             </Form.Group>
 
             {/* Form for Website */}
-            <Form.Group controlId='website'>
-            <Form.Label>Website</Form.Label>
+            <Form.Group className='placeFormG' controlId='website'>
+            <Form.Label><strong>Website</strong></Form.Label>
                 <Form.Control
                     {...register("website",)}
                     placeholder="website"
@@ -189,8 +189,8 @@ const CreatePlaceForm = () => {
             </Form.Group>
 
             {/* Form for type */}
-            <Form.Group controlId='type'>
-                <Form.Label>Type</Form.Label>
+            <Form.Group className='placeFormG' controlId='type'>
+                <Form.Label><strong>Type</strong></Form.Label>
                 <Form.Select
                     {...register("type", {
                         required: "A Type is required",
@@ -208,8 +208,8 @@ const CreatePlaceForm = () => {
             </Form.Group>
 
             {/* Form for Description */}
-            <Form.Group controlId='description'>
-                <Form.Label>Description</Form.Label>
+            <Form.Group className='placeFormG' controlId='description'>
+                <Form.Label><strong>Description</strong></Form.Label>
                 <Form.Control
                     {...register("description", {
                         required: "A description is required",
