@@ -29,8 +29,11 @@ const PlacesPage = () => {
         <>
           {isAdmin && (
             <>    
-              <ListGroup className="foodplace-listgroup">      
-                <FoodPlacesList foodPlaces={foodPlaces}  />       
+              <ListGroup className="foodplace-listgroup">
+                {!loading && foodPlaces &&  
+                foodPlaces.map(foodplace => (      
+                  <FoodPlacesList foodPlaces={foodplace} key={foodplace.id} /> 
+                ))}      
               </ListGroup>                                  
             </>
           )}

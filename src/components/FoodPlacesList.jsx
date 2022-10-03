@@ -1,7 +1,6 @@
 import { ListGroup } from "react-bootstrap" 
 import { Link } from 'react-router-dom'
-// loader
-import BeatLoader from 'react-spinners/BeatLoader'
+
 
 /**
  *
@@ -11,36 +10,29 @@ import BeatLoader from 'react-spinners/BeatLoader'
 const FoodPlacesList = ({foodPlaces, onFoodItemClick, isLoadingPlaces}) => {
 
     return (
-        <>                                          
-                {!isLoadingPlaces && foodPlaces && 
-                    foodPlaces.map(foodplace => (
-                        <ListGroup.Item 
-                            action 
-                            as={Link} 
-                            key={foodPlaces.id} 
-                            onClick={() => {onFoodItemClick(foodplace)}}
-                            to={`/places/${foodplace.id}`}
-                        >
-                            <h3>{foodplace.name}</h3>
-                            <span>{foodplace.adress + ' ' + foodplace.town}</span>
-                            <br />
-                            <span>{foodplace.supply} | {foodplace.type}</span>
-                            <div className="foodplace-contact">
-                                {foodplace.phonenumber && (
-                                    <a href={`tel:${foodplace.phonenumber}`}>{foodplace.phonenumber}</a>
-                                )}
-                                <br />
-                                {foodplace.email && (
-                                    <a href={`mailto:${foodplace.email}`}>{foodplace.email}</a>
-                                )}
-                            </div>
-                        </ListGroup.Item>
-                    ))
-                
-                }
-              
-                    
-
+        <>                                      
+            {               
+                <ListGroup.Item 
+                    action as={Link}                     
+                    onClick={() => {onFoodItemClick(foodPlaces)}}
+                    to={`/places/${foodPlaces.id}`}
+                >
+                    <h3>{foodPlaces.name}</h3>
+                    <span>{foodPlaces.adress + ' ' + foodPlaces.town}</span>
+                    <br />
+                    <span>{foodPlaces.supply} | {foodPlaces.type}</span>
+                    <span>{foodPlaces.facebook}</span>
+                    <div className="foodplace-contact">
+                        {foodPlaces.phonenumber && (
+                            <a href={`tel:${foodPlaces.phonenumber}`}>{foodPlaces.phonenumber}</a>
+                        )}
+                        <br />
+                        {foodPlaces.email && (
+                            <a href={`mailto:${foodPlaces.email}`}>{foodPlaces.email}</a>
+                        )}
+                    </div>
+                </ListGroup.Item>                 
+            }
         </>
     )
 
