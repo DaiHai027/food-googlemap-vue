@@ -9,6 +9,9 @@ import Nav from "react-bootstrap/Nav"
 import Navbar from "react-bootstrap/Navbar"
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import Image from 'react-bootstrap/Image'
+// assets
+import logo from '../assets/icons/map.png'
+
 
 const Navigation = () => {
     const [data, setData] = useState([])
@@ -35,8 +38,8 @@ const Navigation = () => {
     <Navbar className="navbar" expand="md">
         <Container>
             <Navbar.Brand as={Link} to="/">
-                <img
-                    src="/src/assets/icons/map.png"
+                <Image
+                    src={logo}
                     width="30"
                     height="30"
                     className="d-inline-block align-top"
