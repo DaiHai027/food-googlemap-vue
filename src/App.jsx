@@ -17,6 +17,7 @@ import UsersPage from './pages/UsersPage'
 import PlacesPage from './pages/PlacesPage'
 import PlacePage from './pages/PlacePage'
 import TipsPage from './pages/Tipspage'
+import RequireAdmin from './components/RequireAdmin'
 
 import { ToastContainer } from 'react-toastify'
 
@@ -40,34 +41,53 @@ function App() {
 
               <Route path="/forgot-password" element={<ForgotPasswordPage />} />
 
+              {/* Protected routes for admin users */}
               <Route path="/tips" element={
-                      <RequireAuth>
-                        <TipsPage />
-                      </RequireAuth>
-                      } />
+                <RequireAuth>
+                  <RequireAdmin>
+                    <TipsPage />
+                  </RequireAdmin>
+                </RequireAuth>
+              } />
 
               <Route path="/add-places" element={
-                      <RequireAuth>
-                        <AddPlacePage />
-                      </RequireAuth>
-                      } />
+                <RequireAuth>
+                  <RequireAdmin>
+                    <AddPlacePage />
+                  </RequireAdmin>
+                </RequireAuth>
+              } />
 
               <Route path="/places" element={
-                      <RequireAuth>
-                        <PlacesPage />
-                      </RequireAuth>
-                      } />
+                <RequireAuth>
+                  <RequireAdmin>
+                    <PlacesPage />
+                  </RequireAdmin>
+                </RequireAuth>
+              } />
 
               <Route path="/places/:id" element={
-                      <RequireAuth>
-                        <PlacePage />
-                      </RequireAuth>
-                      } />
+                <RequireAuth>
+                  <RequireAdmin>
+                    <PlacePage />
+                  </RequireAdmin>
+                </RequireAuth>
+              } />
 
-              {/* Protected routes */}
-              <Route path="/update-profile" element={<UpdateProfilePage />} />
+              <Route path="/users" element={
+                <RequireAuth>
+                  <RequireAdmin>
+                    <UsersPage />
+                  </RequireAdmin>
+                </RequireAuth>
+              } />
 
-              <Route path="/users" element={<UsersPage />} />
+              {/* Protected routes for normal users */}
+              <Route path="/update-profile" element={
+                <RequireAuth>
+                  <UpdateProfilePage />
+                </RequireAuth>
+              } />
 
         </Routes>
 
