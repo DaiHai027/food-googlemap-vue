@@ -26,7 +26,7 @@ const TipsList = ({tips, isLoadingTips}) => {
                   <hr />
                   <p><strong>Suggestion: </strong>{tip.tip}</p>
                   <hr />
-                  <Button variant="danger" onClick={() => deleteTip.mutate(tip)}><FontAwesomeIcon icon={faTrashAlt}/></Button>
+                  <Button variant="danger" onClick={() => deleteTip.mutate(tip)}>Delete <FontAwesomeIcon icon={faTrashAlt}/></Button>
                 </ListGroup.Item>
               ))
             }
