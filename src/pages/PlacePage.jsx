@@ -26,18 +26,19 @@ const PlacePage = () => {
       {!loading && place && (
         <>
           <h1>{place.name}</h1>
-
-          <p>Adress:{place.adress}</p>
-          <p>Town:{place.town}</p>
-          <p>Type:{place.type}</p>
-          <p>Cuisine:{place.cuisine}</p>
-          <p>Supply:{place.supply}</p>
-          <p>Facebook:{place.facebook}</p>
-          <p>Website:{place.website}</p>
-          <p>Instagram:{place.instagram}</p>
-          <p>Phonenumber:{place.phonenumber}</p>
-          <p>E-mail:{place.email}</p>
-          <p>Description{place.description}</p>
+          <hr />
+          <p><strong>Adress: </strong>{place.adress}</p>
+          <p><strong>Town: </strong>{place.town}</p>
+          <p><strong>Type: </strong>{place.type}</p>
+          <p><strong>Cuisine: </strong>{place.cuisine}</p>
+          <p><strong>Supply: </strong>{place.supply}</p>
+          <p><strong>Facebook: </strong>{place.facebook}</p>
+          <p><strong>Website: </strong>{place.website}</p>
+          <p><strong>Instagram: </strong>{place.instagram}</p>
+          <p><strong>Phonenumber: </strong>{place.phonenumber}</p>
+          <p><strong>E-mail: </strong>{place.email}</p>
+          <p><strong>Description: </strong>{place.description}</p>
+          <hr />
 
           
             <Button variant="warning" onClick={() => setShowEditForm(!showEditForm)}>

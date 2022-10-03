@@ -10,6 +10,7 @@ import MapsAPI from '../services/mapsAPI'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 
+
 const PlacesListModal = ({onFoodItemClick, onAddressFormSubmit}) => {
     const [show, setShow] = useState(false);
 
@@ -156,7 +157,7 @@ const PlacesListModal = ({onFoodItemClick, onAddressFormSubmit}) => {
 
                                 <label htmlFor='sort-select-name-order'>Sort name: </label>
                                 <select id='sort-select-name-order' className="form-select" onChange={(e)=>{setNameOrder(e.target.value)}} defaultValue={nameOrder}>
-                                    <option value="asc">Ascending</option>
+                                    <option value="asc">Acending</option>
                                     <option value="desc">Descending</option>
                                 </select>
 
