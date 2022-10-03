@@ -1,0 +1,12 @@
+.tipsTitle {
+    margin-top: 15px;
+}
+
+.tipListItem:nth-child(even) {
+    background-color: #dcf7e0;
+}
+
+.tipListItem:nth-child(odd) {
+    background-color: #efe4ed;
+}
+

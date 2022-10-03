@@ -8,7 +8,8 @@ const TipsPage = () => {
     const { data: tips, loading: isLoadingTips } = useGetTips()
   return (
     <Container>
-        <h1>Suggestions</h1>
+        <h1 className='tipsTitle'>Suggestions</h1>
+        <hr />
 
         <TipsList tips={tips} isLoading={isLoadingTips} />
 

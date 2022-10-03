@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 import { useParams } from 'react-router-dom'
-import EditPlaceForm from '../components/editPlaceForm'
+import EditPlaceForm from '../components/EditPlaceForm'
 import useGetPlace from '../hooks/useGetPlace'
 
 
@@ -10,7 +10,7 @@ const PlacePage = () => {
   const [showEditForm, setShowEditForm] = useState(false)
   const { id } = useParams()
   const { data: place, loading } = useGetPlace(id)
-  
+
 
   const onPlaceUpdated = () => {
     setShowEditForm(false)
@@ -26,20 +26,21 @@ const PlacePage = () => {
       {!loading && place && (
         <>
           <h1>{place.name}</h1>
+          <hr />
+          <p><strong>Adress: </strong>{place.adress}</p>
+          <p><strong>Town: </strong>{place.town}</p>
+          <p><strong>Type: </strong>{place.type}</p>
+          <p><strong>Cuisine: </strong>{place.cuisine}</p>
+          <p><strong>Supply: </strong>{place.supply}</p>
+          {place.facebook? <p><strong>Facebook: </strong>{place.facebook}</p>  :null}
+          {place.website? <p><strong>Website: </strong>{place.website}</p>  :null}
+          {place.instagram? <p><strong>Instagram: </strong>{place.instagram}</p>  :null}
+          {place.phonenumber? <p><strong>Phonenumber: </strong>{place.phonenumber}</p>  :null}
+          {place.email? <p><strong>E-mail: </strong>{place.email}</p>  :null}
+          <p><strong>Description: </strong>{place.description}</p>
+          <hr />
 
-          <p>Adress:{place.adress}</p>
-          <p>Town:{place.town}</p>
-          <p>Type:{place.type}</p>
-          <p>Cuisine:{place.cuisine}</p>
-          <p>Supply:{place.supply}</p>
-          <p>Facebook:{place.facebook}</p>
-          <p>Website:{place.website}</p>
-          <p>Instagram:{place.instagram}</p>
-          <p>Phonenumber:{place.phonenumber}</p>
-          <p>E-mail:{place.email}</p>
-          <p>Description{place.description}</p>
 
-          
             <Button variant="warning" onClick={() => setShowEditForm(!showEditForm)}>
               {showEditForm ? 'Cancel Edit' : 'Edit'}
             </Button>
@@ -49,7 +50,7 @@ const PlacePage = () => {
 
                 <EditPlaceForm onPlaceUpdate={onPlaceUpdated} place={place} />
             </>}
-          
+
         </>
       )}
 
