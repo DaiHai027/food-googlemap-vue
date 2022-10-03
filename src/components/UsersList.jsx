@@ -8,13 +8,13 @@ const UsersList = ({ users }) => {
     
    
   return (
-    <Container>
+    <>
       
             <ListGroup className='user-list'>
                <UsersListItem users={users}/>
             </ListGroup>
       
-    </Container>
+    </>
   )
 }
 
