@@ -21,7 +21,7 @@ const FoodPlaceInfoBox = ({userPosition, foodPlace, onClose}) => {
             </div>
             <div className='address-box'>
                 <p>{foodPlace.adress + ' ' + foodPlace.town}</p>
-                <p>{foodPlace.description}</p>
+                <p className='text-wrap' style={{maxWidth:'15rem'}}>{foodPlace.description}</p>
                 <div>
                     <span>{foodPlace.cuisine}</span>
                     <span> | {foodPlace.type}</span>
