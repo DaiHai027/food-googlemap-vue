@@ -37,8 +37,9 @@ const UsersListItem = ({ users }) => {
                 
                 <div className='user-edit-btn'>
                     {/* Icon tras & edit */}
-                    <Button 
-                        className='btn-color mx-2'                        
+                    <Button
+                        variant='warning'
+                        className='mx-2'                        
                     >
                         <FontAwesomeIcon icon={faEdit}/>
                     </Button>
