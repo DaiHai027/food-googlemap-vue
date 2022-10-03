@@ -21,9 +21,11 @@ const TipsList = ({tips, isLoadingTips}) => {
           <ListGroup>
             {
               tips.map((tip, index) => (
-                <ListGroup.Item action key={index}>
-                  <h3>{tip.email}</h3>
-                  <p>{tip.tip}</p>
+                <ListGroup.Item key={index}>
+                  <p><strong>Email: </strong>{tip.email}</p>
+                  <hr />
+                  <p><strong>Suggestion: </strong>{tip.tip}</p>
+                  <hr />
                   <Button variant="danger" onClick={() => deleteTip.mutate(tip)}><FontAwesomeIcon icon={faTrashAlt}/></Button>
                 </ListGroup.Item>
               ))

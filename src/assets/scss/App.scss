@@ -2,7 +2,10 @@
 @import 'users';
 @import 'homepage';
 @import 'toastify';
+@import 'tips';
+@import 'places';
 @import 'react-toastify/scss/main';
+
 /* Google fonts */
 @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 
@@ -22,6 +25,7 @@ h1,h2,h3,h4,h5 {
     background-color: #ddd
 }
 
+//Nav
 .navbar {
     background-color: #C4F2CB;
     min-height: 6vh;
@@ -54,107 +58,14 @@ h1,h2,h3,h4,h5 {
 // }
 
 
+//homepage
 
-.maps-wrapper {
-    height: 89vh;
-    position: relative;
-}
-
-.searchaddressform {
-    display: flex;
-    gap: 0.5rem;
-    margin-bottom: 2rem;
-    align-items: flex-end;
-}
-
-.foodplace-modal {
-    background-color: white;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    z-index: 999;
-    overflow-y: scroll;
-    padding: 1rem;
-
-    .foodplace-modal-close {
-        position: absolute;
-        right: 1rem;
-        top: 1rem;
-        width: 2rem;
-        height: 2rem;
-        border: 1px solid gray;
-        border-radius: 50%;
-        cursor: pointer;
-    }
-
-    #sort-select-type, #sort-select-supply, #sort-select-name-order {
-        margin-bottom: 1rem;
-    }
-
-    .townbutton-outline {
-        cursor: default;
-        display: flex;
-        align-items: center;
-
-        .townbutton-close {
-            font-size: 1.4rem;
-            margin-left: 0.5rem;
-            color: crimson;
-            cursor: pointer;
-        }
-    }
-}
-
-.place-info-box {
-    border: #F25050 solid 1px;
-    background-color: #F25050;
-    font-size: 1rem;
-    padding: 8px;
-    display: flex;
+//foodplace-modal
 
 
-    .box-header {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        margin-bottom: 2px;
-    }
 
+//hompage
 
-    .x-btn {
-        margin-bottom: 2px;
-        background-color: transparent;
-        border: none;
-        color: white;
-    }
-
-    .x-btn:hover, .x-btn:disabled {
-        background-color: #F27166 !important;
-        border-color: #F27166 !important;
-    }
-
-    .address-box {
-        background-color: #f8ceca;
-        border-radius: 7px;
-        padding: 7px;
-        margin: auto;
-        font-family: 'Acme', sans-serif;
-        color: #244020;
-
-        .place-contact {
-            margin: 0.7rem 0;
-            display: flex;
-            flex-flow: row wrap;
-            gap: 0.8rem;
-
-            img {
-                width: 24px;
-            }
-        }
-    }
-
-}
 
 
 // .foodplaces-list-wrapper {
@@ -180,10 +91,4 @@ h1,h2,h3,h4,h5 {
     width: 600px;
 }
 
-.updatePlaceButton {
-    margin-top: 10px;
-}
 
-.editPlaceForm{
-    margin-top: 10px;
-}
