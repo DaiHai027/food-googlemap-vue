@@ -118,8 +118,8 @@ const CreatePlaceForm = () => {
 
             <Form.Group controlId='supply'>
                 <Form.Label>Supply</Form.Label>
-                <Form.Control
-                {...register("town", {
+                <Form.Select
+                {...register("supply", {
                     required: "A town is required",
                     minLength: {
                         value: 2,
@@ -128,37 +128,14 @@ const CreatePlaceForm = () => {
                 })}
                 placeholder="Town"
                 type="text"
-                />
+                >
+                    <option value="Lunch">Lunch</option>
+                    <option value="After Work">After Work</option>
+                    <option value="A la Carte">A la carte</option>
+                </Form.Select>
                 {errors.town && <div className="invalid">{errors.town.message}</div>}
             </Form.Group>
 
-                {/* Form for Cuisine */}
-             <Form.Group>
-            <Form.Label>Cuisine</Form.Label>
-                <Form.Control
-                {...register("cuisine", {
-                    required: "A cuisine is required",
-                })}
-                placeholder="Cusine"
-                type="text"
-                />
-                {errors.cuisine && <div className="invalid">{errors.cuisine.message}</div>}
-                </Form.Group>
-
-                {/* Form for Supply */}
-
-                <Form.Group>
-            <Form.Label>Supply</Form.Label>
-                <Form.Control
-                {...register("supply", {
-                    required: "You must choose a supply",
-                })}
-                placeholder="Supply"
-                type="text"
-                
-                />
-                {errors.supply && <div className="invalid">{errors.supply.message}</div>}
-            </Form.Group>
 
             {/* Form for Phonenumber */}
             <Form.Group controlId='phonenumber'>
@@ -214,13 +191,19 @@ const CreatePlaceForm = () => {
             {/* Form for type */}
             <Form.Group controlId='type'>
                 <Form.Label>Type</Form.Label>
-                <Form.Control
+                <Form.Select
                     {...register("type", {
                         required: "A Type is required",
                     })}
                     placeholder="Type"
                     type="text"
-                />
+                >
+                        <option value="Café">Café</option>
+                        <option value="Restaurant">Restaurant</option>
+                        <option value="Fast food">Fast food</option>
+                        <option value="Grill">Grill</option>
+                        <option value="Foodtruck">Foodtruck</option>
+                </Form.Select>
                 {errors.type && <div className="invalid">{errors.type.message}</div>}
             </Form.Group>
 
