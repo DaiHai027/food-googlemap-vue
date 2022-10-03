@@ -227,6 +227,7 @@ const CreatePlaceForm = () => {
             </Form.Group>
 
             <Button className='btn-color my-3' type="submit">Create</Button>
+            
         </Form>
     )
 }

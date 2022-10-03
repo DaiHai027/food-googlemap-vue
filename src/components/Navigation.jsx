@@ -74,7 +74,7 @@ const Navigation = () => {
                                         (
                                             <>
                                                 <NavLink to="/users" className="dropdown-item">Edit Users</NavLink>
-                                                <NavLink to="/addPlaces" className="dropdown-item">Add a new Places</NavLink>
+                                                <NavLink to="/add-places" className="dropdown-item">Add a new Places</NavLink>
                                                 <NavLink to="/places" className="dropdown-item">List of Places</NavLink>
                                                 <NavDropdown.Divider />
                                             </>
