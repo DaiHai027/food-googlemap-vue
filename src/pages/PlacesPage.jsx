@@ -6,23 +6,12 @@ import useAdmin from '../hooks/useAdmin'
 // context
 import { useAuthContext } from '../contexts/AuthContext'
 // components
-import FoodPlacesList from '../components/FoodPlacesList'
+import FoodPlacesTable from '../components/FoodPlacesTable'
 // bootstrap
 import Container from 'react-bootstrap/Container'
 import { Button } from 'react-bootstrap'
-<<<<<<< HEAD
-import { Link } from 'react-router-dom'
-import { useMemo } from 'react'
-import FoodPlacesTable from '../components/FoodPlacesTable'
-
-import { ListGroup } from "react-bootstrap"
-=======
-import { ListGroup } from "react-bootstrap" 
 // loader
 import BeatLoader from 'react-spinners/BeatLoader'
-
-
->>>>>>> dev
 
 
 const PlacesPage = () => {
