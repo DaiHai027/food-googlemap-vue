@@ -1,9 +1,12 @@
 import { useState } from 'react'
+import { useParams } from 'react-router-dom'
+// components 
+import EditPlaceForm from '../components/editPlaceForm'
+// hooks
+import useGetPlace from '../hooks/useGetPlace'
+// bootstrap
 import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
-import { useParams } from 'react-router-dom'
-import EditPlaceForm from '../components/editPlaceForm'
-import useGetPlace from '../hooks/useGetPlace'
 
 
 const PlacePage = () => {

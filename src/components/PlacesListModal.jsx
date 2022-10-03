@@ -1,14 +1,17 @@
-import Modal from 'react-bootstrap/Modal'
-import { Button, Form } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import { useState, useMemo, useEffect } from 'react';
-import { Autocomplete } from '@react-google-maps/api';
-import  ListGroup  from 'react-bootstrap/ListGroup'
-import FoodPlacesTable from './FoodPlacesTable'
-import useGetQueryPlaces from '../hooks/useGetQueryPlaces'
+// components
 import SearchAddressForm from '../components/SearchAddressForm'
-import MapsAPI from '../services/mapsAPI'
+// hooks
+import useGetQueryPlaces from '../hooks/useGetQueryPlaces'
+// bootstrap
+import  ListGroup  from 'react-bootstrap/ListGroup'
+// fontawsome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
+// API
+import MapsAPI from '../services/mapsAPI'
+
 
 const PlacesListModal = ({onFoodItemClick, onAddressFormSubmit}) => {
     const [show, setShow] = useState(false);
@@ -117,7 +120,7 @@ const PlacesListModal = ({onFoodItemClick, onAddressFormSubmit}) => {
     return (
         <>
             <Button variant="primary" onClick={handleShow}>
-                Places near you
+                Places near you!
             </Button>
 
             {
