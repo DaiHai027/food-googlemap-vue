@@ -6,11 +6,11 @@ import useAdmin from '../hooks/useAdmin'
 // context
 import { useAuthContext } from '../contexts/AuthContext'
 // components
-import FoodPlacesList from '../components/FoodPlacesList'
+import FoodPlacesTable from '../components/FoodPlacesTable'
 // bootstrap
 import Container from 'react-bootstrap/Container'
 import { Button } from 'react-bootstrap'
-import FoodPlacesTable from '../components/FoodPlacesTable'
+// loader
 import BeatLoader from 'react-spinners/BeatLoader'
 
 

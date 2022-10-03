@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 // components
-import EditPlaceForm from '../components/editPlaceForm'
+import EditPlaceForm from '../components/EditPlaceForm'
 // hooks
 import useGetPlace from '../hooks/useGetPlace'
 // bootstrap

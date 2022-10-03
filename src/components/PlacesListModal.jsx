@@ -1,11 +1,18 @@
-import { Button } from 'react-bootstrap'
-import { useState, useEffect } from 'react'
-import  ListGroup  from 'react-bootstrap/ListGroup'
-import useGetQueryPlaces from '../hooks/useGetQueryPlaces'
+import { Button } from 'react-bootstrap';
+import { useState, useMemo, useEffect } from 'react';
+// components
+
 import SearchAddressForm from '../components/SearchAddressForm'
-import MapsAPI from '../services/mapsAPI'
+// hooks
+import useGetQueryPlaces from '../hooks/useGetQueryPlaces'
+// bootstrap
+import  ListGroup  from 'react-bootstrap/ListGroup'
+// fontawsome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
+// API
+import MapsAPI from '../services/mapsAPI'
+
 
 
 const PlacesListModal = ({onFoodItemClick, onAddressFormSubmit}) => {
@@ -72,7 +79,7 @@ const PlacesListModal = ({onFoodItemClick, onAddressFormSubmit}) => {
     return (
         <>
             <Button variant="primary" onClick={handleShow}>
-                Places near you
+                Places near you!
             </Button>
 
             {
