@@ -110,7 +110,7 @@ const MapOffcanvas = ({onFoodItemClick, onAddressFormSubmit}) => {
     <>
 
         <Button  onClick={handleShow} className="outline-primary">
-            Places near you
+            Places near you!
         </Button>
 
             <Offcanvas show={show} onHide={handleClose} className='offcanvas-bg'>

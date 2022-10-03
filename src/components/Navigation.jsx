@@ -48,7 +48,7 @@ const Navigation = () => {
 
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="ms-auto align-items-center">
+                <Nav className="ms-auto align-items-center d-block">
                     {
                         currentUser? (
                             <>
@@ -66,7 +66,6 @@ const Navigation = () => {
                                         : userName || userEmail
 
                                 }>
-                                    
                                     <NavLink to="/update-profile" className="dropdown-item">Update Profile</NavLink>
                                     <NavDropdown.Divider />
                                     
