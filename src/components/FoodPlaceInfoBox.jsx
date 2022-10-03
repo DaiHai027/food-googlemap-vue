@@ -30,27 +30,27 @@ const FoodPlaceInfoBox = ({userPosition, foodPlace, onClose}) => {
                 <div className='place-contact'>
                     { foodPlace.phonenumber && (
                         <a href={`tel:${foodPlace.phonenumber}`}>
-                            <img src='src/assets/icons/phone.svg' />
+                            <img src='phone.svg' />
                         </a>
                     ) }
                     { foodPlace.email && (
                         <a href={`mailto:${foodPlace.email}`}>
-                            <img src='src/assets/icons/email.svg' />
+                            <img src='email.svg' />
                         </a>
                     ) }
                     { foodPlace.website && (
                         <a href={foodPlace.website} target='_blank'>
-                            <img src='src/assets/icons/internet.svg' />
+                            <img src='internet.svg' />
                         </a>
                     ) }
                     { foodPlace.facebook && (
                         <a href={foodPlace.facebook} target='_blank'>
-                            <img src='src/assets/icons/fb.svg' />
+                            <img src='fb.svg' />
                         </a>
                     ) }
                     { foodPlace.instagram && (
                         <a href={foodPlace.instagram} target='_blank'>
-                            <img src='src/assets/icons/ig.svg' />
+                            <img src='ig.svg' />
                         </a>
                     ) }
                 </div>

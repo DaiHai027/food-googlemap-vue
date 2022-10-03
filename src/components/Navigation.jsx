@@ -13,10 +13,10 @@ import Image from 'react-bootstrap/Image'
 const Navigation = () => {
     const [data, setData] = useState([])
     const { currentUser, userName, userEmail, userPhotoUrl} = useAuthContext()
-    
 
-    useEffect(() => {       
-        if (currentUser) {            
+
+    useEffect(() => {
+        if (currentUser) {
             const ref = doc(db, 'users', currentUser.uid)
             const unsubscribe = onSnapshot(ref, (snapshot) => {
                 setData({
@@ -25,7 +25,7 @@ const Navigation = () => {
                 })
             })
             return unsubscribe
-        } 
+        }
         return
     },[currentUser])
 
@@ -37,7 +37,7 @@ const Navigation = () => {
         <Container>
             <Navbar.Brand as={Link} to="/">
                 <img
-                    src="/src/assets/icons/map.png"
+                    src="map.png"
                     width="30"
                     height="30"
                     className="d-inline-block align-top"
@@ -66,10 +66,10 @@ const Navigation = () => {
                                         : userName || userEmail
 
                                 }>
-                                    
+
                                     <NavLink to="/update-profile" className="dropdown-item">Update Profile</NavLink>
                                     <NavDropdown.Divider />
-                                    
+
                                    {data.admin &&
                                         (
                                             <>
@@ -81,8 +81,8 @@ const Navigation = () => {
                                             </>
                                         )
                                     }
-                                    
-                                    
+
+
 
                                     <NavLink to="/logout"
                                     className="dropdown-item">Log Out</NavLink>
