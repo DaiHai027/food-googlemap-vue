@@ -18,7 +18,7 @@ import { Link } from 'react-router-dom'
 import { useMemo } from 'react'
 import FoodPlacesTable from '../components/FoodPlacesTable'
 
-import { ListGroup } from "react-bootstrap" 
+import { ListGroup } from "react-bootstrap"
 
 
 const PlacesPage = () => {
@@ -76,22 +76,17 @@ const PlacesPage = () => {
 
       <h1 className="h-text-color-dark">Restaurants</h1>
       {loading && <BeatLoader  color='#F27166' /> }
-      
-      {!loading && 
+
+      {!loading &&
         <>
           {isAdmin && (
-            <>    
-              <ListGroup className="foodplace-listgroup">
-                {!loading && foodPlaces &&  
-                foodPlaces.map(foodplace => (      
-                  <FoodPlacesList foodPlaces={foodplace} key={foodplace.id} /> 
-                ))}      
-              </ListGroup>                                  
+            <>
+              <FoodPlacesTable columns={columns} foodPlaces={foodPlaces} />
             </>
           )}
         </>
       }
-        
+
 
     </Container>
 
