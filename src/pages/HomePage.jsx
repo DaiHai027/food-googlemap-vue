@@ -1,15 +1,15 @@
 import { useJsApiLoader, GoogleMap, MarkerF, InfoBox } from '@react-google-maps/api'
 import { useState, useEffect } from 'react'
-// assets
-import userMarkerImg from '../assets/images/usermarker.png'
 //components
 import FoodPlaceInfoBox from '../components/FoodPlaceInfoBox'
+import AddtipForm from '../components/AddtipForm'
+import PlacesListModal from '../components/PlacesListModal'
 //hooks
 import useGetPlaces from '../hooks/useGetPlaces'
-import AddtipForm from '../components/AddtipForm'
+// assets
+import userMarkerImg from '../assets/images/usermarker.png'
 // API
 import MapsAPI from '../services/mapsAPI'
-import PlacesListModal from '../components/PlacesListModal'
 
 
 // Array of library for maps api to include

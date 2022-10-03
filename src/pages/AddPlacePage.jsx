@@ -6,9 +6,7 @@ import useAdmin from '../hooks/useAdmin'
 import useUsers from '../hooks/useUsers'
 // loader
 import BeatLoader from 'react-spinners/BeatLoader'
-// import { collection, orderBy, query, where } from 'firebase/firestore'
-// import { useFirestoreQueryData } from '@react-query-firebase/firestore'
-// import { db } from '../firebase'
+
 
 const AddPlacePage = () => {
   const{ data: users, loading } = useUsers()
@@ -16,16 +14,6 @@ const AddPlacePage = () => {
   const id = currentUser.uid
   const { isAdmin } = useAdmin(id) 
 
-
-  // const queryRef = query(
-  //   collection(db,'places'),
-  //   orderBy('name')
-  // )
-  // const { data: place, isLoading } = useFirestoreQueryData(['places',], queryRef,{
-  //     idField: 'id',
-  //     subscribe: true,
-  // })
-  // console.log('place', place)
 
   return (
     <Container className="py-3">

@@ -51,11 +51,6 @@ const SignupPage = () => {
 
 	return (
 		<Container className="py-3 center-y">
-			{/* <Row>
-				<Col xs={{ span: 6, offset: 3 }} md={{ span: 4, offset: 4 }} className="logo-wrapper">
-					<Image src={logo} fluid />
-				</Col>
-			</Row> */}
 
 			<Row>
 				<Col md={{ span: 6, offset: 3 }}>
