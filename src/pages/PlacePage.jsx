@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 import { useParams } from 'react-router-dom'
-import EditPlaceForm from '../components/editPlaceForm'
+import EditPlaceForm from '../components/EditPlaceForm'
 import useGetPlace from '../hooks/useGetPlace'
 
 
@@ -10,7 +10,7 @@ const PlacePage = () => {
   const [showEditForm, setShowEditForm] = useState(false)
   const { id } = useParams()
   const { data: place, loading } = useGetPlace(id)
-  
+
 
   const onPlaceUpdated = () => {
     setShowEditForm(false)
@@ -40,7 +40,7 @@ const PlacePage = () => {
           <p><strong>Description: </strong>{place.description}</p>
           <hr />
 
-          
+
             <Button variant="warning" onClick={() => setShowEditForm(!showEditForm)}>
               {showEditForm ? 'Cancel Edit' : 'Edit'}
             </Button>
@@ -50,7 +50,7 @@ const PlacePage = () => {
 
                 <EditPlaceForm onPlaceUpdate={onPlaceUpdated} place={place} />
             </>}
-          
+
         </>
       )}
 
