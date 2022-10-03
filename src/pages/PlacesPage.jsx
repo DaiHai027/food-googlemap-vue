@@ -1,24 +1,17 @@
-import { collection, orderBy, query, where } from 'firebase/firestore'
-import { useFirestoreQueryData } from '@react-query-firebase/firestore'
-import { db } from '../firebase'
+import { Link } from 'react-router-dom'
+import { useMemo } from 'react'
 // hooks
 import useGetPlaces from '../hooks/useGetPlaces'
 import useAdmin from '../hooks/useAdmin'
 // context
 import { useAuthContext } from '../contexts/AuthContext'
 // components
-import FoodPlacesList from '../components/FoodPlacesList'
-// loader
-import BeatLoader from 'react-spinners/BeatLoader'
+import FoodPlacesTable from '../components/FoodPlacesTable'
 // bootstrap
 import Container from 'react-bootstrap/Container'
-
 import { Button } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
-import { useMemo } from 'react'
-import FoodPlacesTable from '../components/FoodPlacesTable'
-
-import { ListGroup } from "react-bootstrap"
+// loader
+import BeatLoader from 'react-spinners/BeatLoader'
 
 
 const PlacesPage = () => {
