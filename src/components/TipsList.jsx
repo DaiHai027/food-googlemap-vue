@@ -21,7 +21,7 @@ const TipsList = ({tips, isLoadingTips}) => {
           <ListGroup>
             {
               tips.map((tip, index) => (
-                <ListGroup.Item key={index}>
+                <ListGroup.Item className='tipListItem' key={index}>
                   <p><strong>Email: </strong>{tip.email}</p>
                   <hr />
                   <p><strong>Suggestion: </strong>{tip.tip}</p>
