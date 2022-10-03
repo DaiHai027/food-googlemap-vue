@@ -74,7 +74,7 @@ const Navigation = () => {
                                    {data.admin &&
                                         (
                                             <>
-                                                <NavLink to="/users" className="dropdown-item">Edit Users</NavLink>
+                                                <NavLink to="/users" className="dropdown-item">All Users</NavLink>
                                                 <NavLink to="/add-places" className="dropdown-item">Add a new Places</NavLink>
                                                 <NavLink to="/places" className="dropdown-item">List of Places</NavLink>
                                                 <NavLink to="/tips" className="dropdown-item">List of Suggestions</NavLink>
