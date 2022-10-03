@@ -6,15 +6,12 @@ import useAdmin from '../hooks/useAdmin'
 // context
 import { useAuthContext } from '../contexts/AuthContext'
 // components
-import FoodPlacesList from '../components/FoodPlacesList'
+import FoodPlacesTable from '../components/FoodPlacesTable'
 // bootstrap
 import Container from 'react-bootstrap/Container'
 import { Button } from 'react-bootstrap'
-import { ListGroup } from "react-bootstrap" 
 // loader
 import BeatLoader from 'react-spinners/BeatLoader'
-
-
 
 
 const PlacesPage = () => {
@@ -72,22 +69,17 @@ const PlacesPage = () => {
 
       <h1 className="h-text-color-dark">Restaurants</h1>
       {loading && <BeatLoader  color='#F27166' /> }
-      
-      {!loading && 
+
+      {!loading &&
         <>
           {isAdmin && (
-            <>    
-              <ListGroup className="foodplace-listgroup">
-                {!loading && foodPlaces &&  
-                foodPlaces.map(foodplace => (      
-                  <FoodPlacesList foodPlaces={foodplace} key={foodplace.id} /> 
-                ))}      
-              </ListGroup>                                  
+            <>
+              <FoodPlacesTable columns={columns} foodPlaces={foodPlaces} />
             </>
           )}
         </>
       }
-        
+
 
     </Container>
 

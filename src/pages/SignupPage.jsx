@@ -5,7 +5,6 @@ import { useAuthContext } from '../contexts/AuthContext'
 // bootstrap
 import { Container, Row, Col, Form, Button, Card, Alert, Image } from 'react-bootstrap'
 
-
 const SignupPage = () => {
 	const emailRef = useRef()
 	const displayNameRef = useRef()

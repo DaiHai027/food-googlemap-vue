@@ -9,16 +9,15 @@ import Nav from "react-bootstrap/Nav"
 import Navbar from "react-bootstrap/Navbar"
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import Image from 'react-bootstrap/Image'
-// assets
-import logo from '../assets/icons/map.png'
 
 
 const Navigation = () => {
     const [data, setData] = useState([])
     const { currentUser, userName, userEmail, userPhotoUrl} = useAuthContext()
 
-    useEffect(() => {       
-        if (currentUser) {            
+
+    useEffect(() => {
+        if (currentUser) {
             const ref = doc(db, 'users', currentUser.uid)
             const unsubscribe = onSnapshot(ref, (snapshot) => {
                 setData({
@@ -27,7 +26,7 @@ const Navigation = () => {
                 })
             })
             return unsubscribe
-        } 
+        }
         return
     },[currentUser])
 
@@ -38,8 +37,8 @@ const Navigation = () => {
     <Navbar className="navbar" expand="md">
         <Container>
             <Navbar.Brand as={Link} to="/">
-                <Image
-                    src={logo}
+                <img
+                    src="map.png"
                     width="30"
                     height="30"
                     className="d-inline-block align-top"
@@ -70,19 +69,20 @@ const Navigation = () => {
                                 }>
                                     <NavLink to="/update-profile" className="dropdown-item">Update Profile</NavLink>
                                     <NavDropdown.Divider />
-                                    
+
                                    {data.admin &&
                                         (
                                             <>
-                                                <NavLink to="/users" className="dropdown-item">Edit Users</NavLink>
+                                                <NavLink to="/users" className="dropdown-item">All Users</NavLink>
                                                 <NavLink to="/add-places" className="dropdown-item">Add a new Places</NavLink>
                                                 <NavLink to="/places" className="dropdown-item">List of Places</NavLink>
+                                                <NavLink to="/tips" className="dropdown-item">List of Suggestions</NavLink>
                                                 <NavDropdown.Divider />
                                             </>
                                         )
                                     }
-                                    
-                                    
+
+
 
                                     <NavLink to="/logout"
                                     className="dropdown-item">Log Out</NavLink>
