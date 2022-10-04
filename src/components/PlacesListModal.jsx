@@ -78,7 +78,7 @@ const PlacesListModal = ({onFoodItemClick, onAddressFormSubmit}) => {
 
     return (
         <>
-            <Button variant="primary" onClick={handleShow} className="mt-3 col-12 col-md-4">
+            <Button variant="primary" onClick={handleShow} className="mt-3 col-12 col-md-3">
                 Places near you
             </Button>
 
