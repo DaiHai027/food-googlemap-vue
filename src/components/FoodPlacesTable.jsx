@@ -28,9 +28,13 @@ const FoodPlacesTable = ({foodPlaces, columns}) => {
                         <tr {...headerGroup.getHeaderGroupProps()}>
                             {
                                 headerGroup.headers.map( column => (
-                                    <th {...column.getHeaderProps( column.getSortByToggleProps() )}>
+                                    <th {...column.getHeaderProps( column.getSortByToggleProps() )} className='text-nowrap' >
                                         { column.render('Header') }
-                                        <FontAwesomeIcon icon={faSort} className='ms-3' />
+                                        { column.Header !== 'Actions' 
+
+                                            ?<FontAwesomeIcon icon={faSort} className='ms-3' />
+                                            :''
+                                        }
                                     </th>
                                 ))
                             }
