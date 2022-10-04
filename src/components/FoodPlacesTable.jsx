@@ -1,5 +1,7 @@
 import { useTable, useSortBy } from 'react-table'
 import { Table } from 'react-bootstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSort } from '@fortawesome/free-solid-svg-icons'
 
 /**
  *
@@ -28,6 +30,7 @@ const FoodPlacesTable = ({foodPlaces, columns}) => {
                                 headerGroup.headers.map( column => (
                                     <th {...column.getHeaderProps( column.getSortByToggleProps() )}>
                                         { column.render('Header') }
+                                        <FontAwesomeIcon icon={faSort} className='ms-3' />
                                     </th>
                                 ))
                             }
