@@ -7,14 +7,13 @@ import PlacesListModal from '../components/PlacesListModal'
 import useGetPlaces from '../hooks/useGetPlaces'
 // assets
 import userMarkerImg from '../assets/images/usermarker.png'
+// loader
+import BeatLoader from 'react-spinners/BeatLoader'
 // API
 import MapsAPI from '../services/mapsAPI'
 import { useJsApiLoader, GoogleMap, MarkerF, InfoBox, Autocomplete } from '@react-google-maps/api'
-
-
-
-
-
+// bootstrap
+import { Container } from 'react-bootstrap'
 
 
 // Array of library for maps api to include
@@ -106,19 +105,22 @@ const HomePage = () => {
     }, [])
 
     return (
-        <>
-            <div className='button-div'>
+        <Container>
+            <div className='button-div bg-white row　align-items-center'>
                 <AddtipForm />
 
-            {/* Sidebar containing list of food places */}
-            <PlacesListModal onFoodItemClick={handleFoodItemClick} onAddressFormSubmit={handleOnSubmit} />
+                {/* Sidebar containing list of food places */}
+                <PlacesListModal onFoodItemClick={handleFoodItemClick} onAddressFormSubmit={handleOnSubmit} />
 
             </div>
 
             <div className='maps-wrapper'>
                 {
                     !isLoaded && (
-                        <p>Loading google maps...</p>
+                        <>
+                            <BeatLoader  color='#F27166' />
+                            <p>Loading google maps...</p>
+                        </>
                     )
                 }
 
@@ -159,7 +161,7 @@ const HomePage = () => {
                                         key={index}
                                         position={place.coords}
                                         onClick={() => {
-                                            handleFoodItemClick(place)
+                                        handleFoodItemClick(place)
                                         }}
                                     />
                                 ) )
@@ -191,7 +193,7 @@ const HomePage = () => {
                     )
                 }
             </div>
-        </>
+        </Container>
     )
 
 }
