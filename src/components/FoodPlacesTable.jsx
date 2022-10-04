@@ -30,10 +30,10 @@ const FoodPlacesTable = ({foodPlaces, columns}) => {
                                 headerGroup.headers.map( column => (
                                     <th {...column.getHeaderProps( column.getSortByToggleProps() )} className='text-nowrap' >
                                         { column.render('Header') }
-                                        { column.Header !== 'Actions' 
+                                        { column.Header !== 'Actions' &&
 
-                                            ?<FontAwesomeIcon icon={faSort} className='ms-3' />
-                                            :''
+                                            <FontAwesomeIcon icon={faSort} className='ms-3' />
+                                            
                                         }
                                     </th>
                                 ))
