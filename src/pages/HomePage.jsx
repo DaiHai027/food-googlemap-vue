@@ -14,7 +14,7 @@ import MapsAPI from '../services/mapsAPI'
 import { useJsApiLoader, GoogleMap, MarkerF, InfoBox, Autocomplete } from '@react-google-maps/api'
 // bootstrap
 import { Container } from 'react-bootstrap'
-
+import { useSearchParams } from 'react-router-dom'
 
 // Array of library for maps api to include
 const libraries = ['places']
@@ -31,6 +31,8 @@ const HomePage = () => {
         googleMapsApiKey: import.meta.env.VITE_MAPS_API_KEY,
         libraries
     })
+
+    const [searchParams, setSearchparams] = useSearchParams()
 
     // State for interactable map instance
     const [map, setMap] = useState(/** @type google.maps.Map */ (null))
@@ -90,19 +92,28 @@ const HomePage = () => {
         const newCoords = await MapsAPI.getLatAndLng(address)
         // Center map on the new coordinates
         map.panTo(newCoords)
+        setUserPosition(newCoords)
+        setSearchparams({city: await MapsAPI.getTown(newCoords)})
 
     }
 
     useEffect(() => {
 
-        // If user browser shares its geolocation, set current user position to those coordinates
-        if ('geolocation' in navigator) {
-            navigator.geolocation.getCurrentPosition((position) => {
-                setUserPosition({lat: position.coords.latitude, lng: position.coords.longitude})
-              })
-          }
+        const getUserPosition = async () => {
+            if (searchParams.get('city')) {
+                setUserPosition(await MapsAPI.getLatAndLng(searchParams.get('city')))
+            }
 
-    }, [])
+            // If user browser shares its geolocation, set current user position to those coordinates
+            else if ('geolocation' in navigator) {
+                navigator.geolocation.getCurrentPosition((position) => {
+                    setUserPosition({lat: position.coords.latitude, lng: position.coords.longitude})
+                  })
+              }
+        }
+        getUserPosition()
+
+    }, [searchParams])
 
     return (
         <Container>
@@ -110,7 +121,7 @@ const HomePage = () => {
                 <AddtipForm />
 
                 {/* Sidebar containing list of food places */}
-                <PlacesListModal onFoodItemClick={handleFoodItemClick} onAddressFormSubmit={handleOnSubmit} />
+                <PlacesListModal onFoodItemClick={handleFoodItemClick} onAddressFormSubmit={handleOnSubmit} userPosition={userPosition} />
 
             </div>
 

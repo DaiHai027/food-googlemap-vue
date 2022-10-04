@@ -1,5 +1,5 @@
 import { Button } from 'react-bootstrap';
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 // components
 
 import SearchAddressForm from '../components/SearchAddressForm'
@@ -15,7 +15,7 @@ import MapsAPI from '../services/mapsAPI'
 
 
 
-const PlacesListModal = ({onFoodItemClick, onAddressFormSubmit}) => {
+const PlacesListModal = ({onFoodItemClick, onAddressFormSubmit, userPosition}) => {
     const [show, setShow] = useState(false)
 
     const handleClose = () => setShow(false)
@@ -49,7 +49,7 @@ const PlacesListModal = ({onFoodItemClick, onAddressFormSubmit}) => {
         }
 
         // Update states to show only given town
-        setTownWhere(await MapsAPI.getTown(address))
+        setTownWhere(await MapsAPI.getTown(userPosition))
 
         // Let parent component take over
         onAddressFormSubmit(address)
@@ -67,14 +67,26 @@ const PlacesListModal = ({onFoodItemClick, onAddressFormSubmit}) => {
 
     useEffect( () => {
 
-        setQueryLimits({
-            nameOrder,
-            supplyWhere,
-            typeWhere,
-            townWhere,
-        })
+        const changeQueryLimits = async () => {
+            setQueryLimits({
+                nameOrder,
+                supplyWhere,
+                typeWhere,
+                townWhere: await MapsAPI.getTown(userPosition),
+            })
+        }
+        changeQueryLimits()
 
-    }, [nameOrder, supplyWhere, typeWhere, townWhere] )
+    }, [nameOrder, supplyWhere, typeWhere, userPosition] )
+
+    useEffect( () => {
+
+        const changeTownWhere = async () => {
+            setTownWhere(await MapsAPI.getTown(userPosition))
+        }
+        changeTownWhere()
+
+    }, [userPosition] )
 
     return (
         <>
@@ -124,8 +136,8 @@ const PlacesListModal = ({onFoodItemClick, onAddressFormSubmit}) => {
 
                                 {
                                     townWhere && (
-                                        <Button variant='outline-primary' className='townbutton-outline'>{townWhere}
-                                            <FontAwesomeIcon icon={faXmark} className='townbutton-close' onClick={resetTownWhere} />
+                                        <Button variant='outline-primary' className='townbutton-outline'>
+                                            {townWhere}
                                         </Button>
                                     )
                                 }

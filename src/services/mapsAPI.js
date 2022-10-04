@@ -30,10 +30,10 @@ const getLatAndLng = async (address) => {
  * @param {string} adress
  * @returns town name of given address
  */
-const getTown = async (adress) => {
+const getTown = async (coords) => {
 
     // Get all info about address from google maps api
-    const res = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${adress}&key=${apiKey}`)
+    const res = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${coords.lat},${coords.lng}&key=${apiKey}`)
 
     // Get the address component that shows town name
     const townInfoArr = res.data.results[0].address_components.filter((component) => {
