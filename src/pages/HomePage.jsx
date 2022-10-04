@@ -132,7 +132,7 @@ const HomePage = () => {
                         {/* The map itself */}
                         <GoogleMap
                             center={userPosition}
-                            zoom={14}
+                            zoom={13}
                             mapContainerStyle={{width: '100%', height: '100%'}}
                             options={{
                                 streetViewControl: false,
@@ -151,6 +151,7 @@ const HomePage = () => {
                                 position={userPosition}
                                 icon={userMarkerImg}
                                 onClick={handleUserMarkerClick}
+                                zIndex={1000}
                             />
 
                             {/* Marker for each food place */}
@@ -166,11 +167,14 @@ const HomePage = () => {
                                 ) )
                             }
 
-                            {/* Info box component to show when user clicks food place marker on map */}
+                            {/* Info box component to show when user clicks food place marker on map*/}
                             {
                                 currentSelectedFoodPlace && (
                                     <InfoBox
-                                        position={currentSelectedFoodPlace.coords}
+                                        position={{
+                                            lat: currentSelectedFoodPlace.coords.lat,
+                                            lng: currentSelectedFoodPlace.coords.lng - 0.02
+                                        }}
                                         options={{
                                             closeBoxURL: '',
                                             enableEventPropagation: true

@@ -66,21 +66,21 @@ const PlacesPage = () => {
 
   return (
     <Container className="py-3">
+      <div className='overflow-auto'>
+        <h1 className="h-text-color-dark">Restaurants</h1>
+        {loading && <BeatLoader  color='#F27166' /> }
 
-      <h1 className="h-text-color-dark">Restaurants</h1>
-      {loading && <BeatLoader  color='#F27166' /> }
+        {!loading &&
+          <>
+            {isAdmin && (
+              <>
+                <FoodPlacesTable columns={columns} foodPlaces={foodPlaces} />
+              </>
+            )}
+          </>
+        }
 
-      {!loading &&
-        <>
-          {isAdmin && (
-            <>
-              <FoodPlacesTable columns={columns} foodPlaces={foodPlaces} />
-            </>
-          )}
-        </>
-      }
-
-
+      </div>
     </Container>
 
   )
