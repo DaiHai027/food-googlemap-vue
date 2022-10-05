@@ -1,7 +1,6 @@
 import { Button } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 // components
-
 import SearchAddressForm from '../components/SearchAddressForm'
 // hooks
 import useGetQueryPlaces from '../hooks/useGetQueryPlaces'
@@ -13,8 +12,6 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons'
 // API
 import MapsAPI from '../services/mapsAPI'
 
-
-
 const PlacesListModal = ({onFoodItemClick, onAddressFormSubmit, userPosition}) => {
     const [show, setShow] = useState(false)
 
@@ -25,7 +22,7 @@ const PlacesListModal = ({onFoodItemClick, onAddressFormSubmit, userPosition}) =
     const [nameOrder, setNameOrder] = useState('asc')
     const [supplyWhere, setSupplyWhere] = useState('All')
     const [typeWhere, setTypeWhere] = useState('All')
-    const [townWhere, setTownWhere] = useState(null)
+    const [townWhere, setTownWhere] = useState('Malmö')
     const [queryLimits, setQueryLimits] = useState({
         nameOrder,
         supplyWhere,
@@ -54,15 +51,6 @@ const PlacesListModal = ({onFoodItemClick, onAddressFormSubmit, userPosition}) =
         // Let parent component take over
         onAddressFormSubmit(address)
 
-    }
-
-    /**
-     *
-     * Function to reset current selected town so that all will show in food places list
-     *
-     */
-    const resetTownWhere = () => {
-        setTownWhere(null)
     }
 
     useEffect( () => {
