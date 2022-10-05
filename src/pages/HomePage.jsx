@@ -11,7 +11,7 @@ import userMarkerImg from '../assets/images/usermarker.png'
 import BeatLoader from 'react-spinners/BeatLoader'
 // API
 import MapsAPI from '../services/mapsAPI'
-import { useJsApiLoader, GoogleMap, MarkerF, InfoBox, Autocomplete } from '@react-google-maps/api'
+import { useJsApiLoader, GoogleMap, MarkerF, InfoBox } from '@react-google-maps/api'
 // bootstrap
 import { Container } from 'react-bootstrap'
 import { useSearchParams } from 'react-router-dom'
@@ -42,8 +42,6 @@ const HomePage = () => {
     const [currentSelectedFoodPlace, setCurrentSelectedFoodPlace] = useState(null)
 
     const { data: foodPlaces, loading: isLoadingPlaces } = useGetPlaces()
-
-
 
     /**
      *

@@ -3,7 +3,6 @@ import { Table } from 'react-bootstrap'
 import { faSort } from '@fortawesome/free-solid-svg-icons'
 // icon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faEdit} from '@fortawesome/free-solid-svg-icons'
 
 /**
  *
@@ -35,7 +34,7 @@ const FoodPlacesTable = ({foodPlaces, columns}) => {
                                         { column.Header !== 'Actions' &&
 
                                             <FontAwesomeIcon icon={faSort} className='ms-3' />
-                                            
+
                                         }
                                     </th>
                                 ))

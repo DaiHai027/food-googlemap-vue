@@ -53,15 +53,6 @@ const PlacesListModal = ({onFoodItemClick, onAddressFormSubmit, userPosition}) =
 
     }
 
-    /**
-     *
-     * Function to reset current selected town so that all will show in food places list
-     *
-     */
-    const resetTownWhere = () => {
-        setTownWhere(null)
-    }
-
     useEffect( () => {
 
         const changeQueryLimits = async () => {

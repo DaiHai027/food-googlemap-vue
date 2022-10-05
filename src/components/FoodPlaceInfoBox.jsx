@@ -5,7 +5,6 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons'
 //bootstrap
 import { Button, Card } from 'react-bootstrap'
 
-
 /**
  *
  * Component to show pop up window on map displaying info about a food place
