@@ -6,8 +6,8 @@ import Button from 'react-bootstrap/Button'
 import Image from 'react-bootstrap/Image'
 import Form from 'react-bootstrap/Form'
 // icon
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faEdit} from '@fortawesome/free-solid-svg-icons'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import {faEdit} from '@fortawesome/free-solid-svg-icons'
 
 
 
@@ -50,12 +50,14 @@ const UsersListItem = ({ users }) => {
                     */}
                     
                     {/* <Form>
-                        <Form.Check 
-                            type="switch"
-                            id="custom-switch"
-                            label="admin"                                  
-                        />
-                        </Form>                    */}
+                        {currentUser.uid !== user.id &&
+                            <Form.Check 
+                                type="switch"
+                                id="custom-switch"
+                                label="admin"                             
+                            />
+                        }
+                    </Form>                    */}
                 </div>
             </ListGroup.Item>
         ))} 

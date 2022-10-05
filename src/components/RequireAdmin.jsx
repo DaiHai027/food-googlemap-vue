@@ -5,7 +5,7 @@ import useUser from '../hooks/useUser'
 // loader
 import BeatLoader from 'react-spinners/BeatLoader'
 
-const RequireAuth = ({
+const RequireAdmin = ({
 	children,
 	redirectTo = "/",
 }) => {
@@ -30,4 +30,4 @@ const RequireAuth = ({
 	)
 }
 
-export default RequireAuth
+export default RequireAdmin
