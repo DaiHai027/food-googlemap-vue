@@ -17,18 +17,22 @@ const useGetQueryPlaces = (queryLimits) => {
     // Variable to keep track of what query constraints to use
     let queryRef
 
-    // Query to use if neither type or supply has been restricted
-    if (queryLimits.typeWhere === 'All' && queryLimits.supplyWhere === 'All') {
-        queryRef = query(collectionRef, where('town', '==', queryLimits.townWhere), orderBy('name', queryLimits.nameOrder))
-    // Query to use if supply has been restricted
-    } else if (queryLimits.typeWhere === 'All') {
-        queryRef = query(collectionRef, where('supply', '==', queryLimits.supplyWhere), where('town', '==', queryLimits.townWhere), orderBy('name', queryLimits.nameOrder))
-    // Query to use if type has been restricted
-    } else if (queryLimits.supplyWhere === 'All') {
-        queryRef = query(collectionRef, where('type', '==', queryLimits.typeWhere), where('town', '==', queryLimits.townWhere), orderBy('name', queryLimits.nameOrder))
-    // Query to use if both type and supply has been restricted
+    if (!queryLimits) {
+        queryRef = query(collectionRef, orderBy('name', 'asc'))
     } else {
-        queryRef = query(collectionRef, where('type', '==', queryLimits.typeWhere), where('supply', '==', queryLimits.supplyWhere), where('town', '==', queryLimits.townWhere), orderBy('name', queryLimits.nameOrder))
+        // Query to use if neither type or supply has been restricted
+        if (queryLimits.typeWhere === 'All' && queryLimits.supplyWhere === 'All') {
+            queryRef = query(collectionRef, where('town', '==', queryLimits.townWhere), orderBy('name', queryLimits.nameOrder))
+        // Query to use if supply has been restricted
+        } else if (queryLimits.typeWhere === 'All') {
+            queryRef = query(collectionRef, where('supply', '==', queryLimits.supplyWhere), where('town', '==', queryLimits.townWhere), orderBy('name', queryLimits.nameOrder))
+        // Query to use if type has been restricted
+        } else if (queryLimits.supplyWhere === 'All') {
+            queryRef = query(collectionRef, where('type', '==', queryLimits.typeWhere), where('town', '==', queryLimits.townWhere), orderBy('name', queryLimits.nameOrder))
+        // Query to use if both type and supply has been restricted
+        } else {
+            queryRef = query(collectionRef, where('type', '==', queryLimits.typeWhere), where('supply', '==', queryLimits.supplyWhere), where('town', '==', queryLimits.townWhere), orderBy('name', queryLimits.nameOrder))
+        }
     }
 
     // Create react-query instance

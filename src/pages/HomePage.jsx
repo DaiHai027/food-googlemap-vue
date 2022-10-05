@@ -3,8 +3,7 @@ import { useState, useEffect } from 'react'
 import FoodPlaceInfoBox from '../components/FoodPlaceInfoBox'
 import AddtipForm from '../components/AddtipForm'
 import PlacesListModal from '../components/PlacesListModal'
-//hooks
-import useGetPlaces from '../hooks/useGetPlaces'
+import useGetQueryPlaces from '../hooks/useGetQueryPlaces'
 // assets
 import userMarkerImg from '../assets/images/usermarker.png'
 // loader
@@ -41,7 +40,14 @@ const HomePage = () => {
     // State for food place currently selected
     const [currentSelectedFoodPlace, setCurrentSelectedFoodPlace] = useState(null)
 
-    const { data: foodPlaces, loading: isLoadingPlaces } = useGetPlaces()
+    const [queryLimits, setQueryLimits] = useState()
+
+    // Get list of food places from hook
+    const { data: foodPlaces, loading } = useGetQueryPlaces(queryLimits)
+
+    const handleChangeFoodPlaces = (newQueryLimits) => {
+        setQueryLimits(newQueryLimits)
+    }
 
     /**
      *
@@ -115,11 +121,17 @@ const HomePage = () => {
 
     return (
         <Container className='homepage-container'>
-            <div className='button-div bg-white row　align-items-center'>
+            <div className='button-div bg-white row-align-items-center'>
                 <AddtipForm />
 
                 {/* Sidebar containing list of food places */}
-                <PlacesListModal onFoodItemClick={handleFoodItemClick} onAddressFormSubmit={handleOnSubmit} userPosition={userPosition} />
+                <PlacesListModal
+                    onFoodItemClick={handleFoodItemClick}
+                    onAddressFormSubmit={handleOnSubmit}
+                    userPosition={userPosition}
+                    onChangeFoodPlaces={handleChangeFoodPlaces}
+                    foodPlaces={foodPlaces}
+                />
 
             </div>
 

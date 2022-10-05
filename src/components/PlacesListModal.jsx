@@ -2,8 +2,6 @@ import { Button } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 // components
 import SearchAddressForm from '../components/SearchAddressForm'
-// hooks
-import useGetQueryPlaces from '../hooks/useGetQueryPlaces'
 // bootstrap
 import  ListGroup  from 'react-bootstrap/ListGroup'
 // fontawsome
@@ -12,7 +10,7 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons'
 // API
 import MapsAPI from '../services/mapsAPI'
 
-const PlacesListModal = ({onFoodItemClick, onAddressFormSubmit, userPosition}) => {
+const PlacesListModal = ({onFoodItemClick, onAddressFormSubmit, userPosition, onChangeFoodPlaces, foodPlaces}) => {
     const [show, setShow] = useState(false)
 
     const handleClose = () => setShow(false)
@@ -29,9 +27,6 @@ const PlacesListModal = ({onFoodItemClick, onAddressFormSubmit, userPosition}) =
         typeWhere,
         townWhere,
     })
-
-    // Get list of food places from hook
-    const { data, loading } = useGetQueryPlaces(queryLimits)
 
     /**
      *
@@ -76,6 +71,12 @@ const PlacesListModal = ({onFoodItemClick, onAddressFormSubmit, userPosition}) =
 
     }, [userPosition] )
 
+    useEffect( () => {
+
+        onChangeFoodPlaces(queryLimits)
+
+    }, [queryLimits] )
+
     return (
         <>
             <Button variant="primary" onClick={handleShow} className="mt-3 col-12 col-md-3">
@@ -89,13 +90,7 @@ const PlacesListModal = ({onFoodItemClick, onAddressFormSubmit, userPosition}) =
                         <FontAwesomeIcon icon={faXmark} className='foodplace-modal-close' onClick={handleClose} />
 
                         {
-                            loading && (
-                                <p>Loading ....</p>
-                            )
-                        }
-
-                        {
-                            data && (
+                            foodPlaces && (
                                 <>
 
                                 <label htmlFor='sort-select-type'>Filter by type</label>
@@ -135,7 +130,7 @@ const PlacesListModal = ({onFoodItemClick, onAddressFormSubmit, userPosition}) =
                                 <ListGroup className="foodplace-listgroup">
 
                                     {
-                                        data.map((foodplace, index) => (
+                                        foodPlaces.map((foodplace, index) => (
                                             <ListGroup.Item action key={index} onClick={() => {onFoodItemClick(foodplace)}}>
                                                 <h3>{foodplace.name}</h3>
                                                 <span>{foodplace.adress + ' ' + foodplace.town}</span>
