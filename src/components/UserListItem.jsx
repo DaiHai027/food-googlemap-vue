@@ -42,15 +42,13 @@ const UsersListItem = ({ users }) => {
                 </div>
                 
                 <div className='user-edit-btn'>
-                    {/* Icon tras & edit */}
-                    <Button
-                        variant='warning'
-                        className='mx-2'                        
-                    >
-                        <FontAwesomeIcon icon={faEdit}/>
-                    </Button>
-                   
+                  
                     {/* Switch admin / user */}
+                    {/* *VG-nivåkrav*.
+                        Knapp för växling mellan administratör/allmän användare.
+                        Inaktiverad endast för ursprungliga administratörer? 
+                    */}
+                    
                     {/* <Form>
                         <Form.Check 
                             type="switch"

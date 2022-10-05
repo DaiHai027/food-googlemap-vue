@@ -1,7 +1,9 @@
 import { useTable, useSortBy } from 'react-table'
 import { Table } from 'react-bootstrap'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSort } from '@fortawesome/free-solid-svg-icons'
+// icon
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faEdit} from '@fortawesome/free-solid-svg-icons'
 
 /**
  *

@@ -12,6 +12,9 @@ import Container from 'react-bootstrap/Container'
 import { Button } from 'react-bootstrap'
 // loader
 import BeatLoader from 'react-spinners/BeatLoader'
+// icon
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faEdit} from '@fortawesome/free-solid-svg-icons'
 
 
 const PlacesPage = () => {
@@ -51,12 +54,12 @@ const PlacesPage = () => {
             Header: 'Actions',
             Cell: ({ row: { original: foodplace } }) => (
                 <Button
-                  variant="primary"
+                  variant="warning"
                   size="sm"
                   as={Link}
                   to={`/places/${foodplace.id}`}
                 >
-                  Goto
+                  <FontAwesomeIcon icon={faEdit}/>
                 </Button>
             )
         },
