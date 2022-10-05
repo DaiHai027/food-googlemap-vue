@@ -116,7 +116,7 @@ const HomePage = () => {
     }, [searchParams])
 
     return (
-        <Container>
+        <Container className='homepage-container'>
             <div className='button-div bg-white row　align-items-center'>
                 <AddtipForm />
 
