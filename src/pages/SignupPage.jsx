@@ -23,7 +23,6 @@ const SignupPage = () => {
 		}
 
 		setPhoto(e.target.files[0])
-		console.log("File changed!", e.target.files[0])
 	}
 
 	const handleSubmit = async (e) => {

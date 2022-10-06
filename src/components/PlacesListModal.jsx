@@ -2,6 +2,7 @@ import { Button } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 // components
 import SearchAddressForm from '../components/SearchAddressForm'
+import FoodPlacesList from './FoodPlacesList';
 // bootstrap
 import  ListGroup  from 'react-bootstrap/ListGroup'
 // fontawsome
@@ -127,19 +128,7 @@ const PlacesListModal = ({onFoodItemClick, onAddressFormSubmit, userPosition, on
 
                                 <SearchAddressForm onSubmit={handleOnSubmit} />
 
-                                <ListGroup className="foodplace-listgroup">
-
-                                    {
-                                        foodPlaces.map((foodplace, index) => (
-                                            <ListGroup.Item action key={index} onClick={() => {onFoodItemClick(foodplace)}}>
-                                                <h3>{foodplace.name}</h3>
-                                                <span>{foodplace.adress + ' ' + foodplace.town}</span>
-                                                <br />
-                                                <span>{foodplace.supply} | {foodplace.type} | {foodplace.cuisine}</span>
-                                            </ListGroup.Item>
-                                        ))
-                                    }
-                                </ListGroup>
+                                <FoodPlacesList foodPlaces={foodPlaces} onFoodItemClick={onFoodItemClick} />
 
                                 </>
                             )

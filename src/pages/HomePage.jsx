@@ -43,8 +43,9 @@ const HomePage = () => {
     const [queryLimits, setQueryLimits] = useState()
 
     // Get list of food places from hook
-    const { data: foodPlaces, loading } = useGetQueryPlaces(queryLimits)
+    const { data: foodPlaces } = useGetQueryPlaces(queryLimits)
 
+    // Function to handle when query data needs to be updated
     const handleChangeFoodPlaces = (newQueryLimits) => {
         setQueryLimits(newQueryLimits)
     }

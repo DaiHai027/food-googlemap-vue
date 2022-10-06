@@ -9,7 +9,6 @@ const UploadImageDropzone = () => {
 	const uploadImage = useUploadImage()
 
 	const onDrop = useCallback((acceptedFiles) => {
-		console.log("Got files", acceptedFiles)
 
 		if (!acceptedFiles.length) {
 			return

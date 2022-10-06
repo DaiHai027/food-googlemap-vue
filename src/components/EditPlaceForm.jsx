@@ -6,7 +6,6 @@ import { doc, updateDoc} from 'firebase/firestore'
 import { db } from '../firebase'
 
 import React from 'react'
-import PlacePage from '../pages/PlacePage'
 
 const EditPlaceForm = ({ place, onPlaceUpdate}) => {
     const { register, handleSubmit, formState: { errors}} = useForm()
@@ -31,7 +30,7 @@ const EditPlaceForm = ({ place, onPlaceUpdate}) => {
         onPlaceUpdate()
     }
   return (
-    
+
     <Form onSubmit={handleSubmit(onUpdatePlace)} noValidate>
 
     {/* Form for name */}
@@ -114,6 +113,44 @@ const EditPlaceForm = ({ place, onPlaceUpdate}) => {
         </Form.Select>
     </Form.Group>
 
+    {/* Form for type */}
+    <Form.Group className='editPlaceForm' controlId='type'>
+    <Form.Label><strong>Type</strong></Form.Label>
+        <Form.Select
+        {...register("type", {
+            required: "A Type is required",
+        })}
+        defaultValue={place.type}
+        type="text"
+        >
+            <option value="Café">Café</option>
+            <option value="Restaurant">Restaurant</option>
+            <option value="Fast food">Fast food</option>
+            <option value="Grill">Grill</option>
+            <option value="Foodtruck">Foodtruck</option>
+
+        </Form.Select>
+
+    </Form.Group>
+
+    {/* Form for Description */}
+    <Form.Group className='editPlaceForm' controlId='description'>
+    <Form.Label><strong>Description</strong></Form.Label>
+        <Form.Control
+        {...register("description", {
+            required: "A description is required",
+            minLength: {
+                value: 2,
+                message: "Must atlest be 2 charatcers"
+            }
+        })}
+        defaultValue={place.description}
+        type="text"
+        as="textarea"
+        rows={3}
+        />
+    </Form.Group>
+
         {/* Form for Phonenumber */}
     <Form.Group className='editPlaceForm' controlId='phonenumber'>
     <Form.Label><strong>Phonenumber</strong></Form.Label>
@@ -162,44 +199,6 @@ const EditPlaceForm = ({ place, onPlaceUpdate}) => {
         {...register("website",)}
         defaultValue={place.website}
         type="text"
-        />
-    </Form.Group>
-
-    {/* Form for type */}
-     <Form.Group className='editPlaceForm' controlId='type'>
-    <Form.Label><strong>Type</strong></Form.Label>
-        <Form.Select
-        {...register("type", {
-            required: "A Type is required",
-        })}
-        defaultValue={place.type}
-        type="text"
-        >  
-            <option value="Café">Café</option>
-            <option value="Restaurant">Restaurant</option>
-            <option value="Fast food">Fast food</option>
-            <option value="Grill">Grill</option>
-            <option value="Foodtruck">Foodtruck</option>
-
-        </Form.Select>
-
-    </Form.Group>
-
-    {/* Form for Description */}
-    <Form.Group className='editPlaceForm' controlId='description'>
-    <Form.Label><strong>Description</strong></Form.Label>
-        <Form.Control
-        {...register("description", {
-            required: "A description is required",
-            minLength: {
-                value: 2,
-                message: "Must atlest be 2 charatcers"
-            }
-        })}
-        defaultValue={place.description}
-        type="text"
-        as="textarea"
-        rows={3}
         />
     </Form.Group>
 

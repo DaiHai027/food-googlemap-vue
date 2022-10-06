@@ -30,8 +30,6 @@ const Navigation = () => {
         return
     },[currentUser])
 
-    console.log('data', data)
-
 
   return (
     <Navbar className="navbar" expand="md">
@@ -53,7 +51,7 @@ const Navigation = () => {
                     {
                         currentUser? (
                             <>
-                                <NavDropdown                                    
+                                <NavDropdown
                                     align={'end'}
                                     title={
                                         userPhotoUrl

@@ -7,7 +7,6 @@ import { Container, Row, Col, Form, Button, Card, Alert, Image } from 'react-boo
 const UpdateProfilePage = () => {
 	const displayNameRef = useRef()
 	const emailRef = useRef()
-	const photoRef = useRef()
 	const passwordRef = useRef()
 	const passwordConfirmRef = useRef()
 	const [error, setError] = useState(null)
@@ -22,8 +21,8 @@ const UpdateProfilePage = () => {
 		setEmail,
 		setPassword,
 	} = useAuthContext()
-	
-	
+
+
 	const handleFileChange = (e) => {
 		if (!e.target.files.length) {
 			setPhoto(null)
@@ -31,7 +30,6 @@ const UpdateProfilePage = () => {
 		}
 
 		setPhoto(e.target.files[0])
-		console.log("File changed!", e.target.files[0])
 	}
 
 	const handleSubmit = async (e) => {
@@ -43,7 +41,6 @@ const UpdateProfilePage = () => {
 
 		setError(null);
 		setMessage(null);
-		console.log('photo', photo)
 
 		// update user profile
 		try {
@@ -63,10 +60,10 @@ const UpdateProfilePage = () => {
 			if (passwordRef.current.value) {
 				await setPassword(passwordRef.current.value)
 			}
-			
+
 			update({
-				email:emailRef.current.value, 
-				name:displayNameRef.current.value, 
+				email:emailRef.current.value,
+				name:displayNameRef.current.value,
 				photo
 			})
 			await reloadUser()
@@ -75,7 +72,6 @@ const UpdateProfilePage = () => {
 			setLoading(false)
 
 		} catch (e) {
-			console.log("Error updating profile", e)
 			setError(e.message)
 			setLoading(false)
 		}
@@ -87,13 +83,13 @@ const UpdateProfilePage = () => {
 			<Row>
 				<Col md={{ span: 6, offset: 3 }}>
 					<Card>
-						
+
 						<Card.Body>
 							{error && (<Alert variant="danger">{error}</Alert>)}
 							{message && (<Alert variant="success">{message}</Alert>)}
 
 							<Form onSubmit={handleSubmit}>
-								
+
 								<div className="d-flex justify-content-center my-3">
 									<Image
 										src={currentUser.photoURL || 'https://via.placeholder.com/225'}

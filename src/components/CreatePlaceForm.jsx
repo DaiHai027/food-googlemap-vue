@@ -15,7 +15,7 @@ const CreatePlaceForm = () => {
 
     const onCreatePlace = async (data) => {
         // making a firestore doc
-     
+
         await addDoc(collection(db, 'places'), {
             adress: data.adress,
             cuisine: data.cuisine,
@@ -136,6 +136,43 @@ const CreatePlaceForm = () => {
                 {errors.town && <div className="invalid">{errors.town.message}</div>}
             </Form.Group>
 
+            {/* Form for type */}
+            <Form.Group className='placeFormG' controlId='type'>
+                <Form.Label><strong>Type</strong></Form.Label>
+                <Form.Select
+                    {...register("type", {
+                        required: "A Type is required",
+                    })}
+                    placeholder="Type"
+                    type="text"
+                >
+                        <option value="Café">Café</option>
+                        <option value="Restaurant">Restaurant</option>
+                        <option value="Fast food">Fast food</option>
+                        <option value="Grill">Grill</option>
+                        <option value="Foodtruck">Foodtruck</option>
+                </Form.Select>
+                {errors.type && <div className="invalid">{errors.type.message}</div>}
+            </Form.Group>
+
+            {/* Form for Description */}
+            <Form.Group className='placeFormG' controlId='description'>
+                <Form.Label><strong>Description</strong></Form.Label>
+                <Form.Control
+                    {...register("description", {
+                        required: "A description is required",
+                        minLength: {
+                            value: 2,
+                            message: "Must atlest be 2 charatcers"
+                        }
+                    })}
+                    placeholder="Description"
+                    type="text"
+                    as="textarea"
+                    rows={3}
+                />
+                {errors.description && <div className="invalid">{errors.description.message}</div>}
+            </Form.Group>
 
             {/* Form for Phonenumber */}
             <Form.Group className='placeFormG' controlId='phonenumber'>
@@ -188,46 +225,8 @@ const CreatePlaceForm = () => {
                 />
             </Form.Group>
 
-            {/* Form for type */}
-            <Form.Group className='placeFormG' controlId='type'>
-                <Form.Label><strong>Type</strong></Form.Label>
-                <Form.Select
-                    {...register("type", {
-                        required: "A Type is required",
-                    })}
-                    placeholder="Type"
-                    type="text"
-                >
-                        <option value="Café">Café</option>
-                        <option value="Restaurant">Restaurant</option>
-                        <option value="Fast food">Fast food</option>
-                        <option value="Grill">Grill</option>
-                        <option value="Foodtruck">Foodtruck</option>
-                </Form.Select>
-                {errors.type && <div className="invalid">{errors.type.message}</div>}
-            </Form.Group>
-
-            {/* Form for Description */}
-            <Form.Group className='placeFormG' controlId='description'>
-                <Form.Label><strong>Description</strong></Form.Label>
-                <Form.Control
-                    {...register("description", {
-                        required: "A description is required",
-                        minLength: {
-                            value: 2,
-                            message: "Must atlest be 2 charatcers"
-                        }
-                    })}
-                    placeholder="Description"
-                    type="text"
-                    as="textarea"
-                    rows={3}
-                />
-                {errors.description && <div className="invalid">{errors.description.message}</div>}
-            </Form.Group>
-
             <Button className='btn-color my-3' type="submit">Create</Button>
-            
+
         </Form>
     )
 }
